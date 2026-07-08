@@ -3,138 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Napoleone Bonaparte</title>
+    <title>Le Moniteur | Napoleone Bonaparte</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="navbar">
+    <header class="newspaper-header">
         <div class="container">
-            <a href="index.html" class="logo">
-                <div class="logo-emblem">N</div>
-                <span class="logo-text">Napoleone</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
+            <span class="newspaper-date">15 Agosto 1769</span>
+            <span class="newspaper-edition">Edizione Speciale</span>
+        </div>
+    </header>
+
+    <div class="masthead">
+        <div class="container">
+            <h1 class="masthead-title">Le Moniteur</h1>
+            <p class="masthead-subtitle">Gazzetta Ufficiale dell'Impero Francese</p>
+            <div class="masthead-line">
+                <span>Fondato nel 1789</span>
+                <span class="masthead-divider"></span>
+                <span>Parigi</span>
+                <span class="masthead-divider"></span>
+                <span>Journal Officiel</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="newspaper-nav">
+        <div class="container">
+            <div class="nav-toggle" onclick="document.querySelector('.newspaper-nav ul').classList.toggle('active')">Menu</div>
+            <ul>
+                <li><a href="index.html" class="active">Prima Pagina</a></li>
                 <li><a href="biografia.html">Biografia</a></li>
                 <li><a href="conquiste.html">Conquiste</a></li>
                 <li><a href="eredita.html">Eredità</a></li>
-                <li><a href="colleghi.html">Team</a></li>
+                <li><a href="colleghi.html">Redazione</a></li>
                 <li><a href="ambientazioni.html">Ambientazioni</a></li>
+                <li><a href="sfondo.html">Sfondo</a></li>
+                <li><a href="admin.html">Admin</a></li>
             </ul>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-tricolor">
-            <span></span><span></span><span></span>
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <p class="hero-years">1769 — 1821</p>
-            <h1>Napoleone <em>Bonaparte</em></h1>
-            <p class="hero-subtitle">Generale, Console, Imperatore. L'uomo che cambiò il corso della storia europea.</p>
-            <div class="hero-cta">
-                <a href="biografia.html" class="btn btn-primary">Scopri la storia</a>
-                <a href="conquiste.html" class="btn btn-outline">Esplora le conquiste</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="intro">
-                <div class="fade-in">
-                    <h2>Il genio strategico</h2>
-                    <p>Napoleone Bonaparte è stato uno dei più grandi leader militari della storia. Nato in Corsica nel 1769, salì al potere durante la Rivoluzione Francese e divenne Imperatore dei Francesi nel 1804.</p>
-                    <p>Le sue campagne rivoluzionarono l'arte della guerra. Il suo Codice Civile trasformò il diritto europeo. La sua eredità persiste ancora oggi.</p>
+    <main>
+        <section class="front-page">
+            <div class="container">
+                <div class="front-page-header">
+                    <p class="front-page-label">In Prima Pagina</p>
+                    <h1 class="front-page-title">Napoleone <em>Bonaparte</em></h1>
+                    <p class="front-page-subtitle">L'uomo che cambiò il corso della storia europea</p>
                 </div>
-                <div class="intro-image fade-in">
-                    <div class="intro-image-frame">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
+
+                <div class="front-page-grid">
+                    <div class="front-page-main">
+                        <p>Benvenuti in questa edizione speciale del Le Moniteur, dedicata a uno dei personaggi più influenti della storia europea. Questo progetto nasce come lavoro didattico per presentare la figura di Napoleone Bonaparte attraverso un percorso storico, militare e culturale.</p>
+                        <p>Attraverso le sezioni del nostro giornale, esploreremo la biografia dell'Imperatore, le sue campagne militari, l'eredità che ha lasciato al mondo moderno, e le ambientazioni storiche che hanno definito la sua epoca. Il nostro team di redattori ha lavorato per creare un'esperienza informativa completa e coinvolgente.</p>
+                        <p>Utilizzate il menu di navigazione per scoprire tutti i contenuti di questa pubblicazione, o visitate la pagina dedicata allo sfondo per un'esperienza visiva personalizzata attraverso il pannello di amministrazione.</p>
+                    </div>
+
+                    <aside class="front-page-sidebar">
+                        <div class="sidebar-item">
+                            <p class="sidebar-label">Il Nostro Lavoro</p>
+                            <h3 class="sidebar-title">Un Progetto Didattico</h3>
+                            <p class="sidebar-text">Questo sito è stato realizzato come progetto scolastico per approfondire la figura di Napoleone e l'impatto della sua era sulla storia europea.</p>
+                        </div>
+                        <div class="sidebar-item">
+                            <p class="sidebar-label">Contenuti</p>
+                            <h3 class="sidebar-title">Sei Sezioni Tematiche</h3>
+                            <p class="sidebar-text">Biografia, conquiste militari, eredità culturale, team di redazione, ambientazioni storiche e una pagina sfondo personalizzabile.</p>
+                        </div>
+                        <div class="sidebar-item">
+                            <p class="sidebar-label">Interattività</p>
+                            <h3 class="sidebar-title">Pannello Admin</h3>
+                            <p class="sidebar-text">Personalizza lo sfondo e la musica del sito attraverso il pannello di amministrazione dedicato.</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <div class="pull-quote">
+            <p class="pull-quote-text">"L'impossibile è una parola che si trova solo nel dizionario degli stolti."</p>
+            <p class="pull-quote-author">Napoleone Bonaparte</p>
+        </div>
+
+        <section class="article">
+            <div class="container">
+                <div class="article-header">
+                    <span class="article-label">Presentazione</span>
+                    <h2 class="article-title">Cosa Abbiamo Realizzato</h2>
+                    <p class="article-subtitle">Un viaggio nella storia napoleonica</p>
+                </div>
+
+                <div class="article-body">
+                    <p>Il nostro team ha sviluppato un sito web in stile giornale storico francese, il "Le Moniteur", per presentare in modo originale e coinvolgente la figura di Napoleone Bonaparte. La scelta stilistica ricorda le gazzette dell'epoca, con titoli eleganti, colonne tipografiche e un design che evoca l'atmosfera della Francia imperiale.</p>
+                </div>
+
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Pagine Tematiche</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Eventi Storici</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Battaglie</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Collaboratori</div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="stats fade-in">
-                <div class="stat">
-                    <div class="stat-number">60<span>+</span></div>
-                    <div class="stat-label">Battaglie</div>
+        <section class="article">
+            <div class="container">
+                <div class="section-title">
+                    <h1>Esplora i Contenuti</h1>
+                    <p>Scopri tutte le sezioni del nostro giornale</p>
                 </div>
-                <div class="stat">
-                    <div class="stat-number">15<span>+</span></div>
-                    <div class="stat-label">Anni di regno</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">2281</div>
-                    <div class="stat-label">Articoli Codice</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">6</div>
-                    <div class="stat-label">Coalizioni</div>
+
+                <div class="news-cards">
+                    <a href="biografia.html" class="news-card fade-in">
+                        <div class="news-card-image">📜</div>
+                        <div class="news-card-body">
+                            <p class="news-card-label">Biografia</p>
+                            <h3 class="news-card-title">La Vita di un Imperatore</h3>
+                            <p class="news-card-text">Dalla nascita in Corsica alla morte a Sant'Elena: un viaggio attraverso la vita di un mito, con timeline interattiva e curiosità.</p>
+                        </div>
+                    </a>
+
+                    <a href="conquiste.html" class="news-card fade-in">
+                        <div class="news-card-image" style="background: var(--accent);">⚔️</div>
+                        <div class="news-card-body">
+                            <p class="news-card-label">Conquiste</p>
+                            <h3 class="news-card-title">Le Campagne Militari</h3>
+                            <p class="news-card-text">Dall'Italia all'Egitto, da Austerlitz a Waterloo: le battaglie che scrissero la storia europea.</p>
+                        </div>
+                    </a>
+
+                    <a href="eredita.html" class="news-card fade-in">
+                        <div class="news-card-image" style="background: var(--bleu);">⚖️</div>
+                        <div class="news-card-body">
+                            <p class="news-card-label">Eredità</p>
+                            <h3 class="news-card-title">Il Codice e le Riforme</h3>
+                            <p class="news-card-text">Le trasformazioni giuridiche e amministrative che plasmarono l'Europa moderna.</p>
+                        </div>
+                    </a>
+
+                    <a href="colleghi.html" class="news-card fade-in">
+                        <div class="news-card-image" style="background: #333;">👥</div>
+                        <div class="news-card-body">
+                            <p class="news-card-label">Redazione</p>
+                            <h3 class="news-card-title">Il Nostro Team</h3>
+                            <p class="news-card-text">Conosci i collaboratori che hanno realizzato questo progetto didattico.</p>
+                        </div>
+                    </a>
+
+                    <a href="ambientazioni.html" class="news-card fade-in">
+                        <div class="news-card-image" style="background: var(--gold);">🏛️</div>
+                        <div class="news-card-body">
+                            <p class="news-card-label">Ambientazioni</p>
+                            <h3 class="news-card-title">Periodi Storici</h3>
+                            <p class="news-card-text">Un viaggio attraverso i tre periodi: Repubblica, Impero ed Esilio.</p>
+                        </div>
+                    </a>
+
+                    <a href="sfondo.html" class="news-card fade-in">
+                        <div class="news-card-image" style="background: linear-gradient(135deg, var(--bleu), var(--rouge));">🎨</div>
+                        <div class="news-card-body">
+                            <p class="news-card-label">Extra</p>
+                            <h3 class="news-card-title">Pagina Sfondo</h3>
+                            <p class="news-card-text">Visualizza lo sfondo personalizzato con la tua musica di sottofondo.</p>
+                        </div>
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section-alt">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Esplora il progetto</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="cards-grid">
-                <a href="biografia.html" class="card fade-in">
-                    <div class="card-image">📜</div>
-                    <div class="card-body">
-                        <h3 class="card-title">Biografia</h3>
-                        <p class="card-text">Dalla nascita in Corsica alla morte a Sant'Elena: un percorso attraverso la vita di un mito.</p>
-                        <span class="card-link">Scopri →</span>
+        <section class="article">
+            <div class="container">
+                <div class="columns-2">
+                    <div class="column">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 15px;">Funzionalità del Sito</h3>
+                        <p>Questo progetto include funzionalità interattive come accordion per approfondimenti, timeline animate, e un pannello di amministrazione che permette di personalizzare lo sfondo e aggiungere musica di sottofondo.</p>
+                        <p>Il design responsivo garantisce una fruizione ottimale su tutti i dispositivi, mantenendo l'eleganza tipografica del giornale storico.</p>
                     </div>
-                </a>
-                <a href="conquiste.html" class="card fade-in">
-                    <div class="card-image" style="background: var(--rouge);">⚔️</div>
-                    <div class="card-body">
-                        <h3 class="card-title">Conquiste</h3>
-                        <p class="card-text">Dall'Italia all'Egitto, da Austerlitz a Waterloo: le battaglie che scrissero la storia.</p>
-                        <span class="card-link">Scopri →</span>
+                    <div class="column">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 15px;">Tecnologie Utilizzate</h3>
+                        <p>Il sito è stato sviluppato utilizzando HTML5, CSS3 con design responsivo, e JavaScript vanilla per le interazioni. Le impostazioni vengono salvate localmente nel browser attraverso localStorage.</p>
+                        <p>Le font tipografiche Playfair Display e Libre Baskerville conferiscono al progetto l'aspetto di una pubblicazione storica autentica.</p>
                     </div>
-                </a>
-                <a href="eredita.html" class="card fade-in">
-                    <div class="card-image" style="background: var(--or);">⚖️</div>
-                    <div class="card-body">
-                        <h3 class="card-title">Eredità</h3>
-                        <p class="card-text">Il Codice Civile, le riforme, l'impatto duraturo sulla civiltà europea.</p>
-                        <span class="card-link">Scopri →</span>
-                    </div>
-                </a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section class="quote-section">
+    <footer class="newspaper-footer">
         <div class="container">
-            <div class="quote fade-in">
-                <p class="quote-text">L'impossibile è una parola che si trova solo nel dizionario degli stolti.</p>
-                <p class="quote-author">Napoleone Bonaparte</p>
+            <div class="footer-masthead">
+                <h2>Le Moniteur</h2>
+                <p>Progetto Didattico — Napoleone Bonaparte</p>
             </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>Napoleone Bonaparte</h3>
-                    <p>Un progetto didattico dedicato alla figura di uno dei più grandi statisti della storia europea.</p>
-                </div>
-                <div class="footer-links">
+                <div class="footer-column">
                     <h4>Sezioni</h4>
                     <ul>
                         <li><a href="biografia.html">Biografia</a></li>
@@ -142,24 +217,30 @@
                         <li><a href="eredita.html">Eredità</a></li>
                     </ul>
                 </div>
-                <div class="footer-links">
+                <div class="footer-column">
                     <h4>Risorse</h4>
                     <ul>
                         <li><a href="ambientazioni.html">Ambientazioni</a></li>
-                        <li><a href="colleghi.html">Il Team</a></li>
+                        <li><a href="colleghi.html">La Redazione</a></li>
+                        <li><a href="sfondo.html">Sfondo</a></li>
                     </ul>
                 </div>
-                <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Strumenti</h4>
+                    <ul>
+                        <li><a href="admin.html">Pannello Admin</a></li>
+                        <li><a href="#">Contatti</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
                     <h4>Info</h4>
                     <ul>
-                        <li><a href="#">Contatti</a></li>
                         <li><a href="#">Crediti</a></li>
+                        <li><a href="#">Fonti</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2026 Progetto Napoleone</p>
-            </div>
+            <p class="footer-copyright">© 2026 Le Moniteur — Tutti i diritti riservati</p>
         </div>
     </footer>
 

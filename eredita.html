@@ -3,176 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eredità | Napoleone Bonaparte</title>
+    <title>Eredità | Le Moniteur</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="navbar">
+    <header class="newspaper-header">
         <div class="container">
-            <a href="index.html" class="logo">
-                <div class="logo-emblem">N</div>
-                <span class="logo-text">Napoleone</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+            <span class="newspaper-date">15 Agosto 1769</span>
+            <span class="newspaper-edition">Edizione Speciale</span>
+        </div>
+    </header>
+
+    <div class="masthead">
+        <div class="container">
+            <h1 class="masthead-title">Le Moniteur</h1>
+            <p class="masthead-subtitle">Gazzetta Ufficiale dell'Impero Francese</p>
+            <div class="masthead-line">
+                <span>Fondato nel 1789</span>
+                <span class="masthead-divider"></span>
+                <span>Parigi</span>
+                <span class="masthead-divider"></span>
+                <span>Journal Officiel</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="newspaper-nav">
+        <div class="container">
+            <div class="nav-toggle" onclick="document.querySelector('.newspaper-nav ul').classList.toggle('active')">Menu</div>
+            <ul>
+                <li><a href="index.html">Prima Pagina</a></li>
                 <li><a href="biografia.html">Biografia</a></li>
                 <li><a href="conquiste.html">Conquiste</a></li>
                 <li><a href="eredita.html" class="active">Eredità</a></li>
-                <li><a href="colleghi.html">Team</a></li>
+                <li><a href="colleghi.html">Redazione</a></li>
                 <li><a href="ambientazioni.html">Ambientazioni</a></li>
+                <li><a href="sfondo.html">Sfondo</a></li>
+                <li><a href="admin.html">Admin</a></li>
             </ul>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
-    <section class="page-header">
-        <div class="container">
+    <main>
+        <section class="section-title">
             <h1>L'Eredità</h1>
             <p>Un'impronta indelebile sulla storia europea</p>
-            <div class="page-header-line"></div>
+        </section>
+
+        <section class="article">
+            <div class="container">
+                <div class="article-header">
+                    <span class="article-label">Editoriale</span>
+                    <h2 class="article-title">Il Codice Napoleónico</h2>
+                    <p class="article-subtitle">La più duratura eredità dell'Imperatore</p>
+                </div>
+
+                <div class="article-body">
+                    <p>Il Codice Civile, promulgato nel 1804, è forse il più duraturo contributo di Napoleone alla civiltà occidentale. Questo corpus di leggi razionalizzò e unificò il sistema giuridico francese, sostituendo l'intricato complesso di leggi regionali e consuetudini feudali.</p>
+                    <p>I suoi principi fondamentali — uguaglianza davanti alla legge, libertà religiosa, diritto di proprietà — si diffusero in tutta Europa e oltre, influenzando i sistemi giuridici di Italia, Germania, Belgio, Paesi Bassi, e persino il diritto latinoamericano.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="pull-quote">
+            <p class="pull-quote-text">"La mia vera gloria non è aver vinto quaranta battaglie... ciò che vivrà in eterno è il mio Codice Civile."</p>
+            <p class="pull-quote-author">Napoleone Bonaparte</p>
         </div>
-    </section>
 
-    <section class="section">
-        <div class="container">
-            <div class="intro">
-                <div class="fade-in">
-                    <h2>Il Codice Civile</h2>
-                    <p>Il Codice Napoleónico, promulgato nel 1804, è forse il più duraturo contributo di Napoleone alla civiltà occidentale. Questo corpus di leggi razionalizzò il sistema giuridico francese.</p>
-                    <p>I suoi principi — uguaglianza davanti alla legge, libertà religiosa, diritto di proprietà — si diffusero in tutta Europa, influenzando i sistemi giuridici di Italia, Germania, Belgio e oltre.</p>
-                </div>
-                <div class="intro-image fade-in">
-                    <div class="intro-image-frame" style="background: linear-gradient(135deg, var(--or), #8B7355);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-alt">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Riforme</h2>
-                <div class="section-line"></div>
-            </div>
-
-            <div class="cards-grid">
-                <div class="card fade-in">
-                    <div class="card-body">
-                        <h3 class="card-title">Sistema Educativo</h3>
-                        <p class="card-text">Creò il Liceo e l'Università di Francia, un sistema educativo meritocratico basato sul talento.</p>
-                    </div>
+        <section class="article">
+            <div class="container">
+                <div class="article-header">
+                    <span class="article-label">Società</span>
+                    <h2 class="article-title">Le Riforme</h2>
+                    <p class="article-subtitle">La modernizzazione della Francia</p>
                 </div>
 
-                <div class="card fade-in">
-                    <div class="card-body">
-                        <h3 class="card-title">Banca di Francia</h3>
-                        <p class="card-text">Fondò la Banque de France nel 1800, stabilizzando la valuta e il sistema finanziario.</p>
-                    </div>
-                </div>
+                <div class="news-cards">
+                    <article class="news-card fade-in">
+                        <div class="news-card-body">
+                            <p class="news-card-label">Educazione</p>
+                            <h3 class="news-card-title">Sistema Educativo</h3>
+                            <p class="news-card-text">Creò il Liceo e l'Università di Francia, un sistema educativo centralizzato e meritocratico basato sul talento.</p>
+                        </div>
+                    </article>
 
-                <div class="card fade-in">
-                    <div class="card-body">
-                        <h3 class="card-title">Amministrazione</h3>
-                        <p class="card-text">Istituì i dipartimenti e una burocrazia efficiente che modernizzò la pubblica amministrazione.</p>
-                    </div>
-                </div>
+                    <article class="news-card fade-in">
+                        <div class="news-card-body">
+                            <p class="news-card-label">Economia</p>
+                            <h3 class="news-card-title">Banca di Francia</h3>
+                            <p class="news-card-text">Fondò la Banque de France nel 1800, stabilizzando la valuta e creando le basi per un sistema finanziario moderno.</p>
+                        </div>
+                    </article>
 
-                <div class="card fade-in">
-                    <div class="card-body">
-                        <h3 class="card-title">Infrastrutture</h3>
-                        <p class="card-text">Strade, ponti, canali. Un vasto programma di lavori pubblici per la Francia moderna.</p>
-                    </div>
-                </div>
+                    <article class="news-card fade-in">
+                        <div class="news-card-body">
+                            <p class="news-card-label">Amministrazione</p>
+                            <h3 class="news-card-title">Riforma Amministrativa</h3>
+                            <p class="news-card-text">Istituì il sistema dei dipartimenti e una burocrazia efficiente che modernizzò l'amministrazione pubblica.</p>
+                        </div>
+                    </article>
 
-                <div class="card fade-in">
-                    <div class="card-body">
-                        <h3 class="card-title">Legion d'Onore</h3>
-                        <p class="card-text">Creata nel 1802, ancora oggi la più alta decorazione francese, basata sul merito.</p>
-                    </div>
-                </div>
+                    <article class="news-card fade-in">
+                        <div class="news-card-body">
+                            <p class="news-card-label">Infrastrutture</p>
+                            <h3 class="news-card-title">Lavori Pubblici</h3>
+                            <p class="news-card-text">Strade, ponti, canali. Un vasto programma di opere pubbliche per la Francia moderna.</p>
+                        </div>
+                    </article>
 
-                <div class="card fade-in">
-                    <div class="card-body">
-                        <h3 class="card-title">Concordato del 1801</h3>
-                        <p class="card-text">Accordo con la Chiesa Cattolica, ristabilendo la pace religiosa dopo la Rivoluzione.</p>
-                    </div>
+                    <article class="news-card fade-in">
+                        <div class="news-card-body">
+                            <p class="news-card-label">Onorificenze</p>
+                            <h3 class="news-card-title">Legion d'Onore</h3>
+                            <p class="news-card-text">Creata nel 1802, ancora oggi la più alta decorazione francese, basata sul merito e non sulla nobiltà.</p>
+                        </div>
+                    </article>
+
+                    <article class="news-card fade-in">
+                        <div class="news-card-body">
+                            <p class="news-card-label">Religione</p>
+                            <h3 class="news-card-title">Concordato del 1801</h3>
+                            <p class="news-card-text">Accordo con la Chiesa Cattolica che ristabilì la pace religiosa dopo gli anni della Rivoluzione.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="quote-section">
-        <div class="container">
-            <div class="quote fade-in">
-                <p class="quote-text">La mia vera gloria non è aver vinto quaranta battaglie. Ciò che non potrà essere dimenticato è il mio Codice Civile.</p>
-                <p class="quote-author">Napoleone Bonaparte</p>
-            </div>
-        </div>
-    </section>
+        <section class="article">
+            <div class="container">
+                <div class="article-header">
+                    <span class="article-label">Analisi</span>
+                    <h2 class="article-title">L'Eredità Oggi</h2>
+                    <p class="article-subtitle">L'impatto duraturo sulla civiltà moderna</p>
+                </div>
 
-    <section class="section">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>L'Eredità Oggi</h2>
-                <div class="section-line"></div>
-            </div>
+                <div class="accordion-newspaper">
+                    <div class="accordion-item fade-in">
+                        <button class="accordion-header">
+                            <span>Influenza sul diritto mondiale</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Il Codice Napoleónico ha influenzato direttamente o indirettamente i sistemi giuridici di oltre 100 paesi nel mondo. Molti principi che oggi consideriamo scontati trovano la loro codificazione moderna in quest'opera.</p>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="accordion">
-                <div class="accordion-item fade-in">
-                    <button class="accordion-header">
-                        <span>Influenza sul diritto mondiale</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="accordion-body">
-                            <p>Il Codice Napoleónico ha influenzato i sistemi giuridici di oltre 100 paesi. Dai codici civili di Italia, Belgio, Olanda fino al Quebec e Louisiana, i suoi principi persistono ancora oggi.</p>
+                    <div class="accordion-item fade-in">
+                        <button class="accordion-header">
+                            <span>Il mito napoleonico</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Napoleone è diventato un'icona culturale. La sua figura ha ispirato letteratura, cinema, musica. Il suo stile di leadership è studiato nelle accademie militari e nelle business school di tutto il mondo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item fade-in">
+                        <button class="accordion-header">
+                            <span>Il nazionalismo europeo</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Paradossalmente, le conquiste diffusero gli ideali della Rivoluzione che ispirarono i movimenti di indipendenza in tutta Europa. L'Europa moderna è, in parte, figlia dell'era napoleonica.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="accordion-item fade-in">
-                    <button class="accordion-header">
-                        <span>Il mito napoleonico</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="accordion-body">
-                            <p>Napoleone è diventato un'icona culturale. La sua figura ha ispirato letteratura, cinema, musica. Il suo stile di leadership è studiato in accademie militari e business school di tutto il mondo.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item fade-in">
-                    <button class="accordion-header">
-                        <span>Il nazionalismo europeo</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="accordion-body">
-                            <p>Paradossalmente, le conquiste diffusero gli ideali rivoluzionari che ispirarono i movimenti di indipendenza in tutta Europa. Italiani, tedeschi, polacchi trassero ispirazione per costruire le proprie nazioni.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <footer class="footer">
+    <footer class="newspaper-footer">
         <div class="container">
+            <div class="footer-masthead">
+                <h2>Le Moniteur</h2>
+                <p>Progetto Didattico — Napoleone Bonaparte</p>
+            </div>
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>Napoleone Bonaparte</h3>
-                    <p>Un progetto didattico dedicato alla figura di uno dei più grandi statisti della storia europea.</p>
-                </div>
-                <div class="footer-links">
+                <div class="footer-column">
                     <h4>Sezioni</h4>
                     <ul>
                         <li><a href="biografia.html">Biografia</a></li>
@@ -180,24 +194,29 @@
                         <li><a href="eredita.html">Eredità</a></li>
                     </ul>
                 </div>
-                <div class="footer-links">
+                <div class="footer-column">
                     <h4>Risorse</h4>
                     <ul>
                         <li><a href="ambientazioni.html">Ambientazioni</a></li>
-                        <li><a href="colleghi.html">Il Team</a></li>
+                        <li><a href="colleghi.html">La Redazione</a></li>
                     </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>Info</h4>
+                <div class="footer-column">
+                    <h4>Informazioni</h4>
                     <ul>
                         <li><a href="#">Contatti</a></li>
                         <li><a href="#">Crediti</a></li>
                     </ul>
                 </div>
+                <div class="footer-column">
+                    <h4>Archivio</h4>
+                    <ul>
+                        <li><a href="#">Fonti</a></li>
+                        <li><a href="#">Bibliografia</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2026 Progetto Napoleone</p>
-            </div>
+            <p class="footer-copyright">© 2026 Le Moniteur — Tutti i diritti riservati</p>
         </div>
     </footer>
 
