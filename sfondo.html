@@ -5,13 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sfondo</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        #backgroundPage {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .content-box {
+            text-align: center;
+            padding: 60px 80px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 5px;
+        }
+        .content-box h1 {
+            color: #fff;
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .content-box p {
+            color: rgba(255,255,255,0.9);
+            font-size: 24px;
+        }
+    </style>
 </head>
 <body id="backgroundPage">
     <a href="index.html" class="home-btn">← Home</a>
 
-    <div style="text-align:center; padding:60px; background:rgba(0,0,0,0.5);">
-        <h1 id="displayTitle" style="color:#fff; font-size:48px;"></h1>
-        <p id="displaySubtitle" style="color:#fff; font-size:24px;"></p>
+    <div class="content-box">
+        <h1 id="displayTitle"></h1>
+        <p id="displaySubtitle"></p>
     </div>
 
     <div id="musicControls" class="music-controls" style="display:none;">
@@ -30,12 +56,13 @@
 
             // Sfondo
             if (s.bgType === 'color') {
-                page.style.background = s.bgColor || '#F5F2E8';
+                page.style.background = s.bgColor || '#002395';
             } else if (s.bgType === 'gradient') {
                 page.style.background = 'linear-gradient(135deg, ' + (s.bgGradient1 || '#002395') + ', ' + (s.bgGradient2 || '#ED2939') + ')';
             } else if (s.bgType === 'image' && s.bgImage) {
-                page.style.background = "url('" + s.bgImage + "') center/cover fixed";
+                page.style.backgroundImage = "url('" + s.bgImage + "')";
             } else {
+                // Default: gradiente Francia
                 page.style.background = 'linear-gradient(135deg, #002395, #ED2939)';
             }
 
@@ -50,15 +77,24 @@
                 music.loop = s.musicLoop !== false;
                 controls.style.display = 'block';
                 document.getElementById('volumeSlider').value = s.musicVolume || 50;
-                if (s.musicAutoplay) music.play().catch(function(){});
+                if (s.musicAutoplay) {
+                    music.play().catch(function() {
+                        console.log('Autoplay bloccato - clicca Play');
+                    });
+                }
             }
         });
 
         function toggleMusic() {
             const m = document.getElementById('bgMusic');
             const b = document.getElementById('playPauseBtn');
-            if (m.paused) { m.play(); b.textContent = '⏸ Pause'; }
-            else { m.pause(); b.textContent = '▶ Play'; }
+            if (m.paused) { 
+                m.play(); 
+                b.textContent = '⏸ Pause'; 
+            } else { 
+                m.pause(); 
+                b.textContent = '▶ Play'; 
+            }
         }
 
         function changeVolume() {

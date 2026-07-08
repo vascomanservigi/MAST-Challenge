@@ -2,6 +2,9 @@
   "name": "napoleone-site",
   "version": "1.0.0",
   "scripts": {
-    "start": "npx serve -s . -l $PORT"
+    "start": "npx serve -s . -l ${PORT:-3000}"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
