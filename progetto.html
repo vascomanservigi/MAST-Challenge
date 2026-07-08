@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Sfida – Team 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+        <ul id="navMenu">
+            <li><a href="index.html">Accueil</a></li>
+            <li>
+                <a href="#" class="has-dropdown">Progetto ▾</a>
+                <ul>
+                    <li><a href="progetto.html">La Sfida</a></li>
+                    <li><a href="personaggio.html">Napoleone</a></li>
+                    <li><a href="demo.html">Demo</a></li>
+                </ul>
+            </li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="sfondo.html">Scena</a></li>
+        </ul>
+    </nav>
+
+    <div class="home-container">
+        <div class="hero">
+            <h1>La Sfida</h1>
+            <p>Trasformare PETOI in un personaggio storico</p>
+        </div>
+
+        <div class="section">
+            <h2>L'Obiettivo</h2>
+            <p>La challenge della MAST Summer School 2026 ci ha chiesto di trasformare PETOI, il cane robotico, in un personaggio storico o della letteratura. Il robot deve interpretare le caratteristiche chiave del personaggio scelto.</p>
+        </div>
+
+        <div class="section">
+            <h2>Elementi Richiesti</h2>
+            <p><strong>Integrazione IoT – AI – CW:</strong> Unire mondi tecnologici diversi</p>
+            <p><strong>Sensori:</strong> 1 sensore analogico + 1 sensore digitale del PETOI</p>
+            <p><strong>AI:</strong> Riconoscimento di almeno un elemento</p>
+            <p><strong>Dati online:</strong> Invio e pubblicazione in tempo reale</p>
+            <p><strong>Documentazione:</strong> Sito web del progetto</p>
+            <p><strong>Setup scena:</strong> Background, musica, decorazioni</p>
+        </div>
+
+        <div class="section">
+            <h2>La Nostra Soluzione</h2>
+            <p>Abbiamo scelto <strong>Napoleone Bonaparte</strong> come personaggio. Il nostro PETOI diventa "L'Imperatore" che:</p>
+            <p>• Riconosce il campo di battaglia tramite AI</p>
+            <p>• Risponde ai comandi tramite sensori</p>
+            <p>• Esegue manovre strategiche tipiche dell'era napoleonica</p>
+            <p>• Pubblica i dati delle "battaglie" in tempo reale su questo sito</p>
+        </div>
+
+        <footer>
+            <p>MAST Summer School 2026 – Fondazione MAST</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

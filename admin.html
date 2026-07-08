@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin – Napoleone</title>
+    <title>Admin – Team 1</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,22 +12,22 @@
         <ul id="navMenu">
             <li><a href="index.html">Accueil</a></li>
             <li>
-                <a href="#" class="has-dropdown">Storia ▾</a>
+                <a href="#" class="has-dropdown">Progetto ▾</a>
                 <ul>
-                    <li><a href="biografia.html">Biografia</a></li>
-                    <li><a href="conquiste.html">Conquiste</a></li>
-                    <li><a href="eredita.html">Eredità</a></li>
+                    <li><a href="progetto.html">La Sfida</a></li>
+                    <li><a href="personaggio.html">Napoleone</a></li>
+                    <li><a href="demo.html">Demo</a></li>
                 </ul>
             </li>
             <li><a href="team.html">Team</a></li>
-            <li><a href="sfondo.html">Galleria</a></li>
+            <li><a href="sfondo.html">Scena</a></li>
         </ul>
     </nav>
 
     <div class="admin-container">
         <div class="admin-header">
             <h1>Seleziona Sfondo</h1>
-            <p>Clicca su un'immagine per applicarla in tempo reale</p>
+            <p>Clicca su un'immagine per applicarla in tempo reale alla scena</p>
         </div>
 
         <div class="image-grid">
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <p style="text-align:center; font-size:20px; margin-top:20px;">Apri <a href="sfondo.html" target="_blank">sfondo.html</a> in un'altra scheda per vedere le modifiche in tempo reale</p>
+        <p style="text-align:center; font-size:18px; margin-top:20px;">Apri <a href="sfondo.html" target="_blank">Scena Live</a> in un'altra scheda per vedere le modifiche in tempo reale</p>
     </div>
 
     <script>
@@ -81,18 +81,15 @@
         ];
 
         function select(i) {
-            // Salva nel localStorage
             localStorage.setItem('bg', urls[i]);
             
-            // Evidenzia selezione
             document.querySelectorAll('.image-box').forEach((el, idx) => {
                 el.classList.toggle('selected', idx === i);
             });
 
-            // Notifica
             const notification = document.createElement('div');
             notification.textContent = '✓ Sfondo applicato!';
-            notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#2b1810;color:#f4e4bc;padding:15px 25px;border:2px solid #8b4513;font-family:Dancing Script;font-size:20px;z-index:9999;animation:fadeIn 0.3s;';
+            notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#2c1810;color:#faf6f0;padding:15px 25px;border:2px solid #8b3a3a;font-family:IM Fell French Canon;font-size:20px;z-index:9999;animation:fadeIn 0.3s;';
             document.body.appendChild(notification);
             setTimeout(() => notification.remove(), 2000);
         }
@@ -101,7 +98,6 @@
             document.getElementById('navMenu').classList.toggle('active');
         }
 
-        // Carica selezione salvata
         window.addEventListener('DOMContentLoaded', function() {
             const saved = localStorage.getItem('bg');
             if (saved) {

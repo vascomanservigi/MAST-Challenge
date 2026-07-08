@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo – Team 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+        <ul id="navMenu">
+            <li><a href="index.html">Accueil</a></li>
+            <li>
+                <a href="#" class="has-dropdown">Progetto ▾</a>
+                <ul>
+                    <li><a href="progetto.html">La Sfida</a></li>
+                    <li><a href="personaggio.html">Napoleone</a></li>
+                    <li><a href="demo.html">Demo</a></li>
+                </ul>
+            </li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="sfondo.html">Scena</a></li>
+        </ul>
+    </nav>
+
+    <div class="home-container">
+        <div class="hero">
+            <h1>Demo Live</h1>
+            <p>Il PETOI-Napoleone in azione</p>
+        </div>
+
+        <div class="section">
+            <h2>Setup della Scena</h2>
+            <p><strong>Background:</strong> Campo di battaglia napoleonico (vedi sezione Scena)</p>
+            <p><strong>Musica:</strong> Marcia imperiale e inni dell'epoca</p>
+            <p><strong>Decorazioni:</strong> Elementi simbolici dell'Impero (aquile, bandiere)</p>
+        </div>
+
+        <div class="section">
+            <h2>Sequenza della Demo</h2>
+            <p><strong>1. Marcia di avvicinamento:</strong> PETOI avanza sul campo di battaglia</p>
+            <p><strong>2. Esplorazione:</strong> Utilizzo dei sensori per analizzare l'ambiente</p>
+            <p><strong>3. Riconoscimento AI:</strong> Identificazione degli obiettivi</p>
+            <p><strong>4. Decisione strategica:</strong> Scelta della manovra da eseguire</p>
+            <p><strong>5. Esecuzione:</strong> Completamento della missione</p>
+            <p><strong>6. Saluto imperiale:</strong> Posizione finale di vittoria</p>
+        </div>
+
+        <div class="section">
+            <h2>Dati in Tempo Reale</h2>
+            <p>I dati raccolti dai sensori del PETOI vengono pubblicati automaticamente su questo sito. Durante la demo potete vedere:</p>
+            <p>• Letture dei sensori</p>
+            <p>• Decisioni prese dall'AI</p>
+            <p>• Stato del robot</p>
+            <p>• Storico delle azioni</p>
+        </div>
+
+        <div class="section">
+            <h2>Durata</h2>
+            <p>La presentazione completa (descrizione + demo) dura <strong>8 minuti</strong>.</p>
+        </div>
+
+        <footer>
+            <p>MAST Summer School 2026 – Fondazione MAST</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

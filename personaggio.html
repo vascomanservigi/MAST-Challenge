@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Napoleone – Team 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+        <ul id="navMenu">
+            <li><a href="index.html">Accueil</a></li>
+            <li>
+                <a href="#" class="has-dropdown">Progetto ▾</a>
+                <ul>
+                    <li><a href="progetto.html">La Sfida</a></li>
+                    <li><a href="personaggio.html">Napoleone</a></li>
+                    <li><a href="demo.html">Demo</a></li>
+                </ul>
+            </li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="sfondo.html">Scena</a></li>
+        </ul>
+    </nav>
+
+    <div class="home-container">
+        <div class="hero">
+            <h1>Napoleone Bonaparte</h1>
+            <p>1769 – 1821</p>
+        </div>
+
+        <div class="section">
+            <h2>Perché Napoleone?</h2>
+            <p>Napoleone rappresenta l'ambizione, la strategia militare e la leadership. Queste caratteristiche si prestano perfettamente a essere interpretate dal nostro PETOI: un leader robotico che prende decisioni, esplora il campo di battaglia e comanda le proprie azioni.</p>
+        </div>
+
+        <div class="section">
+            <h2>Caratteristiche Chiave</h2>
+            <p><strong>Stratega:</strong> Capacità di analizzare l'ambiente e prendere decisioni</p>
+            <p><strong>Leader:</strong> Esecuzione di comandi e manovre precise</p>
+            <p><strong>Conquistatore:</strong> Esplorazione e movimento nello spazio</p>
+            <p><strong>Imperatore:</strong> Portamento maestoso e saluto militare</p>
+        </div>
+
+        <div class="section">
+            <h2>Come il PETOI Interpreta Napoleone</h2>
+            <p>Il nostro robot, tramite sensori e AI, simula le decisioni di un generale sul campo di battaglia:</p>
+            <p>• <strong>Sensore analogico:</strong> Percezione dell'ambiente circostante</p>
+            <p>• <strong>Sensore digitale:</strong> Riconoscimento di comandi e ostacoli</p>
+            <p>• <strong>AI:</strong> Identificazione di elementi strategici (bandiere, obiettivi)</p>
+            <p>• <strong>Movimenti:</strong> Marcia militare, esplorazione, saluto</p>
+        </div>
+
+        <div class="section">
+            <h2>Breve Biografia</h2>
+            <p>Nato in Corsica nel 1769, Napoleone divenne uno dei più grandi generali della storia. Generale a 24 anni, Primo Console nel 1799, Imperatore dei Francesi nel 1804. Le sue campagne militari cambiarono l'Europa. Il Codice Napoleónico influenza ancora oggi il diritto di oltre 100 paesi. Morì in esilio a Sant'Elena nel 1821.</p>
+        </div>
+
+        <footer>
+            <p>MAST Summer School 2026 – Fondazione MAST</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

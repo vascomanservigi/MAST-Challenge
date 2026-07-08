@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scena – Team 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+        <ul id="navMenu">
+            <li><a href="index.html">Accueil</a></li>
+            <li>
+                <a href="#" class="has-dropdown">Progetto ▾</a>
+                <ul>
+                    <li><a href="progetto.html">La Sfida</a></li>
+                    <li><a href="personaggio.html">Napoleone</a></li>
+                    <li><a href="demo.html">Demo</a></li>
+                </ul>
+            </li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="sfondo.html">Scena</a></li>
+        </ul>
+    </nav>
+
+    <div class="home-container">
+        <div class="hero">
+            <h1>Setup della Scena</h1>
+            <p>Background e atmosfera per la demo</p>
+        </div>
+
+        <div class="section">
+            <h2>Configura lo Sfondo</h2>
+            <p>Vai su <a href="admin.html">Admin</a> per selezionare lo sfondo del campo di battaglia. Lo sfondo si aggiornerà in tempo reale nella pagina <a href="sfondo.html">Scena Live</a>.</p>
+        </div>
+
+        <div class="section">
+            <h2>Elementi della Scena</h2>
+            <p><strong>Background:</strong> Dipinti storici dell'era napoleonica</p>
+            <p><strong>Musica:</strong> Marcia imperiale (configurabile)</p>
+            <p><strong>Decorazioni:</strong> Aquile imperiali, bandiere francesi</p>
+            <p><strong>Atmosfera:</strong> Campo di battaglia napoleonico</p>
+        </div>
+
+        <div class="section" style="text-align: center;">
+            <a href="sfondo.html" style="display: inline-block; padding: 15px 40px; background: #8b3a3a; color: #faf6f0; text-decoration: none; font-family: 'IM Fell French Canon', serif; font-size: 20px; border: 2px solid #5c2828;">Apri Scena Live</a>
+        </div>
+
+        <footer>
+            <p>MAST Summer School 2026 – Fondazione MAST</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
