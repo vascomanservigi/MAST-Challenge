@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: Arial; padding: 20px; max-width: 900px; margin: 0 auto; }
+        h1 { margin-bottom: 20px; }
+        .images { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .img-box { cursor: pointer; border: 2px solid #ccc; padding: 5px; }
+        .img-box.selected { border-color: #000; }
+        .img-box img { width: 100%; height: 120px; object-fit: cover; }
+        button { padding: 15px 30px; margin-top: 20px; font-size: 16px; }
+        nav { margin-bottom: 20px; }
+    </style>
 </head>
 <body>
     <nav>
@@ -12,218 +21,64 @@
         <a href="sfondo.html">Vedi Sfondo →</a>
     </nav>
 
-    <div class="container">
-        <h1>Pannello Admin</h1>
-
-        <!-- SFONDI PREIMPOSTATI -->
-        <section>
-            <h2>Sfondi Preimpostati</h2>
-            <p>Clicca per selezionare, poi "Salva Impostazioni".</p>
-
-            <div class="preset-grid">
-                <div class="preset-item" onclick="selectPreset(
-                    'https://upload.wikimedia.org/wikipedia/commons/9/9e/David_-_Le_Sacre_de_Napoleon.jpg'
-                )">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/David_-_Le_Sacre_de_Napoleon.jpg/300px-David_-_Le_Sacre_de_Napoleon.jpg" loading="lazy">
-                    <p><strong>Incoronazione</strong></p>
-                </div>
-
-                <div class="preset-item" onclick="selectPreset(
-                    'https://upload.wikimedia.org/wikipedia/commons/0/02/Napoleon4.jpg'
-                )">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Napoleon4.jpg/300px-Napoleon4.jpg" loading="lazy">
-                    <p><strong>Imperatore</strong></p>
-                </div>
-
-                <div class="preset-item" onclick="selectPreset(
-                    'https://upload.wikimedia.org/wikipedia/commons/1/17/Napoleon_bonaparte.jpg'
-                )">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Napoleon_bonaparte.jpg/300px-Napoleon_bonaparte.jpg" loading="lazy">
-                    <p><strong>Giovane Generale</strong></p>
-                </div>
-
-                <div class="preset-item" onclick="selectPreset(
-                    'https://upload.wikimedia.org/wikipedia/commons/e/e6/Napoleon_in_His_Study.jpg'
-                )">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Napoleon_in_His_Study.jpg/300px-Napoleon_in_His_Study.jpg" loading="lazy">
-                    <p><strong>Nello Studio</strong></p>
-                </div>
-
-                <div class="preset-item" onclick="selectPreset(
-                    'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1920'
-                )">
-                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=300" loading="lazy">
-                    <p><strong>Parigi</strong></p>
-                </div>
-
-                <div class="preset-item" onclick="selectPreset(
-                    'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1920'
-                )">
-                    <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=300" loading="lazy">
-                    <p><strong>Corsica</strong></p>
-                </div>
-
-                <div class="preset-item" onclick="selectPreset(
-                    'https://images.unsplash.com/photo-1549144511-f099e773c147?w=1920'
-                )">
-                    <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=300" loading="lazy">
-                    <p><strong>Battaglia</strong></p>
-                </div>
-
-                <div class="preset-item" onclick="selectPreset(
-                    'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1920'
-                )">
-                    <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=300" loading="lazy">
-                    <p><strong>Sant'Elena</strong></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SFONDO PERSONALIZZATO -->
-        <section>
-            <h2>Sfondo Personalizzato</h2>
-
-            <div class="admin-section">
-                <div class="admin-form-group">
-                    <label>Tipo</label>
-                    <select id="bgType" onchange="updateBgPreview()">
-                        <option value="color">Colore</option>
-                        <option value="gradient">Gradiente</option>
-                        <option value="image">URL Immagine</option>
-                    </select>
-                </div>
-
-                <div id="bgColorSection" class="admin-form-group">
-                    <label>Colore</label>
-                    <input type="color" id="bgColor" value="#002395" onchange="updateBgPreview()">
-                </div>
-
-                <div id="bgGradientSection" class="admin-form-group" style="display:none;">
-                    <label>Colore 1</label>
-                    <input type="color" id="bgGradient1" value="#002395" onchange="updateBgPreview()">
-                    <label>Colore 2</label>
-                    <input type="color" id="bgGradient2" value="#ED2939" onchange="updateBgPreview()">
-                </div>
-
-                <div id="bgImageSection" class="admin-form-group" style="display:none;">
-                    <label>URL Immagine</label>
-                    <input type="url" id="bgImage" placeholder="https://..." onchange="updateBgPreview()">
-                </div>
-
-                <div class="admin-form-group">
-                    <label>Anteprima</label>
-                    <div id="bgPreview" style="width:100%; height:150px; border:1px solid #ccc; background:#002395;"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- MUSICA -->
-        <section>
-            <h2>Musica</h2>
-
-            <div class="admin-section">
-                <div class="admin-form-group">
-                    <label>URL Audio (MP3)</label>
-                    <input type="url" id="musicUrl" placeholder="https://esempio.com/audio.mp3">
-                    <p style="font-size:12px; color:#666;">Esempio: https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3</p>
-                </div>
-
-                <div class="admin-form-group">
-                    <label>Volume: <span id="volumeValue">50%</span></label>
-                    <input type="range" id="musicVolume" min="0" max="100" value="50" oninput="document.getElementById('volumeValue').textContent=this.value+'%'">
-                </div>
-
-                <div class="admin-form-group">
-                    <label><input type="checkbox" id="musicAutoplay"> Avvia automaticamente</label>
-                </div>
-
-                <div class="admin-form-group">
-                    <label><input type="checkbox" id="musicLoop" checked> Ripeti</label>
-                </div>
-            </div>
-        </section>
-
-        <!-- AZIONI -->
-        <section>
-            <button onclick="saveSettings()" style="padding:15px 30px; font-size:16px;">Salva Impostazioni</button>
-            <button onclick="resetSettings()">Reset</button>
-        </section>
+    <h1>Seleziona Sfondo</h1>
+    
+    <div class="images">
+        <div class="img-box" onclick="select(0)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/David_-_Le_Sacre_de_Napoleon.jpg/400px-David_-_Le_Sacre_de_Napoleon.jpg" alt="Incoronazione">
+        </div>
+        <div class="img-box" onclick="select(1)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Napoleon4.jpg/400px-Napoleon4.jpg" alt="Imperatore">
+        </div>
+        <div class="img-box" onclick="select(2)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Napoleon_bonaparte.jpg/400px-Napoleon_bonaparte.jpg" alt="Giovane">
+        </div>
+        <div class="img-box" onclick="select(3)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Napoleon_in_His_Study.jpg/400px-Napoleon_in_His_Study.jpg" alt="Studio">
+        </div>
+        <div class="img-box" onclick="select(4)">
+            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400" alt="Parigi">
+        </div>
+        <div class="img-box" onclick="select(5)">
+            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400" alt="Corsica">
+        </div>
+        <div class="img-box" onclick="select(6)">
+            <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=400" alt="Battaglia">
+        </div>
+        <div class="img-box" onclick="select(7)">
+            <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=400" alt="Isola">
+        </div>
     </div>
 
+    <button onclick="save()">Salva Sfondo</button>
+
     <script>
-        document.addEventListener('DOMContentLoaded', loadSettings);
+        const urls = [
+            'https://upload.wikimedia.org/wikipedia/commons/9/9e/David_-_Le_Sacre_de_Napoleon.jpg',
+            'https://upload.wikimedia.org/wikipedia/commons/0/02/Napoleon4.jpg',
+            'https://upload.wikimedia.org/wikipedia/commons/1/17/Napoleon_bonaparte.jpg',
+            'https://upload.wikimedia.org/wikipedia/commons/e/e6/Napoleon_in_His_Study.jpg',
+            'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1920',
+            'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1920',
+            'https://images.unsplash.com/photo-1549144511-f099e773c147?w=1920',
+            'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1920'
+        ];
+        
+        let selected = -1;
 
-        function selectPreset(url) {
-            document.getElementById('bgType').value = 'image';
-            document.getElementById('bgImage').value = url;
-            
-            document.getElementById('bgColorSection').style.display = 'none';
-            document.getElementById('bgGradientSection').style.display = 'none';
-            document.getElementById('bgImageSection').style.display = 'block';
-            
-            document.getElementById('bgPreview').style.background = "url('" + url + "') center/cover";
-            
-            document.querySelectorAll('.preset-item').forEach(el => el.style.outline = 'none');
-            event.currentTarget.style.outline = '3px solid #333';
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function select(i) {
+            document.querySelectorAll('.img-box').forEach((el, idx) => {
+                el.classList.toggle('selected', idx === i);
+            });
+            selected = i;
         }
 
-        function updateBgPreview() {
-            const type = document.getElementById('bgType').value;
-            const preview = document.getElementById('bgPreview');
-            
-            document.getElementById('bgColorSection').style.display = type === 'color' ? 'block' : 'none';
-            document.getElementById('bgGradientSection').style.display = type === 'gradient' ? 'block' : 'none';
-            document.getElementById('bgImageSection').style.display = type === 'image' ? 'block' : 'none';
-            
-            if (type === 'color') {
-                preview.style.background = document.getElementById('bgColor').value;
-            } else if (type === 'gradient') {
-                preview.style.background = 'linear-gradient(135deg, ' + document.getElementById('bgGradient1').value + ', ' + document.getElementById('bgGradient2').value + ')';
+        function save() {
+            if (selected >= 0) {
+                localStorage.setItem('bg', urls[selected]);
+                alert('Salvato!');
             } else {
-                const url = document.getElementById('bgImage').value;
-                preview.style.background = url ? "url('" + url + "') center/cover" : '#ccc';
-            }
-        }
-
-        function saveSettings() {
-            const settings = {
-                bgType: document.getElementById('bgType').value,
-                bgColor: document.getElementById('bgColor').value,
-                bgGradient1: document.getElementById('bgGradient1').value,
-                bgGradient2: document.getElementById('bgGradient2').value,
-                bgImage: document.getElementById('bgImage').value,
-                musicUrl: document.getElementById('musicUrl').value,
-                musicVolume: document.getElementById('musicVolume').value,
-                musicAutoplay: document.getElementById('musicAutoplay').checked,
-                musicLoop: document.getElementById('musicLoop').checked
-            };
-            localStorage.setItem('napoleonSettings', JSON.stringify(settings));
-            alert('✓ Salvato! Clicca "Vedi Sfondo" per vedere il risultato.');
-        }
-
-        function loadSettings() {
-            const s = JSON.parse(localStorage.getItem('napoleonSettings') || '{}');
-            if (s.bgType) {
-                document.getElementById('bgType').value = s.bgType;
-                document.getElementById('bgColor').value = s.bgColor || '#002395';
-                document.getElementById('bgGradient1').value = s.bgGradient1 || '#002395';
-                document.getElementById('bgGradient2').value = s.bgGradient2 || '#ED2939';
-                document.getElementById('bgImage').value = s.bgImage || '';
-                document.getElementById('musicUrl').value = s.musicUrl || '';
-                document.getElementById('musicVolume').value = s.musicVolume || 50;
-                document.getElementById('volumeValue').textContent = (s.musicVolume || 50) + '%';
-                document.getElementById('musicAutoplay').checked = s.musicAutoplay || false;
-                document.getElementById('musicLoop').checked = s.musicLoop !== false;
-                updateBgPreview();
-            }
-        }
-
-        function resetSettings() {
-            if (confirm('Reset tutto?')) {
-                localStorage.removeItem('napoleonSettings');
-                location.reload();
+                alert('Seleziona un\'immagine');
             }
         }
     </script>

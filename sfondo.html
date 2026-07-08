@@ -5,103 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sfondo</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            min-height: 100vh;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        .home-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            padding: 12px 20px;
-            background: rgba(255,255,255,0.9);
-            color: #000;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            border-radius: 4px;
-            z-index: 1000;
-        }
-        .home-btn:hover {
-            background: #fff;
-        }
-        .music-controls {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
-            padding: 15px;
-            border-radius: 4px;
-            display: none;
-            font-family: Arial, sans-serif;
-        }
-        .music-controls button {
-            padding: 8px 16px;
-            background: #000;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-        .music-controls input {
-            vertical-align: middle;
-        }
+        body { margin: 0; height: 100vh; background-size: cover; background-position: center; }
+        .home { position: fixed; top: 20px; left: 20px; padding: 10px 20px; background: white; text-decoration: none; color: black; }
     </style>
 </head>
-<body id="backgroundPage">
-    <a href="index.html" class="home-btn">← Home</a>
-
-    <div id="musicControls" class="music-controls">
-        <button id="playPauseBtn" onclick="toggleMusic()">▶ Play</button>
-        Volume: <input type="range" id="volumeSlider" min="0" max="100" value="50" onchange="changeVolume()">
-    </div>
-
-    <audio id="bgMusic"></audio>
-
+<body id="bg">
+    <a href="index.html" class="home">← Home</a>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const s = JSON.parse(localStorage.getItem('napoleonSettings') || '{}');
-            const page = document.getElementById('backgroundPage');
-            const music = document.getElementById('bgMusic');
-            const controls = document.getElementById('musicControls');
-
-            // Sfondo
-            if (s.bgType === 'color') {
-                page.style.background = s.bgColor || '#002395';
-            } else if (s.bgType === 'gradient') {
-                page.style.background = 'linear-gradient(135deg, ' + (s.bgGradient1 || '#002395') + ', ' + (s.bgGradient2 || '#ED2939') + ')';
-            } else if (s.bgType === 'image' && s.bgImage) {
-                page.style.backgroundImage = "url('" + s.bgImage + "')";
-            } else {
-                page.style.background = 'linear-gradient(135deg, #002395, #ED2939)';
-            }
-
-            // Musica
-            if (s.musicUrl) {
-                music.src = s.musicUrl;
-                music.volume = (s.musicVolume || 50) / 100;
-                music.loop = s.musicLoop !== false;
-                controls.style.display = 'block';
-                document.getElementById('volumeSlider').value = s.musicVolume || 50;
-                if (s.musicAutoplay) {
-                    music.play().catch(function(){});
-                }
-            }
-        });
-
-        function toggleMusic() {
-            const m = document.getElementById('bgMusic');
-            const b = document.getElementById('playPauseBtn');
-            if (m.paused) { m.play(); b.textContent = '⏸ Pause'; }
-            else { m.pause(); b.textContent = '▶ Play'; }
-        }
-
-        function changeVolume() {
-            document.getElementById('bgMusic').volume = document.getElementById('volumeSlider').value / 100;
-        }
+        const bg = localStorage.getItem('bg');
+        if (bg) document.getElementById('bg').style.backgroundImage = 'url(' + bg + ')';
     </script>
 </body>
 </html>
