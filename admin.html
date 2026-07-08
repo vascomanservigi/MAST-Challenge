@@ -3,17 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
-    <style>
-        body { font-family: Arial; padding: 20px; max-width: 900px; margin: 0 auto; }
-        h1 { margin-bottom: 20px; }
-        .images { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .img-box { cursor: pointer; border: 2px solid #ccc; padding: 5px; }
-        .img-box.selected { border-color: #000; }
-        .img-box img { width: 100%; height: 120px; object-fit: cover; }
-        button { padding: 15px 30px; margin-top: 20px; font-size: 16px; }
-        nav { margin-bottom: 20px; }
-    </style>
+    <title>Admin – Napoleone</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
@@ -21,36 +12,49 @@
         <a href="sfondo.html">Vedi Sfondo →</a>
     </nav>
 
-    <h1>Seleziona Sfondo</h1>
-    
-    <div class="images">
-        <div class="img-box" onclick="select(0)">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/David_-_Le_Sacre_de_Napoleon.jpg/400px-David_-_Le_Sacre_de_Napoleon.jpg" alt="Incoronazione">
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Seleziona Sfondo</h1>
+            <p>Clicca su un'immagine e poi salva</p>
         </div>
-        <div class="img-box" onclick="select(1)">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Napoleon4.jpg/400px-Napoleon4.jpg" alt="Imperatore">
-        </div>
-        <div class="img-box" onclick="select(2)">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Napoleon_bonaparte.jpg/400px-Napoleon_bonaparte.jpg" alt="Giovane">
-        </div>
-        <div class="img-box" onclick="select(3)">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Napoleon_in_His_Study.jpg/400px-Napoleon_in_His_Study.jpg" alt="Studio">
-        </div>
-        <div class="img-box" onclick="select(4)">
-            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400" alt="Parigi">
-        </div>
-        <div class="img-box" onclick="select(5)">
-            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400" alt="Corsica">
-        </div>
-        <div class="img-box" onclick="select(6)">
-            <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=400" alt="Battaglia">
-        </div>
-        <div class="img-box" onclick="select(7)">
-            <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=400" alt="Isola">
-        </div>
-    </div>
 
-    <button onclick="save()">Salva Sfondo</button>
+        <div class="image-grid">
+            <div class="image-box" onclick="select(0)">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/David_-_Le_Sacre_de_Napoleon.jpg/400px-David_-_Le_Sacre_de_Napoleon.jpg" alt="Incoronazione">
+                <p>Incoronazione</p>
+            </div>
+            <div class="image-box" onclick="select(1)">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Napoleon4.jpg/400px-Napoleon4.jpg" alt="Imperatore">
+                <p>Imperatore</p>
+            </div>
+            <div class="image-box" onclick="select(2)">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Napoleon_bonaparte.jpg/400px-Napoleon_bonaparte.jpg" alt="Giovane">
+                <p>Giovane Generale</p>
+            </div>
+            <div class="image-box" onclick="select(3)">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Napoleon_in_His_Study.jpg/400px-Napoleon_in_His_Study.jpg" alt="Studio">
+                <p>Nello Studio</p>
+            </div>
+            <div class="image-box" onclick="select(4)">
+                <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400" alt="Parigi">
+                <p>Parigi</p>
+            </div>
+            <div class="image-box" onclick="select(5)">
+                <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400" alt="Corsica">
+                <p>Corsica</p>
+            </div>
+            <div class="image-box" onclick="select(6)">
+                <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=400" alt="Battaglia">
+                <p>Battaglia</p>
+            </div>
+            <div class="image-box" onclick="select(7)">
+                <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=400" alt="Isola">
+                <p>Sant'Elena</p>
+            </div>
+        </div>
+
+        <button class="save-btn" onclick="save()">Salva Sfondo</button>
+    </div>
 
     <script>
         const urls = [
@@ -67,7 +71,7 @@
         let selected = -1;
 
         function select(i) {
-            document.querySelectorAll('.img-box').forEach((el, idx) => {
+            document.querySelectorAll('.image-box').forEach((el, idx) => {
                 el.classList.toggle('selected', idx === i);
             });
             selected = i;
@@ -76,9 +80,9 @@
         function save() {
             if (selected >= 0) {
                 localStorage.setItem('bg', urls[selected]);
-                alert('Salvato!');
+                alert('✓ Sfondo salvato! Vai su "Vedi Sfondo" per vederlo.');
             } else {
-                alert('Seleziona un\'immagine');
+                alert('Seleziona prima un\'immagine');
             }
         }
     </script>

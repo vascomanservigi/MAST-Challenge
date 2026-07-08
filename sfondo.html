@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sfondo</title>
-    <style>
-        body { margin: 0; height: 100vh; background-size: cover; background-position: center; }
-        .home { position: fixed; top: 20px; left: 20px; padding: 10px 20px; background: white; text-decoration: none; color: black; }
-    </style>
+    <title>Sfondo – Napoleone</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body id="bg">
-    <a href="index.html" class="home">← Home</a>
+<body class="sfondo-page" id="bg">
+    <a href="index.html" class="home-link">← Home</a>
+    
     <script>
         const bg = localStorage.getItem('bg');
-        if (bg) document.getElementById('bg').style.backgroundImage = 'url(' + bg + ')';
+        if (bg) {
+            document.getElementById('bg').style.backgroundImage = 'url(' + bg + ')';
+        } else {
+            document.getElementById('bg').style.background = 'linear-gradient(135deg, #002395, #ed2939)';
+        }
     </script>
 </body>
 </html>
