@@ -3,108 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Napoleone</title>
+    <title>Admin</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav>
-        <ul>
-            <li><a href="index.html">← Torna al Sito</a></li>
-            <li><a href="sfondo.html">Visualizza Sfondo</a></li>
-        </ul>
+        <a href="index.html">← Home</a>
+        <a href="sfondo.html">Vedi Sfondo →</a>
     </nav>
 
     <div class="container">
         <h1>Pannello Admin</h1>
-        <p>Configura sfondo e musica</p>
 
+        <!-- SFONDI PREIMPOSTATI -->
         <section>
             <h2>Sfondi Preimpostati</h2>
-            <p>Clicca su uno sfondo, poi "Salva" per applicarlo.</p>
+            <p>Clicca per selezionare, poi "Salva Impostazioni".</p>
 
             <div class="preset-grid">
                 <div class="preset-item" onclick="selectPreset(
-                    'https://upload.wikimedia.org/wikipedia/commons/9/9e/David_-_Le_Sacre_de_Napoleon.jpg',
-                    'L\'Incoronazione',
-                    'Notre-Dame, 2 Dicembre 1804'
+                    'https://upload.wikimedia.org/wikipedia/commons/9/9e/David_-_Le_Sacre_de_Napoleon.jpg'
                 )">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/David_-_Le_Sacre_de_Napoleon.jpg/300px-David_-_Le_Sacre_de_Napoleon.jpg" alt="Incoronazione" loading="lazy">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/David_-_Le_Sacre_de_Napoleon.jpg/300px-David_-_Le_Sacre_de_Napoleon.jpg" loading="lazy">
                     <p><strong>Incoronazione</strong></p>
-                    <p>David, 1804</p>
                 </div>
 
                 <div class="preset-item" onclick="selectPreset(
-                    'https://upload.wikimedia.org/wikipedia/commons/0/02/Napoleon4.jpg',
-                    'Napoleone Imperatore',
-                    'Ritratto Ufficiale'
+                    'https://upload.wikimedia.org/wikipedia/commons/0/02/Napoleon4.jpg'
                 )">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Napoleon4.jpg/300px-Napoleon4.jpg" alt="Napoleone" loading="lazy">
-                    <p><strong>Napoleone I</strong></p>
-                    <p>Imperatore</p>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Napoleon4.jpg/300px-Napoleon4.jpg" loading="lazy">
+                    <p><strong>Imperatore</strong></p>
                 </div>
 
                 <div class="preset-item" onclick="selectPreset(
-                    'https://upload.wikimedia.org/wikipedia/commons/1/17/Napoleon_bonaparte.jpg',
-                    'Il Giovane Generale',
-                    'Campagna d\'Italia'
+                    'https://upload.wikimedia.org/wikipedia/commons/1/17/Napoleon_bonaparte.jpg'
                 )">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Napoleon_bonaparte.jpg/300px-Napoleon_bonaparte.jpg" alt="Giovane" loading="lazy">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Napoleon_bonaparte.jpg/300px-Napoleon_bonaparte.jpg" loading="lazy">
                     <p><strong>Giovane Generale</strong></p>
-                    <p>1796-1797</p>
                 </div>
 
                 <div class="preset-item" onclick="selectPreset(
-                    'https://upload.wikimedia.org/wikipedia/commons/e/e6/Napoleon_in_His_Study.jpg',
-                    'Nello Studio',
-                    'David, 1812'
+                    'https://upload.wikimedia.org/wikipedia/commons/e/e6/Napoleon_in_His_Study.jpg'
                 )">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Napoleon_in_His_Study.jpg/300px-Napoleon_in_His_Study.jpg" alt="Studio" loading="lazy">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Napoleon_in_His_Study.jpg/300px-Napoleon_in_His_Study.jpg" loading="lazy">
                     <p><strong>Nello Studio</strong></p>
-                    <p>David, 1812</p>
                 </div>
 
                 <div class="preset-item" onclick="selectPreset(
-                    'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1920',
-                    'Parigi',
-                    'Capitale dell\'Impero'
+                    'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1920'
                 )">
-                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=300" alt="Parigi" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=300" loading="lazy">
                     <p><strong>Parigi</strong></p>
-                    <p>Capitale Imperiale</p>
                 </div>
 
                 <div class="preset-item" onclick="selectPreset(
-                    'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1920',
-                    'La Corsica',
-                    'Terra Natale'
+                    'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1920'
                 )">
-                    <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=300" alt="Corsica" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=300" loading="lazy">
                     <p><strong>Corsica</strong></p>
-                    <p>Terra Natale</p>
                 </div>
 
                 <div class="preset-item" onclick="selectPreset(
-                    'https://images.unsplash.com/photo-1549144511-f099e773c147?w=1920',
-                    'Battaglia',
-                    'Campo di Guerra'
+                    'https://images.unsplash.com/photo-1549144511-f099e773c147?w=1920'
                 )">
-                    <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=300" alt="Battaglia" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=300" loading="lazy">
                     <p><strong>Battaglia</strong></p>
-                    <p>Guerra Napoleonica</p>
                 </div>
 
                 <div class="preset-item" onclick="selectPreset(
-                    'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1920',
-                    'Sant\'Elena',
-                    'L\'Isola dell\'Esilio'
+                    'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1920'
                 )">
-                    <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=300" alt="Isola" loading="lazy">
-                    <p><strong>Sant\'Elena</strong></p>
-                    <p>L\'Esilio</p>
+                    <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=300" loading="lazy">
+                    <p><strong>Sant'Elena</strong></p>
                 </div>
             </div>
         </section>
 
+        <!-- SFONDO PERSONALIZZATO -->
         <section>
             <h2>Sfondo Personalizzato</h2>
 
@@ -114,7 +89,7 @@
                     <select id="bgType" onchange="updateBgPreview()">
                         <option value="color">Colore</option>
                         <option value="gradient">Gradiente</option>
-                        <option value="image">Immagine URL</option>
+                        <option value="image">URL Immagine</option>
                     </select>
                 </div>
 
@@ -137,17 +112,18 @@
 
                 <div class="admin-form-group">
                     <label>Anteprima</label>
-                    <div id="bgPreview" style="width:100%; height:120px; border:1px solid #ccc; background:#002395;"></div>
+                    <div id="bgPreview" style="width:100%; height:150px; border:1px solid #ccc; background:#002395;"></div>
                 </div>
             </div>
         </section>
 
+        <!-- MUSICA -->
         <section>
             <h2>Musica</h2>
 
             <div class="admin-section">
                 <div class="admin-form-group">
-                    <label>URL Audio (MP3/OGG/WAV)</label>
+                    <label>URL Audio (MP3)</label>
                     <input type="url" id="musicUrl" placeholder="https://esempio.com/audio.mp3">
                     <p style="font-size:12px; color:#666;">Esempio: https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3</p>
                 </div>
@@ -158,63 +134,39 @@
                 </div>
 
                 <div class="admin-form-group">
-                    <label><input type="checkbox" id="musicAutoplay"> Autoplay</label>
+                    <label><input type="checkbox" id="musicAutoplay"> Avvia automaticamente</label>
                 </div>
 
                 <div class="admin-form-group">
-                    <label><input type="checkbox" id="musicLoop" checked> Loop</label>
+                    <label><input type="checkbox" id="musicLoop" checked> Ripeti</label>
                 </div>
             </div>
         </section>
 
+        <!-- AZIONI -->
         <section>
-            <h2>Testo Sfondo</h2>
-
-            <div class="admin-section">
-                <div class="admin-form-group">
-                    <label>Titolo</label>
-                    <input type="text" id="customTitle" placeholder="Napoleone Bonaparte">
-                </div>
-
-                <div class="admin-form-group">
-                    <label>Sottotitolo</label>
-                    <input type="text" id="customSubtitle" placeholder="1769 - 1821">
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <button onclick="saveSettings()">Salva</button>
+            <button onclick="saveSettings()" style="padding:15px 30px; font-size:16px;">Salva Impostazioni</button>
             <button onclick="resetSettings()">Reset</button>
-            <a href="sfondo.html"><button type="button">Vedi Sfondo</button></a>
         </section>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', loadSettings);
 
-        function selectPreset(url, title, subtitle) {
+        function selectPreset(url) {
             document.getElementById('bgType').value = 'image';
             document.getElementById('bgImage').value = url;
-            document.getElementById('customTitle').value = title;
-            document.getElementById('customSubtitle').value = subtitle;
             
-            // Aggiorna UI
             document.getElementById('bgColorSection').style.display = 'none';
             document.getElementById('bgGradientSection').style.display = 'none';
             document.getElementById('bgImageSection').style.display = 'block';
             
-            // Anteprima
             document.getElementById('bgPreview').style.background = "url('" + url + "') center/cover";
             
-            // Scroll in alto
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // Feedback visivo
-            document.querySelectorAll('.preset-item').forEach(function(el) {
-                el.style.outline = 'none';
-            });
+            document.querySelectorAll('.preset-item').forEach(el => el.style.outline = 'none');
             event.currentTarget.style.outline = '3px solid #333';
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function updateBgPreview() {
@@ -245,12 +197,10 @@
                 musicUrl: document.getElementById('musicUrl').value,
                 musicVolume: document.getElementById('musicVolume').value,
                 musicAutoplay: document.getElementById('musicAutoplay').checked,
-                musicLoop: document.getElementById('musicLoop').checked,
-                customTitle: document.getElementById('customTitle').value,
-                customSubtitle: document.getElementById('customSubtitle').value
+                musicLoop: document.getElementById('musicLoop').checked
             };
             localStorage.setItem('napoleonSettings', JSON.stringify(settings));
-            alert('✓ Impostazioni salvate! Vai su "Vedi Sfondo" per vedere il risultato.');
+            alert('✓ Salvato! Clicca "Vedi Sfondo" per vedere il risultato.');
         }
 
         function loadSettings() {
@@ -266,14 +216,12 @@
                 document.getElementById('volumeValue').textContent = (s.musicVolume || 50) + '%';
                 document.getElementById('musicAutoplay').checked = s.musicAutoplay || false;
                 document.getElementById('musicLoop').checked = s.musicLoop !== false;
-                document.getElementById('customTitle').value = s.customTitle || '';
-                document.getElementById('customSubtitle').value = s.customSubtitle || '';
                 updateBgPreview();
             }
         }
 
         function resetSettings() {
-            if (confirm('Sicuro di voler resettare tutte le impostazioni?')) {
+            if (confirm('Reset tutto?')) {
                 localStorage.removeItem('napoleonSettings');
                 location.reload();
             }
