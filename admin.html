@@ -19,7 +19,62 @@
         <p>Configura sfondo e musica</p>
 
         <section>
-            <h2>Sfondo</h2>
+            <h2>Sfondi Preimpostati</h2>
+            <p>Clicca su uno sfondo per selezionarlo automaticamente.</p>
+
+            <div class="preset-grid">
+                <div class="preset-item" onclick="selectPreset('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/David_-_Le_Sacre_de_Napoleon.jpg/1920px-David_-_Le_Sacre_de_Napoleon.jpg', 'L\'Incoronazione', '2 Dicembre 1804 - Notre-Dame')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/David_-_Le_Sacre_de_Napoleon.jpg/300px-David_-_Le_Sacre_de_Napoleon.jpg" alt="Incoronazione">
+                    <p><strong>Incoronazione</strong></p>
+                    <p>Notre-Dame 1804</p>
+                </div>
+
+                <div class="preset-item" onclick="selectPreset('https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Napoleon4.jpg/1920px-Napoleon4.jpg', 'Napoleone Imperatore', 'Ritratto Ufficiale')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Napoleon4.jpg/300px-Napoleon4.jpg" alt="Napoleone">
+                    <p><strong>Napoleone</strong></p>
+                    <p>Ritratto Ufficiale</p>
+                </div>
+
+                <div class="preset-item" onclick="selectPreset('https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Napoleon_bonaparte.jpg/1920px-Napoleon_bonaparte.jpg', 'Il Giovane Generale', 'Campagna d\'Italia')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Napoleon_bonaparte.jpg/300px-Napoleon_bonaparte.jpg" alt="Giovane Napoleone">
+                    <p><strong>Giovane Generale</strong></p>
+                    <p>Campagna d'Italia</p>
+                </div>
+
+                <div class="preset-item" onclick="selectPreset('https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/G%C3%A9rard_Fran%C3%A7ois_Pascal_Simon_-_Napoleon_on_his_imperial_throne_-_Google_Art_Project.jpg/1920px-G%C3%A9rard_Fran%C3%A7ois_Pascal_Simon_-_Napoleon_on_his_imperial_throne_-_Google_Art_Project.jpg', 'Sul Trono Imperiale', 'Ingres, 1806')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/G%C3%A9rard_Fran%C3%A7ois_Pascal_Simon_-_Napoleon_on_his_imperial_throne_-_Google_Art_Project.jpg/300px-G%C3%A9rard_Fran%C3%A7ois_Pascal_Simon_-_Napoleon_on_his_imperial_throne_-_Google_Art_Project.jpg" alt="Trono">
+                    <p><strong>Trono Imperiale</strong></p>
+                    <p>Ingres 1806</p>
+                </div>
+
+                <div class="preset-item" onclick="selectPreset('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Arc_de_Triomphe%2C_Paris_22_October_2010.jpg/1920px-Arc_de_Triomphe%2C_Paris_22_October_2010.jpg', 'Arco di Trionfo', 'Parigi')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Arc_de_Triomphe%2C_Paris_22_October_2010.jpg/300px-Arc_de_Triomphe%2C_Paris_22_October_2010.jpg" alt="Arco di Trionfo">
+                    <p><strong>Arco di Trionfo</strong></p>
+                    <p>Parigi</p>
+                </div>
+
+                <div class="preset-item" onclick="selectPreset('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Napoleon_in_His_Study.jpg/1920px-Napoleon_in_His_Study.jpg', 'Nello Studio', 'David, 1812')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Napoleon_in_His_Study.jpg/300px-Napoleon_in_His_Study.jpg" alt="Studio">
+                    <p><strong>Nello Studio</strong></p>
+                    <p>David 1812</p>
+                </div>
+
+                <div class="preset-item" onclick="selectPreset('https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Ajaccio_vue_a%C3%A9rienne.jpg/1920px-Ajaccio_vue_a%C3%A9rienne.jpg', 'Ajaccio', 'Citt%C3%A0 Natale')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Ajaccio_vue_a%C3%A9rienne.jpg/300px-Ajaccio_vue_a%C3%A9rienne.jpg" alt="Ajaccio">
+                    <p><strong>Ajaccio</strong></p>
+                    <p>Città Natale</p>
+                </div>
+
+                <div class="preset-item" onclick="selectPreset('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/St._Paul%27s_Cathedral_from_the_South.JPG/1920px-St._Paul%27s_Cathedral_from_the_South.JPG', 'Les Invalides', 'Parigi - Tomba di Napoleone')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/St._Paul%27s_Cathedral_from_the_South.JPG/300px-St._Paul%27s_Cathedral_from_the_South.JPG" alt="Les Invalides">
+                    <p><strong>Les Invalides</strong></p>
+                    <p>Tomba di Napoleone</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Sfondo Personalizzato</h2>
 
             <div class="admin-section">
                 <div class="admin-form-group">
@@ -104,6 +159,15 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', loadSettings);
+
+        function selectPreset(url, title, subtitle) {
+            document.getElementById('bgType').value = 'image';
+            document.getElementById('bgImage').value = url;
+            document.getElementById('customTitle').value = title;
+            document.getElementById('customSubtitle').value = subtitle;
+            updateBgPreview();
+            alert('Sfondo selezionato! Clicca "Salva" per applicarlo.');
+        }
 
         function updateBgPreview() {
             const type = document.getElementById('bgType').value;
