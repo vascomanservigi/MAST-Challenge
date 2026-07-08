@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sfondo - Napoleone</title>
+    <title>Sfondo</title>
     <link rel="stylesheet" href="css/style.css">
-    <style id="bgStyle"></style>
 </head>
 <body id="backgroundPage">
     <a href="index.html" class="home-btn">← Home</a>
 
-    <div style="text-align:center; padding:40px; background:rgba(0,0,0,0.5);">
+    <div style="text-align:center; padding:60px; background:rgba(0,0,0,0.5);">
         <h1 id="displayTitle" style="color:#fff; font-size:48px;"></h1>
         <p id="displaySubtitle" style="color:#fff; font-size:24px;"></p>
     </div>
 
     <div id="musicControls" class="music-controls" style="display:none;">
         <button id="playPauseBtn" onclick="toggleMusic()">▶ Play</button>
-        <label>Volume:</label>
         <input type="range" id="volumeSlider" min="0" max="100" value="50" onchange="changeVolume()">
     </div>
 
@@ -25,67 +23,46 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            loadBackground();
-        });
-
-        function loadBackground() {
-            const settings = JSON.parse(localStorage.getItem('napoleonSettings') || '{}');
+            const s = JSON.parse(localStorage.getItem('napoleonSettings') || '{}');
             const page = document.getElementById('backgroundPage');
-            const title = document.getElementById('displayTitle');
-            const subtitle = document.getElementById('displaySubtitle');
             const music = document.getElementById('bgMusic');
             const controls = document.getElementById('musicControls');
 
             // Sfondo
-            if (settings.bgType === 'color') {
-                page.style.background = settings.bgColor || '#F5F2E8';
-            } else if (settings.bgType === 'gradient') {
-                const c1 = settings.bgGradient1 || '#002395';
-                const c2 = settings.bgGradient2 || '#ED2939';
-                page.style.background = 'linear-gradient(135deg, ' + c1 + ', ' + c2 + ')';
-            } else if (settings.bgType === 'image' && settings.bgImage) {
-                page.style.background = "url('" + settings.bgImage + "') center/cover fixed";
+            if (s.bgType === 'color') {
+                page.style.background = s.bgColor || '#F5F2E8';
+            } else if (s.bgType === 'gradient') {
+                page.style.background = 'linear-gradient(135deg, ' + (s.bgGradient1 || '#002395') + ', ' + (s.bgGradient2 || '#ED2939') + ')';
+            } else if (s.bgType === 'image' && s.bgImage) {
+                page.style.background = "url('" + s.bgImage + "') center/cover fixed";
             } else {
                 page.style.background = 'linear-gradient(135deg, #002395, #ED2939)';
             }
 
-            // Titolo
-            title.textContent = settings.customTitle || 'Napoleone Bonaparte';
-            subtitle.textContent = settings.customSubtitle || '1769 - 1821';
+            // Titoli
+            document.getElementById('displayTitle').textContent = s.customTitle || 'Napoleone Bonaparte';
+            document.getElementById('displaySubtitle').textContent = s.customSubtitle || '1769 - 1821';
 
             // Musica
-            if (settings.musicUrl) {
-                music.src = settings.musicUrl;
-                music.volume = (settings.musicVolume || 50) / 100;
-                music.loop = settings.musicLoop !== false;
+            if (s.musicUrl) {
+                music.src = s.musicUrl;
+                music.volume = (s.musicVolume || 50) / 100;
+                music.loop = s.musicLoop !== false;
                 controls.style.display = 'block';
-                document.getElementById('volumeSlider').value = settings.musicVolume || 50;
-
-                if (settings.musicAutoplay) {
-                    music.play().catch(function() {
-                        console.log('Autoplay bloccato dal browser');
-                    });
-                }
+                document.getElementById('volumeSlider').value = s.musicVolume || 50;
+                if (s.musicAutoplay) music.play().catch(function(){});
             }
-        }
+        });
 
         function toggleMusic() {
-            const music = document.getElementById('bgMusic');
-            const btn = document.getElementById('playPauseBtn');
-            
-            if (music.paused) {
-                music.play();
-                btn.textContent = '⏸ Pause';
-            } else {
-                music.pause();
-                btn.textContent = '▶ Play';
-            }
+            const m = document.getElementById('bgMusic');
+            const b = document.getElementById('playPauseBtn');
+            if (m.paused) { m.play(); b.textContent = '⏸ Pause'; }
+            else { m.pause(); b.textContent = '▶ Play'; }
         }
 
         function changeVolume() {
-            const music = document.getElementById('bgMusic');
-            const volume = document.getElementById('volumeSlider').value;
-            music.volume = volume / 100;
+            document.getElementById('bgMusic').volume = document.getElementById('volumeSlider').value / 100;
         }
     </script>
 </body>

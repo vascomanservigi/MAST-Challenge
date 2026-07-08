@@ -9,37 +9,30 @@
 <body>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="biografia.html">Biografia</a></li>
-            <li><a href="conquiste.html">Conquiste</a></li>
-            <li><a href="eredita.html">Eredità</a></li>
-            <li><a href="colleghi.html">Team</a></li>
-            <li><a href="ambientazioni.html">Ambientazioni</a></li>
-            <li><a href="sfondo.html">Sfondo</a></li>
-            <li><a href="admin.html" class="active">Admin</a></li>
+            <li><a href="index.html">← Torna al Sito</a></li>
+            <li><a href="sfondo.html">Visualizza Sfondo</a></li>
         </ul>
     </nav>
 
     <div class="container">
         <h1>Pannello Admin</h1>
-        <p>Configura sfondo e musica del sito</p>
+        <p>Configura sfondo e musica</p>
 
         <section>
             <h2>Sfondo</h2>
-            <p>Configura lo sfondo visibile nella pagina /sfondo.html</p>
 
             <div class="admin-section">
                 <div class="admin-form-group">
-                    <label>Tipo di sfondo</label>
+                    <label>Tipo</label>
                     <select id="bgType" onchange="updateBgPreview()">
-                        <option value="color">Colore solido</option>
+                        <option value="color">Colore</option>
                         <option value="gradient">Gradiente</option>
-                        <option value="image">Immagine da URL</option>
+                        <option value="image">Immagine URL</option>
                     </select>
                 </div>
 
                 <div id="bgColorSection" class="admin-form-group">
-                    <label>Colore sfondo</label>
+                    <label>Colore</label>
                     <input type="color" id="bgColor" value="#F5F2E8" onchange="updateBgPreview()">
                 </div>
 
@@ -51,25 +44,24 @@
                 </div>
 
                 <div id="bgImageSection" class="admin-form-group" style="display:none;">
-                    <label>URL immagine</label>
-                    <input type="url" id="bgImage" placeholder="https://esempio.com/immagine.jpg" onchange="updateBgPreview()">
+                    <label>URL Immagine</label>
+                    <input type="url" id="bgImage" placeholder="https://..." onchange="updateBgPreview()">
                 </div>
 
                 <div class="admin-form-group">
                     <label>Anteprima</label>
-                    <div id="bgPreview" style="width:100%; height:150px; border:1px solid #ccc;"></div>
+                    <div id="bgPreview" style="width:100%; height:120px; border:1px solid #ccc;"></div>
                 </div>
             </div>
         </section>
 
         <section>
             <h2>Musica</h2>
-            <p>Aggiungi una colonna sonora di sottofondo</p>
 
             <div class="admin-section">
                 <div class="admin-form-group">
-                    <label>URL file audio (MP3, OGG, WAV)</label>
-                    <input type="url" id="musicUrl" placeholder="https://esempio.com/musica.mp3">
+                    <label>URL Audio (MP3/OGG/WAV)</label>
+                    <input type="url" id="musicUrl" placeholder="https://...">
                 </div>
 
                 <div class="admin-form-group">
@@ -78,18 +70,17 @@
                 </div>
 
                 <div class="admin-form-group">
-                    <label><input type="checkbox" id="musicAutoplay"> Avvia automaticamente</label>
+                    <label><input type="checkbox" id="musicAutoplay"> Autoplay</label>
                 </div>
 
                 <div class="admin-form-group">
-                    <label><input type="checkbox" id="musicLoop" checked> Ripeti in loop</label>
+                    <label><input type="checkbox" id="musicLoop" checked> Loop</label>
                 </div>
             </div>
         </section>
 
         <section>
-            <h2>Testo Personalizzato</h2>
-            <p>Titolo e sottotitolo per la pagina sfondo</p>
+            <h2>Testo Sfondo</h2>
 
             <div class="admin-section">
                 <div class="admin-form-group">
@@ -105,20 +96,14 @@
         </section>
 
         <section>
-            <button onclick="saveSettings()">Salva Impostazioni</button>
-            <button onclick="resetSettings()">Resetta Tutto</button>
-            <a href="sfondo.html"><button type="button">Visualizza Sfondo</button></a>
+            <button onclick="saveSettings()">Salva</button>
+            <button onclick="resetSettings()">Reset</button>
+            <a href="sfondo.html"><button type="button">Vedi Sfondo</button></a>
         </section>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Progetto Napoleone</p>
-    </footer>
-
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            loadSettings();
-        });
+        document.addEventListener('DOMContentLoaded', loadSettings);
 
         function updateBgPreview() {
             const type = document.getElementById('bgType').value;
@@ -131,10 +116,8 @@
             if (type === 'color') {
                 preview.style.background = document.getElementById('bgColor').value;
             } else if (type === 'gradient') {
-                const c1 = document.getElementById('bgGradient1').value;
-                const c2 = document.getElementById('bgGradient2').value;
-                preview.style.background = 'linear-gradient(135deg, ' + c1 + ', ' + c2 + ')';
-            } else if (type === 'image') {
+                preview.style.background = 'linear-gradient(135deg, ' + document.getElementById('bgGradient1').value + ', ' + document.getElementById('bgGradient2').value + ')';
+            } else {
                 const url = document.getElementById('bgImage').value;
                 preview.style.background = url ? "url('" + url + "') center/cover" : '#ccc';
             }
@@ -154,16 +137,14 @@
                 customTitle: document.getElementById('customTitle').value,
                 customSubtitle: document.getElementById('customSubtitle').value
             };
-            
             localStorage.setItem('napoleonSettings', JSON.stringify(settings));
-            alert('Impostazioni salvate!');
+            alert('Salvato!');
         }
 
         function loadSettings() {
-            const saved = localStorage.getItem('napoleonSettings');
-            if (saved) {
-                const s = JSON.parse(saved);
-                document.getElementById('bgType').value = s.bgType || 'color';
+            const s = JSON.parse(localStorage.getItem('napoleonSettings') || '{}');
+            if (s.bgType) {
+                document.getElementById('bgType').value = s.bgType;
                 document.getElementById('bgColor').value = s.bgColor || '#F5F2E8';
                 document.getElementById('bgGradient1').value = s.bgGradient1 || '#002395';
                 document.getElementById('bgGradient2').value = s.bgGradient2 || '#ED2939';
