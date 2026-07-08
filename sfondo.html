@@ -9,12 +9,29 @@
 <body class="sfondo-page" id="bg" onclick="window.location.href='index.html'">
     
     <script>
-        const bg = localStorage.getItem('bg');
-        if (bg) {
-            document.getElementById('bg').style.backgroundImage = 'url(' + bg + ')';
-        } else {
-            document.getElementById('bg').style.background = 'linear-gradient(135deg, #2b1810, #8b4513)';
+        function loadBackground() {
+            const bg = localStorage.getItem('bg');
+            if (bg) {
+                document.getElementById('bg').style.backgroundImage = 'url(' + bg + ')';
+                document.getElementById('bg').style.background = '';
+            } else {
+                document.getElementById('bg').style.background = 'linear-gradient(135deg, #2b1810, #8b4513)';
+                document.getElementById('bg').style.backgroundImage = '';
+            }
         }
+
+        // Carica all'avvio
+        loadBackground();
+
+        // Aggiorna in tempo reale quando localStorage cambia
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'bg') {
+                loadBackground();
+            }
+        });
+
+        // Polling per aggirare limitazioni browser
+        setInterval(loadBackground, 500);
     </script>
 </body>
 </html>

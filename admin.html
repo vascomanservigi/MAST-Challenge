@@ -12,27 +12,22 @@
         <ul id="navMenu">
             <li><a href="index.html">Accueil</a></li>
             <li>
-                <a href="#" class="has-dropdown">Histoire ▾</a>
+                <a href="#" class="has-dropdown">Storia ▾</a>
                 <ul>
-                    <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
-                    <li><a href="index.html#progetto">Il Progetto</a></li>
-                    <li><a href="index.html#team">Il Team</a></li>
+                    <li><a href="biografia.html">Biografia</a></li>
+                    <li><a href="conquiste.html">Conquiste</a></li>
+                    <li><a href="eredita.html">Eredità</a></li>
                 </ul>
             </li>
-            <li>
-                <a href="#" class="has-dropdown">Gallerie ▾</a>
-                <ul>
-                    <li><a href="sfondo.html">Sfondo</a></li>
-                    <li><a href="admin.html">Administration</a></li>
-                </ul>
-            </li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="sfondo.html">Galleria</a></li>
         </ul>
     </nav>
 
     <div class="admin-container">
         <div class="admin-header">
             <h1>Seleziona Sfondo</h1>
-            <p>Clicca su un'immagine e poi salva</p>
+            <p>Clicca su un'immagine per applicarla in tempo reale</p>
         </div>
 
         <div class="image-grid">
@@ -70,7 +65,7 @@
             </div>
         </div>
 
-        <button class="save-btn" onclick="save()">Salva Sfondo</button>
+        <p style="text-align:center; font-size:20px; margin-top:20px;">Apri <a href="sfondo.html" target="_blank">sfondo.html</a> in un'altra scheda per vedere le modifiche in tempo reale</p>
     </div>
 
     <script>
@@ -84,28 +79,45 @@
             'https://images.unsplash.com/photo-1549144511-f099e773c147?w=1920',
             'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1920'
         ];
-        
-        let selected = -1;
 
         function select(i) {
+            // Salva nel localStorage
+            localStorage.setItem('bg', urls[i]);
+            
+            // Evidenzia selezione
             document.querySelectorAll('.image-box').forEach((el, idx) => {
                 el.classList.toggle('selected', idx === i);
             });
-            selected = i;
-        }
 
-        function save() {
-            if (selected >= 0) {
-                localStorage.setItem('bg', urls[selected]);
-                alert('✓ Sfondo salvato! Vai su "Vedi Sfondo" per vederlo.');
-            } else {
-                alert('Seleziona prima un\'immagine');
-            }
+            // Notifica
+            const notification = document.createElement('div');
+            notification.textContent = '✓ Sfondo applicato!';
+            notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#2b1810;color:#f4e4bc;padding:15px 25px;border:2px solid #8b4513;font-family:Dancing Script;font-size:20px;z-index:9999;animation:fadeIn 0.3s;';
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 2000);
         }
 
         function toggleMenu() {
             document.getElementById('navMenu').classList.toggle('active');
         }
+
+        // Carica selezione salvata
+        window.addEventListener('DOMContentLoaded', function() {
+            const saved = localStorage.getItem('bg');
+            if (saved) {
+                const idx = urls.indexOf(saved);
+                if (idx >= 0) {
+                    document.querySelectorAll('.image-box')[idx].classList.add('selected');
+                }
+            }
+        });
     </script>
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </body>
 </html>
