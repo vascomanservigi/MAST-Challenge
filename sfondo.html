@@ -9,29 +9,37 @@
 <body class="sfondo-page" id="bg" onclick="window.location.href='index.html'">
     
     <script>
+        var lastBg = null;
+
         function loadBackground() {
-            const bg = localStorage.getItem('bg');
-            if (bg) {
-                document.getElementById('bg').style.backgroundImage = 'url(' + bg + ')';
-                document.getElementById('bg').style.background = '';
-            } else {
-                document.getElementById('bg').style.background = 'linear-gradient(135deg, #2b1810, #8b4513)';
-                document.getElementById('bg').style.backgroundImage = '';
+            var bg = localStorage.getItem('bg');
+            
+            // Solo se è cambiato
+            if (bg !== lastBg) {
+                lastBg = bg;
+                var el = document.getElementById('bg');
+                
+                if (bg && bg !== '') {
+                    el.style.backgroundImage = 'url(' + bg + ')';
+                    el.style.backgroundColor = '';
+                } else {
+                    el.style.backgroundImage = '';
+                    el.style.background = 'linear-gradient(135deg, #2b1810, #8b4513)';
+                }
             }
         }
 
-        // Carica all'avvio
+        // Carica immediatamente
         loadBackground();
 
-        // Aggiorna in tempo reale quando localStorage cambia
-        window.addEventListener('storage', function(e) {
-            if (e.key === 'bg') {
-                loadBackground();
-            }
-        });
+        // Aggiorna ogni 200ms (tempo reale)
+        setInterval(loadBackground, 200);
 
-        // Polling per aggirare limitazioni browser
-        setInterval(loadBackground, 500);
+        // Ascolta anche l'evento storage
+        window.addEventListener('storage', loadBackground);
+
+        // Ascolta anche focus (quando torni sulla tab)
+        window.addEventListener('focus', loadBackground);
     </script>
 </body>
 </html>
