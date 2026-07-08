@@ -3,160 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pannello Admin | Le Moniteur</title>
+    <title>Admin - Napoleone</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="newspaper-header">
-        <div class="container">
-            <span class="newspaper-date">Pannello di Controllo</span>
-            <span class="newspaper-edition">Area Riservata</span>
-        </div>
-    </header>
-
-    <div class="masthead">
-        <div class="container">
-            <h1 class="masthead-title">Admin</h1>
-            <p class="masthead-subtitle">Pannello di Gestione del Sito</p>
-        </div>
-    </div>
-
-    <nav class="newspaper-nav">
-        <div class="container">
-            <div class="nav-toggle" onclick="document.querySelector('.newspaper-nav ul').classList.toggle('active')">Menu</div>
-            <ul>
-                <li><a href="index.html">Prima Pagina</a></li>
-                <li><a href="biografia.html">Biografia</a></li>
-                <li><a href="conquiste.html">Conquiste</a></li>
-                <li><a href="eredita.html">Eredità</a></li>
-                <li><a href="colleghi.html">Redazione</a></li>
-                <li><a href="ambientazioni.html">Ambientazioni</a></li>
-                <li><a href="sfondo.html">Sfondo</a></li>
-                <li><a href="admin.html" class="active">Admin</a></li>
-            </ul>
-        </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="biografia.html">Biografia</a></li>
+            <li><a href="conquiste.html">Conquiste</a></li>
+            <li><a href="eredita.html">Eredità</a></li>
+            <li><a href="colleghi.html">Team</a></li>
+            <li><a href="ambientazioni.html">Ambientazioni</a></li>
+            <li><a href="sfondo.html">Sfondo</a></li>
+            <li><a href="admin.html" class="active">Admin</a></li>
+        </ul>
     </nav>
 
-    <main>
-        <section class="section-title">
-            <h1>Pannello Admin</h1>
-            <p>Gestisci sfondo e musica del sito</p>
-        </section>
+    <div class="container">
+        <h1>Pannello Admin</h1>
+        <p>Configura sfondo e musica del sito</p>
 
-        <section class="article">
-            <div class="container">
-                <div class="admin-panel">
-                    <div class="admin-section">
-                        <h2>Sfondo</h2>
-                        <p class="admin-description">Configura lo sfondo visibile nella pagina dedicata</p>
-                        
-                        <div class="admin-form-group">
-                            <label>Tipo di sfondo</label>
-                            <select id="bgType" onchange="updateBgPreview()">
-                                <option value="color">Colore solido</option>
-                                <option value="gradient">Gradiente</option>
-                                <option value="image">Immagine</option>
-                            </select>
-                        </div>
+        <section>
+            <h2>Sfondo</h2>
+            <p>Configura lo sfondo visibile nella pagina /sfondo.html</p>
 
-                        <div id="bgColorSection" class="admin-form-group">
-                            <label>Colore sfondo</label>
-                            <input type="color" id="bgColor" value="#F5F2E8" onchange="updateBgPreview()">
-                        </div>
+            <div class="admin-section">
+                <div class="admin-form-group">
+                    <label>Tipo di sfondo</label>
+                    <select id="bgType" onchange="updateBgPreview()">
+                        <option value="color">Colore solido</option>
+                        <option value="gradient">Gradiente</option>
+                        <option value="image">Immagine da URL</option>
+                    </select>
+                </div>
 
-                        <div id="bgGradientSection" class="admin-form-group" style="display: none;">
-                            <label>Colore 1</label>
-                            <input type="color" id="bgGradient1" value="#002395" onchange="updateBgPreview()">
-                            <label style="margin-top: 10px;">Colore 2</label>
-                            <input type="color" id="bgGradient2" value="#ED2939" onchange="updateBgPreview()">
-                        </div>
+                <div id="bgColorSection" class="admin-form-group">
+                    <label>Colore sfondo</label>
+                    <input type="color" id="bgColor" value="#F5F2E8" onchange="updateBgPreview()">
+                </div>
 
-                        <div id="bgImageSection" class="admin-form-group" style="display: none;">
-                            <label>URL immagine</label>
-                            <input type="url" id="bgImage" placeholder="https://esempio.com/immagine.jpg" onchange="updateBgPreview()">
-                            <p class="admin-hint">Inserisci l'URL di un'immagine (es. Unsplash, Pexels, o un URL diretto)</p>
-                        </div>
+                <div id="bgGradientSection" class="admin-form-group" style="display:none;">
+                    <label>Colore 1</label>
+                    <input type="color" id="bgGradient1" value="#002395" onchange="updateBgPreview()">
+                    <label>Colore 2</label>
+                    <input type="color" id="bgGradient2" value="#ED2939" onchange="updateBgPreview()">
+                </div>
 
-                        <div class="admin-preview">
-                            <h3>Anteprima</h3>
-                            <div id="bgPreview" class="preview-box"></div>
-                        </div>
-                    </div>
+                <div id="bgImageSection" class="admin-form-group" style="display:none;">
+                    <label>URL immagine</label>
+                    <input type="url" id="bgImage" placeholder="https://esempio.com/immagine.jpg" onchange="updateBgPreview()">
+                </div>
 
-                    <div class="admin-section">
-                        <h2>Musica di sottofondo</h2>
-                        <p class="admin-description">Aggiungi una colonna sonora al sito</p>
-                        
-                        <div class="admin-form-group">
-                            <label>URL file audio</label>
-                            <input type="url" id="musicUrl" placeholder="https://esempio.com/musica.mp3">
-                            <p class="admin-hint">Inserisci l'URL di un file audio (MP3, OGG, WAV)</p>
-                        </div>
-
-                        <div class="admin-form-group">
-                            <label>Volume</label>
-                            <input type="range" id="musicVolume" min="0" max="100" value="50">
-                            <span id="volumeValue">50%</span>
-                        </div>
-
-                        <div class="admin-form-group">
-                            <label>
-                                <input type="checkbox" id="musicAutoplay">
-                                Avvia automaticamente
-                            </label>
-                        </div>
-
-                        <div class="admin-form-group">
-                            <label>
-                                <input type="checkbox" id="musicLoop" checked>
-                                Ripeti
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="admin-section">
-                        <h2>Titolo personalizzato</h2>
-                        <p class="admin-description">Personalizza il titolo della pagina sfondo</p>
-                        
-                        <div class="admin-form-group">
-                            <label>Titolo</label>
-                            <input type="text" id="customTitle" placeholder="Il tuo titolo personalizzato">
-                        </div>
-
-                        <div class="admin-form-group">
-                            <label>Sottotitolo</label>
-                            <input type="text" id="customSubtitle" placeholder="Un sottotitto opzionale">
-                        </div>
-                    </div>
-
-                    <div class="admin-actions">
-                        <button class="btn-admin" onclick="saveSettings()">Salva Impostazioni</button>
-                        <button class="btn-admin btn-secondary" onclick="resetSettings()">Resetta</button>
-                        <a href="sfondo.html" class="btn-admin btn-view">Visualizza Sfondo</a>
-                    </div>
+                <div class="admin-form-group">
+                    <label>Anteprima</label>
+                    <div id="bgPreview" style="width:100%; height:150px; border:1px solid #ccc;"></div>
                 </div>
             </div>
         </section>
-    </main>
 
-    <footer class="newspaper-footer">
-        <div class="container">
-            <div class="footer-masthead">
-                <h2>Le Moniteur</h2>
-                <p>Progetto Didattico — Napoleone Bonaparte</p>
+        <section>
+            <h2>Musica</h2>
+            <p>Aggiungi una colonna sonora di sottofondo</p>
+
+            <div class="admin-section">
+                <div class="admin-form-group">
+                    <label>URL file audio (MP3, OGG, WAV)</label>
+                    <input type="url" id="musicUrl" placeholder="https://esempio.com/musica.mp3">
+                </div>
+
+                <div class="admin-form-group">
+                    <label>Volume: <span id="volumeValue">50%</span></label>
+                    <input type="range" id="musicVolume" min="0" max="100" value="50" oninput="document.getElementById('volumeValue').textContent=this.value+'%'">
+                </div>
+
+                <div class="admin-form-group">
+                    <label><input type="checkbox" id="musicAutoplay"> Avvia automaticamente</label>
+                </div>
+
+                <div class="admin-form-group">
+                    <label><input type="checkbox" id="musicLoop" checked> Ripeti in loop</label>
+                </div>
             </div>
-            <p class="footer-copyright">© 2026 Le Moniteur — Tutti i diritti riservati</p>
-        </div>
-    </footer>
+        </section>
 
-    <audio id="bgMusic" loop></audio>
+        <section>
+            <h2>Testo Personalizzato</h2>
+            <p>Titolo e sottotitolo per la pagina sfondo</p>
+
+            <div class="admin-section">
+                <div class="admin-form-group">
+                    <label>Titolo</label>
+                    <input type="text" id="customTitle" placeholder="Napoleone Bonaparte">
+                </div>
+
+                <div class="admin-form-group">
+                    <label>Sottotitolo</label>
+                    <input type="text" id="customSubtitle" placeholder="1769 - 1821">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <button onclick="saveSettings()">Salva Impostazioni</button>
+            <button onclick="resetSettings()">Resetta Tutto</button>
+            <a href="sfondo.html"><button type="button">Visualizza Sfondo</button></a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Progetto Napoleone</p>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             loadSettings();
-            document.getElementById('musicVolume').addEventListener('input', function() {
-                document.getElementById('volumeValue').textContent = this.value + '%';
-            });
         });
 
         function updateBgPreview() {
@@ -172,14 +133,10 @@
             } else if (type === 'gradient') {
                 const c1 = document.getElementById('bgGradient1').value;
                 const c2 = document.getElementById('bgGradient2').value;
-                preview.style.background = `linear-gradient(135deg, ${c1}, ${c2})`;
+                preview.style.background = 'linear-gradient(135deg, ' + c1 + ', ' + c2 + ')';
             } else if (type === 'image') {
                 const url = document.getElementById('bgImage').value;
-                if (url) {
-                    preview.style.background = `url('${url}') center/cover`;
-                } else {
-                    preview.style.background = '#ccc';
-                }
+                preview.style.background = url ? "url('" + url + "') center/cover" : '#ccc';
             }
         }
 
@@ -205,19 +162,19 @@
         function loadSettings() {
             const saved = localStorage.getItem('napoleonSettings');
             if (saved) {
-                const settings = JSON.parse(saved);
-                document.getElementById('bgType').value = settings.bgType || 'color';
-                document.getElementById('bgColor').value = settings.bgColor || '#F5F2E8';
-                document.getElementById('bgGradient1').value = settings.bgGradient1 || '#002395';
-                document.getElementById('bgGradient2').value = settings.bgGradient2 || '#ED2939';
-                document.getElementById('bgImage').value = settings.bgImage || '';
-                document.getElementById('musicUrl').value = settings.musicUrl || '';
-                document.getElementById('musicVolume').value = settings.musicVolume || 50;
-                document.getElementById('volumeValue').textContent = (settings.musicVolume || 50) + '%';
-                document.getElementById('musicAutoplay').checked = settings.musicAutoplay || false;
-                document.getElementById('musicLoop').checked = settings.musicLoop !== false;
-                document.getElementById('customTitle').value = settings.customTitle || '';
-                document.getElementById('customSubtitle').value = settings.customSubtitle || '';
+                const s = JSON.parse(saved);
+                document.getElementById('bgType').value = s.bgType || 'color';
+                document.getElementById('bgColor').value = s.bgColor || '#F5F2E8';
+                document.getElementById('bgGradient1').value = s.bgGradient1 || '#002395';
+                document.getElementById('bgGradient2').value = s.bgGradient2 || '#ED2939';
+                document.getElementById('bgImage').value = s.bgImage || '';
+                document.getElementById('musicUrl').value = s.musicUrl || '';
+                document.getElementById('musicVolume').value = s.musicVolume || 50;
+                document.getElementById('volumeValue').textContent = (s.musicVolume || 50) + '%';
+                document.getElementById('musicAutoplay').checked = s.musicAutoplay || false;
+                document.getElementById('musicLoop').checked = s.musicLoop !== false;
+                document.getElementById('customTitle').value = s.customTitle || '';
+                document.getElementById('customSubtitle').value = s.customSubtitle || '';
                 updateBgPreview();
             }
         }
@@ -227,154 +184,5 @@
             location.reload();
         }
     </script>
-
-    <style>
-        .admin-panel {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px;
-            background: white;
-            border: 1px solid var(--ink-light);
-        }
-
-        .admin-section {
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--ink-light);
-        }
-
-        .admin-section:last-of-type {
-            border-bottom: none;
-        }
-
-        .admin-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-        }
-
-        .admin-description {
-            color: var(--ink-light);
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .admin-form-group {
-            margin-bottom: 20px;
-        }
-
-        .admin-form-group label {
-            display: block;
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            color: var(--ink);
-        }
-
-        .admin-form-group input[type="text"],
-        .admin-form-group input[type="url"],
-        .admin-form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--ink-light);
-            font-family: inherit;
-            font-size: 15px;
-            background: var(--paper);
-        }
-
-        .admin-form-group input[type="color"] {
-            width: 60px;
-            height: 40px;
-            border: 1px solid var(--ink-light);
-            cursor: pointer;
-        }
-
-        .admin-form-group input[type="range"] {
-            width: 200px;
-        }
-
-        .admin-hint {
-            font-size: 12px;
-            color: var(--ink-light);
-            margin-top: 5px;
-        }
-
-        .admin-preview {
-            margin-top: 20px;
-        }
-
-        .admin-preview h3 {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .preview-box {
-            width: 100%;
-            height: 200px;
-            border: 1px solid var(--ink-light);
-            background: var(--paper);
-        }
-
-        .admin-actions {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn-admin {
-            padding: 14px 28px;
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            background: var(--ink);
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .btn-admin:hover {
-            background: var(--accent);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--ink);
-            color: var(--ink);
-        }
-
-        .btn-secondary:hover {
-            background: var(--ink);
-            color: white;
-        }
-
-        .btn-view {
-            background: var(--bleu);
-        }
-
-        @media (max-width: 768px) {
-            .admin-panel {
-                padding: 20px;
-            }
-            
-            .admin-actions {
-                flex-direction: column;
-            }
-            
-            .btn-admin {
-                width: 100%;
-            }
-        }
-    </style>
 </body>
 </html>

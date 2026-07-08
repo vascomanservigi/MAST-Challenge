@@ -3,209 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conquiste | Le Moniteur</title>
+    <title>Conquiste - Napoleone</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="newspaper-header">
-        <div class="container">
-            <span class="newspaper-date">15 Agosto 1769</span>
-            <span class="newspaper-edition">Edizione Speciale</span>
-        </div>
-    </header>
-
-    <div class="masthead">
-        <div class="container">
-            <h1 class="masthead-title">Le Moniteur</h1>
-            <p class="masthead-subtitle">Gazzetta Ufficiale dell'Impero Francese</p>
-            <div class="masthead-line">
-                <span>Fondato nel 1789</span>
-                <span class="masthead-divider"></span>
-                <span>Parigi</span>
-                <span class="masthead-divider"></span>
-                <span>Journal Officiel</span>
-            </div>
-        </div>
-    </div>
-
-    <nav class="newspaper-nav">
-        <div class="container">
-            <div class="nav-toggle" onclick="document.querySelector('.newspaper-nav ul').classList.toggle('active')">Menu</div>
-            <ul>
-                <li><a href="index.html">Prima Pagina</a></li>
-                <li><a href="biografia.html">Biografia</a></li>
-                <li><a href="conquiste.html" class="active">Conquiste</a></li>
-                <li><a href="eredita.html">Eredità</a></li>
-                <li><a href="colleghi.html">Redazione</a></li>
-                <li><a href="ambientazioni.html">Ambientazioni</a></li>
-                <li><a href="sfondo.html">Sfondo</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="biografia.html">Biografia</a></li>
+            <li><a href="conquiste.html" class="active">Conquiste</a></li>
+            <li><a href="eredita.html">Eredità</a></li>
+            <li><a href="colleghi.html">Team</a></li>
+            <li><a href="ambientazioni.html">Ambientazioni</a></li>
+            <li><a href="sfondo.html">Sfondo</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
     </nav>
 
-    <main>
-        <section class="section-title">
-            <h1>Conquiste Militari</h1>
-            <p>Le campagne e le battaglie che definirono un'era</p>
-        </section>
+    <div class="container">
+        <h1>Conquiste Militari</h1>
+        <p>Le campagne e le battaglie di Napoleone</p>
 
-        <section class="article">
-            <div class="container">
-                <div class="article-header">
-                    <span class="article-label">Reportage</span>
-                    <h2 class="article-title">Le Grandi Campagne</h2>
-                    <p class="article-subtitle">Dall'Italia all'Egitto, fino ai confini dell'Impero</p>
-                </div>
+        <section>
+            <h2>Le Grandi Campagne</h2>
+            
+            <div class="card">
+                <h3>Campagna d'Italia (1796-1797)</h3>
+                <p>La prima grande impresa. Sconfisse gli Austriaci a Lodi, Arcole e Rivoli, conquistando l'Italia settentrionale.</p>
+            </div>
 
-                <div class="news-cards">
-                    <article class="news-card fade-in">
-                        <div class="news-card-image">🇮🇹</div>
-                        <div class="news-card-body">
-                            <p class="news-card-label">1796-1797</p>
-                            <h3 class="news-card-title">Campagna d'Italia</h3>
-                            <p class="news-card-text">La prima grande impresa. Con un esercito mal equipaggiato ma motivato, sconfisse gli Austriaci a Lodi, Arcole e Rivoli, conquistando l'Italia settentrionale.</p>
-                        </div>
-                    </article>
+            <div class="card">
+                <h3>Campagna d'Egitto (1798-1799)</h3>
+                <p>Spedizione scientifica e militare. Scoperta della Stele di Rosetta. La flotta distrutta ad Abukir.</p>
+            </div>
 
-                    <article class="news-card fade-in">
-                        <div class="news-card-image" style="background: var(--bleu);">🇪🇬</div>
-                        <div class="news-card-body">
-                            <p class="news-card-label">1798-1799</p>
-                            <h3 class="news-card-title">Campagna d'Egitto</h3>
-                            <p class="news-card-text">Spedizione scientifica e militare. Nonostante le vittorie terrestri, la flotta fu distrutta ad Abukir. La scoperta della Stele di Rosetta cambiò la storia.</p>
-                        </div>
-                    </article>
-
-                    <article class="news-card fade-in">
-                        <div class="news-card-image" style="background: var(--accent);">⚔️</div>
-                        <div class="news-card-body">
-                            <p class="news-card-label">1800</p>
-                            <h3 class="news-card-title">Seconda Campagna d'Italia</h3>
-                            <p class="news-card-text">Il ritorno trionfale dopo il colpo di Stato del 18 Brumaio. La vittoria di Marengo contro gli Austriaci consolidò il suo potere in Francia.</p>
-                        </div>
-                    </article>
-                </div>
+            <div class="card">
+                <h3>Seconda Campagna d'Italia (1800)</h3>
+                <p>Vittoria di Marengo. Consolidamento del potere come Primo Console.</p>
             </div>
         </section>
 
-        <div class="pull-quote">
-            <p class="pull-quote-text">"Nelle campagne vittoriose ci sono i generali; in quelle disastrose, i martiri."</p>
-            <p class="pull-quote-author">Napoleone Bonaparte</p>
-        </div>
+        <section>
+            <h2>Le Battaglie Decisive</h2>
 
-        <section class="article">
-            <div class="container">
-                <div class="article-header">
-                    <span class="article-label">Archivio Storico</span>
-                    <h2 class="article-title">Le Battaglie Decisive</h2>
-                    <p class="article-subtitle">Gli scontri che scrissero la storia europea</p>
+            <div class="accordion-item">
+                <button class="accordion-header">Austerlitz (2 dicembre 1805) [+]</button>
+                <div class="accordion-content">
+                    <p>Il capolavoro strategico. Contro forze russe e austriache superiori, attirò il nemico su terreno sfavorevole e lanciò un attacco devastante.</p>
                 </div>
+            </div>
 
-                <div class="accordion-newspaper">
-                    <div class="accordion-item fade-in">
-                        <button class="accordion-header">
-                            <span>Austerlitz — 2 Dicembre 1805</span>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Considerata il capolavoro strategico di Napoleone. Contro forze russe e austriache numericamente superiori, l'imperatore attirò il nemico su terreno sfavorevole e lanciò un attacco devastante. La battaglia si svolse nell'anniversario della sua incoronazione.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="accordion-item">
+                <button class="accordion-header">Jena-Auerstedt (14 ottobre 1806) [+]</button>
+                <div class="accordion-content">
+                    <p>Due battaglie simultanee che distrussero l'esercito prussiano in un solo giorno.</p>
+                </div>
+            </div>
 
-                    <div class="accordion-item fade-in">
-                        <button class="accordion-header">
-                            <span>Jena-Auerstedt — 14 Ottobre 1806</span>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Due battaglie simultanee che distrussero l'esercito prussiano. Napoleone, alla testa di 100.000 uomini, sconfisse i prussiani a Jena, mentre il maresciallo Davout vinse a Auerstedt. La Prussia fu umiliata in un solo giorno.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="accordion-item">
+                <button class="accordion-header">Borodino (7 settembre 1812) [+]</button>
+                <div class="accordion-content">
+                    <p>La battaglia più sanguinosa con oltre 70.000 morti. La strada per Mosca aperta, ma la città fu data alle fiamme.</p>
+                </div>
+            </div>
 
-                    <div class="accordion-item fade-in">
-                        <button class="accordion-header">
-                            <span>Borodino — 7 Settembre 1812</span>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>La battaglia più sanguinosa delle guerre napoleoniche, con oltre 70.000 morti. Tecnicamente una vittoria francese, ma le perdite furono tali che la strada per Mosca portò solo a una città in fiamme.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="accordion-item">
+                <button class="accordion-header">Lipsia (16-19 ottobre 1813) [+]</button>
+                <div class="accordion-content">
+                    <p>La "Battaglia delle Nazioni". Il più grande scontro prima della Prima Guerra Mondiale. Inizio della fine dell'Impero.</p>
+                </div>
+            </div>
 
-                    <div class="accordion-item fade-in">
-                        <button class="accordion-header">
-                            <span>Lipsia — 16-19 Ottobre 1813</span>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>La "Battaglia delle Nazioni", il più grande scontro armato prima della Prima Guerra Mondiale. Le forze della Sesta Coalizione sconfissero Napoleone, segnando l'inizio della fine dell'Impero.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item fade-in">
-                        <button class="accordion-header">
-                            <span>Waterloo — 18 Giugno 1815</span>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>La battaglia finale. Dopo i Cento Giorni, Napoleone affrontò le forze britanniche del Duca di Wellington e l'esercito prussiano. Un ritardo causato dal fango e l'arrivo dei prussiani decisero le sorti dello scontro.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="accordion-item">
+                <button class="accordion-header">Waterloo (18 giugno 1815) [+]</button>
+                <div class="accordion-content">
+                    <p>La battaglia finale. Sconfitta contro Wellington e Blücher. Fine dell'era napoleonica.</p>
                 </div>
             </div>
         </section>
-    </main>
+    </div>
 
-    <footer class="newspaper-footer">
-        <div class="container">
-            <div class="footer-masthead">
-                <h2>Le Moniteur</h2>
-                <p>Progetto Didattico — Napoleone Bonaparte</p>
-            </div>
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h4>Sezioni</h4>
-                    <ul>
-                        <li><a href="biografia.html">Biografia</a></li>
-                        <li><a href="conquiste.html">Conquiste</a></li>
-                        <li><a href="eredita.html">Eredità</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Risorse</h4>
-                    <ul>
-                        <li><a href="ambientazioni.html">Ambientazioni</a></li>
-                        <li><a href="colleghi.html">La Redazione</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Informazioni</h4>
-                    <ul>
-                        <li><a href="#">Contatti</a></li>
-                        <li><a href="#">Crediti</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Archivio</h4>
-                    <ul>
-                        <li><a href="#">Fonti</a></li>
-                        <li><a href="#">Bibliografia</a></li>
-                    </ul>
-                </div>
-            </div>
-            <p class="footer-copyright">© 2026 Le Moniteur — Tutti i diritti riservati</p>
-        </div>
+    <footer>
+        <p>&copy; 2026 Progetto Napoleone</p>
     </footer>
 
     <script src="js/main.js"></script>

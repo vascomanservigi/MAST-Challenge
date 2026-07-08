@@ -3,223 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ambientazioni | Le Moniteur</title>
+    <title>Ambientazioni - Napoleone</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="newspaper-header">
-        <div class="container">
-            <span class="newspaper-date">15 Agosto 1769</span>
-            <span class="newspaper-edition">Edizione Speciale</span>
-        </div>
-    </header>
-
-    <div class="masthead">
-        <div class="container">
-            <h1 class="masthead-title">Le Moniteur</h1>
-            <p class="masthead-subtitle">Gazzetta Ufficiale dell'Impero Francese</p>
-            <div class="masthead-line">
-                <span>Fondato nel 1789</span>
-                <span class="masthead-divider"></span>
-                <span>Parigi</span>
-                <span class="masthead-divider"></span>
-                <span>Journal Officiel</span>
-            </div>
-        </div>
-    </div>
-
-    <nav class="newspaper-nav">
-        <div class="container">
-            <div class="nav-toggle" onclick="document.querySelector('.newspaper-nav ul').classList.toggle('active')">Menu</div>
-            <ul>
-                <li><a href="index.html">Prima Pagina</a></li>
-                <li><a href="biografia.html">Biografia</a></li>
-                <li><a href="conquiste.html">Conquiste</a></li>
-                <li><a href="eredita.html">Eredità</a></li>
-                <li><a href="colleghi.html">Redazione</a></li>
-                <li><a href="ambientazioni.html" class="active">Ambientazioni</a></li>
-                <li><a href="sfondo.html">Sfondo</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="biografia.html">Biografia</a></li>
+            <li><a href="conquiste.html">Conquiste</a></li>
+            <li><a href="eredita.html">Eredità</a></li>
+            <li><a href="colleghi.html">Team</a></li>
+            <li><a href="ambientazioni.html" class="active">Ambientazioni</a></li>
+            <li><a href="sfondo.html">Sfondo</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
     </nav>
 
-    <main>
-        <section class="section-title">
-            <h1>Ambientazioni Storiche</h1>
-            <p>Un viaggio attraverso le epoche della storia napoleonica</p>
-        </section>
+    <div class="container">
+        <h1>Ambientazioni Storiche</h1>
+        <p>I periodi e i luoghi dell'era napoleonica</p>
 
-        <section class="article">
-            <div class="container">
-                <div class="article-header">
-                    <span class="article-label">Cronaca</span>
-                    <h2 class="article-title">I Tre Periodi</h2>
-                    <p class="article-subtitle">Dalla Repubblica all'Esilio: le epoche di Napoleone</p>
-                </div>
+        <section>
+            <h2>I Tre Periodi</h2>
 
-                <div class="period-block fade-in">
-                    <div class="period-date">
-                        <div class="period-years">1789—1804</div>
-                        <div class="period-label">Prima Repubblica</div>
-                    </div>
-                    <div class="period-content">
-                        <h3>L'Era Rivoluzionaria e il Consolato</h3>
-                        <p>Napoleone emerge come figura prominente durante gli anni turbolenti della Rivoluzione Francese. Dal colpo di Stato del 18 Brumaio alle riforme consolari, questo periodo vede la trasformazione della Francia e l'ascesa del giovane generale corso.</p>
-                        <p>Le campagne d'Italia e d'Egitto consolidano la sua reputazione militare, mentre la nuova costituzione del 1799 gli conferisce poteri quasi dittatoriali come Primo Console.</p>
-                    </div>
-                </div>
+            <div class="card">
+                <h3>La Prima Repubblica (1789-1804)</h3>
+                <p>L'era rivoluzionaria e il Consolato. Napoleone emerge durante la Rivoluzione, compie il colpo di Stato del 18 Brumaio e diventa Primo Console.</p>
+            </div>
 
-                <div class="period-block fade-in">
-                    <div class="period-date">
-                        <div class="period-years">1804—1814</div>
-                        <div class="period-label">L'Impero</div>
-                    </div>
-                    <div class="period-content">
-                        <h3>L'Apice del Potere</h3>
-                        <p>L'incoronazione a Notre-Dame, le grandi vittorie di Austerlitz e Jena, la riorganizzazione dell'Europa. L'Impero raggiunge la sua massima estensione, estendendosi dalla Spagna alla Polonia.</p>
-                        <p>È l'era delle grandi riforme interne: il Codice Civile, il sistema educativo, la Legion d'Onore. La Francia diventa il modello per l'Europa moderna.</p>
-                    </div>
-                </div>
+            <div class="card">
+                <h3>L'Impero (1804-1814)</h3>
+                <p>L'apice del potere. Incoronazione a Notre-Dame, vittorie di Austerlitz e Jena, riorganizzazione dell'Europa. L'Impero alla massima estensione.</p>
+            </div>
 
-                <div class="period-block fade-in">
-                    <div class="period-date">
-                        <div class="period-years">1814—1821</div>
-                        <div class="period-label">L'Esilio</div>
-                    </div>
-                    <div class="period-content">
-                        <h3>La Caduta e l'Ultimo Atto</h3>
-                        <p>Dall'abdicazione all'isola d'Elba, i Cento Giorni, Waterloo e infine Sant'Elena. Un periodo di riflessione, memorie e leggenda. L'imperatore decaduto diventa un mito che sopravviverà ai secoli.</p>
-                        <p>A Sant'Elena, Napoleone detta le sue memorie, plasmando deliberatamente il proprio mito per le generazioni future.</p>
-                    </div>
-                </div>
+            <div class="card">
+                <h3>L'Esilio (1814-1821)</h3>
+                <p>La caduta. Abdicazione, isola d'Elba, i Cento Giorni, Waterloo, Sant'Elena. L'imperatore diventa un mito.</p>
             </div>
         </section>
 
-        <div class="pull-quote">
-            <p class="pull-quote-text">"Non c'è nulla che i francesi amino più del cambiamento. Hanno trasformato il loro mondo."</p>
-            <p class="pull-quote-author">Napoleone Bonaparte, Sant'Elena 1816</p>
-        </div>
+        <section>
+            <h2>Luoghi Iconici</h2>
 
-        <section class="article">
-            <div class="container">
-                <div class="article-header">
-                    <span class="article-label">Viaggi</span>
-                    <h2 class="article-title">Luoghi Iconici</h2>
-                    <p class="article-subtitle">I siti storici dell'era napoleonica</p>
+            <div class="accordion-item">
+                <button class="accordion-header">Parigi [+]</button>
+                <div class="accordion-content">
+                    <p>Notre-Dame (incoronazione), Les Invalides (tomba), Arco di Trionfo. La capitale dell'Impero conserva ovunque le tracce di Napoleone.</p>
                 </div>
+            </div>
 
-                <div class="accordion-newspaper">
-                    <div class="accordion-item fade-in">
-                        <button class="accordion-header">
-                            <span>Parigi — Capitale dell'Impero</span>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Notre-Dame, dove Napoleone si incoronò imperatore. Les Invalides, dove riposano oggi le sue spoglie. L'Arco di Trionfo, ordinato da Napoleone per celebrare le vittorie della Grande Armata. Parigi conserva ovunque le tracce dell'era napoleonica.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="accordion-item">
+                <button class="accordion-header">Ajaccio [+]</button>
+                <div class="accordion-content">
+                    <p>La casa natale di Napoleone è un museo. La cattedrale dove fu battezzato. La Corsica celebra il suo figlio più celebre.</p>
+                </div>
+            </div>
 
-                    <div class="accordion-item fade-in">
-                        <button class="accordion-header">
-                            <span>Ajaccio — La Città Natale</span>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>La casa natale di Napoleone, in Rue Saint-Charles, è oggi un museo. La cattedrale dove fu battezzato. Le strade che videro crescere il futuro imperatore. La Corsica intera conserva il ricordo del suo figlio più celebre.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="accordion-item">
+                <button class="accordion-header">Waterloo [+]</button>
+                <div class="accordion-content">
+                    <p>In Belgio, il campo di battaglia è un memoriale. La Butte du Lion e il Visitor Center raccontano la battaglia finale.</p>
+                </div>
+            </div>
 
-                    <div class="accordion-item fade-in">
-                        <button class="accordion-header">
-                            <span>Waterloo — Il Campo di Battaglia</span>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>In Belgio, il campo di battaglia è preservato come memoriale. La Butte du Lion commemora il luogo. Il Visitor Center racconta la battaglia che cambiò la storia europea per sempre.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item fade-in">
-                        <button class="accordion-header">
-                            <span>Sant'Elena — L'Isola dell'Esilio</span>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>Nell'Atlantico meridionale, l'ultimo rifugio di Napoleone. Longwood House, dove visse gli ultimi anni. La Valle del Silenzio, dove amava passeggiare. La sua tomba, dove riposò fino al 1840 quando le sue spoglie furono traslate a Parigi.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="accordion-item">
+                <button class="accordion-header">Sant'Elena [+]</button>
+                <div class="accordion-content">
+                    <p>Nell'Atlantico meridionale, l'ultimo rifugio. Longwood House, la Valle del Silenzio, la tomba. Un luogo di pellegrinaggio storico.</p>
                 </div>
             </div>
         </section>
 
-        <section class="article">
-            <div class="container">
-                <div class="article-header">
-                    <span class="article-label">Galleria</span>
-                    <h2 class="article-title">Archivio Fotografico</h2>
-                    <p class="article-subtitle">Immagini dell'era napoleonica</p>
-                </div>
-
-                <div class="gallery-newspaper">
-                    <div class="gallery-item fade-in">Inserisci immagine</div>
-                    <div class="gallery-item fade-in">Inserisci immagine</div>
-                    <div class="gallery-item fade-in">Inserisci immagine</div>
-                    <div class="gallery-item fade-in">Inserisci immagine</div>
-                    <div class="gallery-item fade-in">Inserisci immagine</div>
-                    <div class="gallery-item fade-in">Inserisci immagine</div>
-                </div>
+        <section>
+            <h2>Galleria</h2>
+            <p>Inserisci le immagini modificando il file HTML. Esempio:</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">Immagine 1</div>
+                <div class="gallery-item">Immagine 2</div>
+                <div class="gallery-item">Immagine 3</div>
+                <div class="gallery-item">Immagine 4</div>
+                <div class="gallery-item">Immagine 5</div>
+                <div class="gallery-item">Immagine 6</div>
             </div>
         </section>
-    </main>
+    </div>
 
-    <footer class="newspaper-footer">
-        <div class="container">
-            <div class="footer-masthead">
-                <h2>Le Moniteur</h2>
-                <p>Progetto Didattico — Napoleone Bonaparte</p>
-            </div>
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h4>Sezioni</h4>
-                    <ul>
-                        <li><a href="biografia.html">Biografia</a></li>
-                        <li><a href="conquiste.html">Conquiste</a></li>
-                        <li><a href="eredita.html">Eredità</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Risorse</h4>
-                    <ul>
-                        <li><a href="ambientazioni.html">Ambientazioni</a></li>
-                        <li><a href="colleghi.html">La Redazione</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Informazioni</h4>
-                    <ul>
-                        <li><a href="#">Contatti</a></li>
-                        <li><a href="#">Crediti</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Archivio</h4>
-                    <ul>
-                        <li><a href="#">Fonti</a></li>
-                        <li><a href="#">Bibliografia</a></li>
-                    </ul>
-                </div>
-            </div>
-            <p class="footer-copyright">© 2026 Le Moniteur — Tutti i diritti riservati</p>
-        </div>
+    <footer>
+        <p>&copy; 2026 Progetto Napoleone</p>
     </footer>
 
     <script src="js/main.js"></script>
