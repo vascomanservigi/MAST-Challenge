@@ -8,18 +8,18 @@
 
 body {
     font-family: 'Crimson Text', Georgia, serif;
-    background: #faf6f0;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-    color: #2c1810;
+    background: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    color: #1a1a2e;
     line-height: 1.7;
     font-size: 19px;
 }
 
 /* NAVIGATION */
 nav {
-    background: linear-gradient(180deg, #2c1810 0%, #1a0f08 100%);
+    background: linear-gradient(180deg, #002395 0%, #001a6e 100%);
     padding: 0 40px;
-    border-bottom: 4px solid #8b3a3a;
+    border-bottom: 4px solid #ed2939;
     font-family: 'IM Fell French Canon', serif;
     position: sticky;
     top: 0;
@@ -40,21 +40,21 @@ nav li {
 
 nav > ul > li > a {
     display: block;
-    color: #faf6f0;
+    color: #ffffff;
     text-decoration: none;
     font-size: 20px;
     padding: 18px 25px;
     transition: all 0.3s;
-    border-right: 1px solid rgba(250, 246, 240, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 nav > ul > li:first-child > a {
-    border-left: 1px solid rgba(250, 246, 240, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 nav > ul > li > a:hover {
-    background: rgba(139, 58, 58, 0.5);
-    color: #d4af37;
+    background: rgba(237, 41, 63, 0.5);
+    color: #ffd700;
 }
 
 nav > ul > li > a::after {
@@ -64,7 +64,7 @@ nav > ul > li > a::after {
     left: 0;
     width: 0;
     height: 3px;
-    background: #d4af37;
+    background: #ffd700;
     transition: width 0.3s;
 }
 
@@ -79,8 +79,8 @@ nav ul ul {
     top: 100%;
     left: 0;
     min-width: 220px;
-    background: #2c1810;
-    border: 2px solid #8b3a3a;
+    background: #002395;
+    border: 2px solid #ed2939;
     border-top: none;
     box-shadow: 6px 6px 0 rgba(0,0,0,0.4);
 }
@@ -102,7 +102,7 @@ nav ul li:hover > ul {
 }
 
 nav ul ul li {
-    border-bottom: 1px solid rgba(139, 58, 58, 0.5);
+    border-bottom: 1px solid rgba(237, 41, 63, 0.5);
 }
 
 nav ul ul li:last-child {
@@ -111,7 +111,7 @@ nav ul ul li:last-child {
 
 nav ul ul a {
     display: block;
-    color: #faf6f0;
+    color: #ffffff;
     text-decoration: none;
     font-size: 17px;
     padding: 14px 20px;
@@ -119,8 +119,8 @@ nav ul ul a {
 }
 
 nav ul ul a:hover {
-    background: rgba(139, 58, 58, 0.6);
-    color: #d4af37;
+    background: rgba(237, 41, 63, 0.6);
+    color: #ffd700;
     padding-left: 30px;
 }
 
@@ -130,7 +130,7 @@ nav::before, nav::after {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: #d4af37;
+    color: #ffd700;
     font-size: 18px;
     opacity: 0.5;
 }
@@ -148,7 +148,7 @@ nav::after {
     display: none;
     background: none;
     border: none;
-    color: #faf6f0;
+    color: #ffffff;
     font-size: 28px;
     cursor: pointer;
     padding: 15px;
@@ -157,9 +157,9 @@ nav::after {
 /* BUTTONS */
 button {
     font-family: 'IM Fell French Canon', serif;
-    background: #8b3a3a;
-    color: #faf6f0;
-    border: 2px solid #5c2828;
+    background: #ed2939;
+    color: #ffffff;
+    border: 2px solid #b81d2f;
     padding: 12px 35px;
     font-size: 20px;
     cursor: pointer;
@@ -168,7 +168,7 @@ button {
 }
 
 button:hover {
-    background: #5c2828;
+    background: #b81d2f;
     transform: scale(1.05);
 }
 
@@ -183,15 +183,15 @@ button:hover {
     text-align: center;
     margin-bottom: 50px;
     padding: 40px;
-    background: #fffdf8;
-    border: 3px double #8b3a3a;
-    box-shadow: 8px 8px 0 rgba(139, 58, 58, 0.15);
+    background: #fafafa;
+    border: 3px double #002395;
+    box-shadow: 8px 8px 0 rgba(0, 35, 149, 0.15);
 }
 
 .hero h1 {
     font-family: 'IM Fell French Canon', serif;
     font-size: 52px;
-    color: #2c1810;
+    color: #002395;
     margin-bottom: 15px;
     font-weight: 400;
 }
@@ -199,7 +199,7 @@ button:hover {
 .hero p {
     font-family: 'IM Fell French Canon', serif;
     font-size: 26px;
-    color: #5c2828;
+    color: #ed2939;
     font-style: italic;
 }
 
@@ -210,53 +210,58 @@ button:hover {
 .hero-nav a {
     font-family: 'IM Fell French Canon', serif;
     padding: 12px 35px;
-    background: #8b3a3a;
-    color: #faf6f0;
+    background: #002395;
+    color: #ffffff;
     text-decoration: none;
     font-size: 20px;
-    border: 2px solid #5c2828;
+    border: 2px solid #001a6e;
     display: inline-block;
     transition: all 0.3s;
     border-radius: 3px;
 }
 
 .hero-nav a:hover {
-    background: #5c2828;
+    background: #ed2939;
+    border-color: #b81d2f;
 }
 
 .section {
     margin: 45px 0;
     padding: 30px;
-    background: #fffdf8;
-    border-left: 4px solid #8b3a3a;
-    box-shadow: 5px 5px 0 rgba(139, 58, 58, 0.12);
+    background: #fafafa;
+    border-left: 4px solid #ed2939;
+    box-shadow: 5px 5px 0 rgba(0, 35, 149, 0.1);
 }
 
 .section h2 {
     font-family: 'IM Fell French Canon', serif;
     font-size: 34px;
-    color: #2c1810;
+    color: #002395;
     margin-bottom: 18px;
     font-weight: 600;
     text-decoration: underline;
-    text-decoration-color: #d4af37;
+    text-decoration-color: #ffd700;
     text-underline-offset: 8px;
 }
 
 .section p {
     font-size: 19px;
-    color: #3d2417;
+    color: #2a2a3a;
     line-height: 1.8;
 }
 
 .section a {
-    color: #8b3a3a;
+    color: #002395;
     text-decoration: underline;
     transition: color 0.3s;
 }
 
 .section a:hover {
-    color: #d4af37;
+    color: #ed2939;
+}
+
+.section strong {
+    color: #002395;
 }
 
 .team-grid {
@@ -267,9 +272,9 @@ button:hover {
 }
 
 .member {
-    background: #fffdf8;
+    background: #fafafa;
     padding: 25px;
-    border: 2px solid #8b3a3a;
+    border: 2px solid #002395;
     font-size: 18px;
     position: relative;
 }
@@ -279,20 +284,20 @@ button:hover {
     position: absolute;
     top: -15px;
     left: 20px;
-    background: #faf6f0;
+    background: #ffffff;
     padding: 0 10px;
-    color: #8b3a3a;
+    color: #002395;
     font-size: 20px;
 }
 
 .member strong {
-    color: #5c2828;
+    color: #002395;
     font-size: 22px;
     font-family: 'IM Fell French Canon', serif;
 }
 
 .member span {
-    color: #8b3a3a;
+    color: #ed2939;
     font-style: italic;
 }
 
@@ -307,19 +312,19 @@ button:hover {
     text-align: center;
     margin-bottom: 40px;
     padding: 30px;
-    background: #fffdf8;
-    border: 3px double #8b3a3a;
+    background: #fafafa;
+    border: 3px double #002395;
 }
 
 .admin-header h1 {
     font-family: 'IM Fell French Canon', serif;
     font-size: 40px;
-    color: #2c1810;
+    color: #002395;
 }
 
 .admin-header p {
     font-family: 'IM Fell French Canon', serif;
-    color: #5c2828;
+    color: #ed2939;
     margin-top: 12px;
     font-size: 22px;
     font-style: italic;
@@ -333,22 +338,22 @@ button:hover {
 }
 
 .image-box {
-    background: #fffdf8;
-    border: 2px solid #8b3a3a;
+    background: #fafafa;
+    border: 2px solid #002395;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 4px 4px 0 rgba(139, 58, 58, 0.15);
+    box-shadow: 4px 4px 0 rgba(0, 35, 149, 0.15);
 }
 
 .image-box:hover {
     transform: translateY(-5px) rotate(-1deg);
-    box-shadow: 8px 8px 0 rgba(139, 58, 58, 0.2);
+    box-shadow: 8px 8px 0 rgba(0, 35, 149, 0.2);
 }
 
 .image-box.selected {
-    border-color: #d4af37;
+    border-color: #ed2939;
     border-width: 4px;
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 0 25px rgba(237, 41, 63, 0.4);
 }
 
 .image-box img {
@@ -356,7 +361,6 @@ button:hover {
     height: 140px;
     object-fit: cover;
     display: block;
-    filter: sepia(0.15);
 }
 
 .image-box p {
@@ -364,9 +368,9 @@ button:hover {
     text-align: center;
     font-family: 'IM Fell French Canon', serif;
     font-size: 19px;
-    color: #2c1810;
+    color: #002395;
     margin: 0;
-    border-top: 1px solid #8b3a3a;
+    border-top: 1px solid #002395;
 }
 
 .save-btn {
@@ -390,31 +394,31 @@ button:hover {
     position: fixed;
     top: 25px;
     left: 25px;
-    background: rgba(255, 253, 248, 0.95);
+    background: rgba(255, 255, 255, 0.95);
     padding: 10px 25px;
     text-decoration: none;
-    color: #2c1810;
+    color: #002395;
     font-family: 'IM Fell French Canon', serif;
     font-size: 20px;
-    border: 2px solid #8b3a3a;
-    box-shadow: 4px 4px 0 rgba(139, 58, 58, 0.25);
+    border: 2px solid #ed2939;
+    box-shadow: 4px 4px 0 rgba(0, 35, 149, 0.25);
     transition: all 0.3s;
 }
 
 .home-link:hover {
     transform: translateY(-2px);
-    box-shadow: 6px 6px 0 rgba(139, 58, 58, 0.35);
+    box-shadow: 6px 6px 0 rgba(0, 35, 149, 0.35);
 }
 
 /* FOOTER */
 footer {
     text-align: center;
     padding: 35px;
-    color: #5c2828;
+    color: #002395;
     font-family: 'IM Fell French Canon', serif;
     font-size: 18px;
     margin-top: 50px;
-    border-top: 2px solid #8b3a3a;
+    border-top: 2px solid #ed2939;
 }
 
 @media (max-width: 768px) {
@@ -448,14 +452,14 @@ footer {
     
     nav > ul > li > a {
         border-right: none;
-        border-bottom: 1px solid rgba(250, 246, 240, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
     
     nav ul ul {
         position: static;
         box-shadow: none;
         border: none;
-        border-top: 1px solid rgba(139, 58, 58, 0.3);
+        border-top: 1px solid rgba(237, 41, 63, 0.3);
     }
     
     nav ul ul a {
