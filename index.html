@@ -3,55 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAST Challenge - Home</title>
+    <title>Napoleone Bonaparte | L'Imperatore dei Francesi</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="index.html" class="logo">MAST Challenge</a>
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">N</div>
+                    <span class="logo-text">Napole<span>one</span></span>
+                </a>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="servizi.html">Servizi</a></li>
-                    <li><a href="chi-siamo.html">Chi siamo</a></li>
-                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="biografia.html">Biografia</a></li>
+                    <li><a href="conquiste.html">Conquiste</a></li>
+                    <li><a href="eredita.html">Eredità</a></li>
+                    <li><a href="colleghi.html">Team</a></li>
+                    <li><a href="ambientazioni.html">Ambientazioni</a></li>
                 </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </nav>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Benvenuti su MAST Challenge</h1>
-                <p>Innovazione, tecnologia e passione per superare ogni sfida.</p>
-                <a href="servizi.html" class="btn">Scopri i nostri servizi</a>
+    <section class="hero">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <span class="hero-badge">1769 - 1821</span>
+            <h1>Napoleone <em>Bonaparte</em></h1>
+            <p class="hero-subtitle">L'uomo che cambiò il corso della storia europea. Generale, Console, Imperatore.</p>
+            <div class="hero-cta">
+                <a href="biografia.html" class="btn btn-primary">Scopri la sua storia</a>
+                <a href="conquiste.html" class="btn btn-secondary">Esplora le conquiste</a>
             </div>
-        </section>
+        </div>
+        <div class="hero-scroll">
+            <span>Scorri per scoprire</span>
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
 
-        <section class="features">
-            <div class="container">
-                <div class="card">
-                    <h3>Innovazione</h3>
-                    <p>Soluzioni all'avanguardia per le tue esigenze digitali.</p>
-                </div>
-                <div class="card">
-                    <h3>Affidabilità</h3>
-                    <p>Un team di professionisti al tuo servizio.</p>
-                </div>
-                <div class="card">
-                    <h3>Risultati</h3>
-                    <p>Obiettivi chiari e risultati misurabili.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+    <section class="section">
         <div class="container">
-            <p>&copy; 2026 MAST Challenge. Tutti i diritti riservati.</p>
+            <div class="intro-grid">
+                <div class="intro-content fade-in">
+                    <h2>Il genio strategico</h2>
+                    <p>Napoleone Bonaparte è stato uno dei più grandi leader militari e statisti della storia. Nato in Corsica nel 1769, salì al potere durante la Rivoluzione Francese e divenne Imperatore dei Francesi nel 1804.</p>
+                    <p>Le sue campagne militari rivoluzionarono l'arte della guerra, mentre il suo Codice Civile trasformò il sistema giuridico europeo, lasciando un'eredità che persiste ancora oggi.</p>
+                    <a href="biografia.html" class="btn btn-primary" style="margin-top: 20px;">Leggi la biografia completa</a>
+                </div>
+                <div class="intro-image fade-in">
+                    <div style="width: 100%; height: 400px; background: linear-gradient(135deg, var(--bleu), var(--rouge)); display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                        <svg width="200" height="200" fill="none" stroke="white" stroke-width="1" viewBox="0 0 24 24" style="opacity: 0.3;">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats fade-in">
+                <div class="stat-item">
+                    <div class="stat-number">60<span>+</span></div>
+                    <div class="stat-label">Battaglie vinte</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15<span>+</span></div>
+                    <div class="stat-label">Anni di regno</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">36</div>
+                    <div class="stat-label">Codice Napoleone</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Coalizioni affrontate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Periodi Storici</h2>
+                <div class="section-divider"></div>
+                <p>Un viaggio attraverso le epoche che hanno definito l'era napoleonica</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in">
+                    <div class="card-image">
+                        <svg width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Prima Repubblica</h3>
+                        <p class="card-text">L'ascesa di Napoleone durante gli anni turbolenti della Rivoluzione Francese e il Consolato.</p>
+                        <a href="ambientazioni.html#repubblica" class="card-link">Scopri di più →</a>
+                    </div>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-image" style="background: linear-gradient(135deg, #C5A572, #8B7355);">
+                        <svg width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">L'Impero</h3>
+                        <p class="card-text">L'incoronazione imperiale e l'apice del dominio francese sull'Europa continentale.</p>
+                        <a href="ambientazioni.html#impero" class="card-link">Scopri di più →</a>
+                    </div>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-image" style="background: linear-gradient(135deg, var(--rouge), #6B0F1A);">
+                        <svg width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">L'Esilio</h3>
+                        <p class="card-text">La caduta, i Cento Giorni e l'esilio finale a Sant'Elena.</p>
+                        <a href="ambientazioni.html#esilio" class="card-link">Scopri di più →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote fade-in">
+                <p class="quote-text">L'impossibile è una parola che si trova solo nel dizionario degli stolti.</p>
+                <p class="quote-author">— Napoleone Bonaparte</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Esplora il progetto</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in">
+                    <div class="card-body">
+                        <h3 class="card-title">Biografia Completa</h3>
+                        <p class="card-text">Dalla nascita in Corsica alla morte a Sant'Elena: un percorso attraverso la vita di un mito.</p>
+                        <a href="biografia.html" class="card-link">Vai alla biografia →</a>
+                    </div>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-body">
+                        <h3 class="card-title">Campagne Militari</h3>
+                        <p class="card-text">Dall'Italia all'Egitto, da Austerlitz a Waterloo: le battaglie che scrissero la storia.</p>
+                        <a href="conquiste.html" class="card-link">Scopri le conquiste →</a>
+                    </div>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-body">
+                        <h3 class="card-title">L'Eredità</h3>
+                        <p class="card-text">Il Codice Civile, le riforme amministrative, l'impatto duraturo sulla civiltà europea.</p>
+                        <a href="eredita.html" class="card-link">Scopri l'eredità →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Napoleone Bonaparte</h3>
+                    <p>Un progetto didattico dedicato alla figura di uno dei più grandi statisti della storia europea.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Sezioni</h4>
+                    <ul>
+                        <li><a href="biografia.html">Biografia</a></li>
+                        <li><a href="conquiste.html">Conquiste</a></li>
+                        <li><a href="eredita.html">Eredità</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Risorse</h4>
+                    <ul>
+                        <li><a href="ambientazioni.html">Ambientazioni</a></li>
+                        <li><a href="colleghi.html">Il Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contatti</h4>
+                    <ul>
+                        <li><a href="#">Email</a></li>
+                        <li><a href="#">Scuola</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Progetto Napoleone. Tutti i diritti riservati.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Termini</a>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
