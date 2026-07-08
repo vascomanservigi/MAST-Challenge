@@ -8,8 +8,25 @@
 </head>
 <body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="sfondo.html">Sfondo</a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+        <ul id="navMenu">
+            <li><a href="index.html">Accueil</a></li>
+            <li>
+                <a href="#" class="has-dropdown">Histoire ▾</a>
+                <ul>
+                    <li><a href="#chi-siamo">Chi Siamo</a></li>
+                    <li><a href="#progetto">Il Progetto</a></li>
+                    <li><a href="#team">Il Team</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="has-dropdown">Gallerie ▾</a>
+                <ul>
+                    <li><a href="sfondo.html">Sfondo</a></li>
+                    <li><a href="admin.html">Administration</a></li>
+                </ul>
+            </li>
+        </ul>
     </nav>
 
     <div class="home-container">
@@ -21,17 +38,17 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="chi-siamo">
             <h2>Chi Siamo</h2>
             <p>Siamo un team di studenti che ha realizzato un progetto didattico su Napoleone Bonaparte, una delle figure più influenti della storia europea. Il nostro obiettivo è presentare la sua vita e la sua eredità in modo interattivo.</p>
         </div>
 
-        <div class="section">
+        <div class="section" id="progetto">
             <h2>Il Progetto</h2>
             <p>Abbiamo creato un sito web che permette di esplorare la figura di Napoleone attraverso contenuti storici e immagini d'epoca. La funzionalità principale è la possibilità di personalizzare lo sfondo con dipinti storici e paesaggi legati alla sua vita.</p>
         </div>
 
-        <div class="section">
+        <div class="section" id="team">
             <h2>Il Team</h2>
             <div class="team-grid">
                 <div class="member">
@@ -65,5 +82,11 @@
             <p>© 2026 Progetto Didattico – Napoleone Bonaparte</p>
         </footer>
     </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

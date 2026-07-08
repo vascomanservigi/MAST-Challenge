@@ -8,8 +8,25 @@
 </head>
 <body>
     <nav>
-        <a href="index.html">← Home</a>
-        <a href="sfondo.html">Vedi Sfondo →</a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+        <ul id="navMenu">
+            <li><a href="index.html">Accueil</a></li>
+            <li>
+                <a href="#" class="has-dropdown">Histoire ▾</a>
+                <ul>
+                    <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
+                    <li><a href="index.html#progetto">Il Progetto</a></li>
+                    <li><a href="index.html#team">Il Team</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="has-dropdown">Gallerie ▾</a>
+                <ul>
+                    <li><a href="sfondo.html">Sfondo</a></li>
+                    <li><a href="admin.html">Administration</a></li>
+                </ul>
+            </li>
+        </ul>
     </nav>
 
     <div class="admin-container">
@@ -84,6 +101,10 @@
             } else {
                 alert('Seleziona prima un\'immagine');
             }
+        }
+
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
         }
     </script>
 </body>
