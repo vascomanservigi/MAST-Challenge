@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Parisienne&family=Caveat:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IM+Fell+French+Canon:ital@0;1&display=swap');
 
 * {
     margin: 0;
@@ -7,20 +7,20 @@
 }
 
 body {
-    font-family: 'Caveat', cursive;
-    background: #f4e4bc;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
-    color: #2b1810;
-    line-height: 1.8;
-    font-size: 18px;
+    font-family: 'Crimson Text', Georgia, serif;
+    background: #faf6f0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+    color: #2c1810;
+    line-height: 1.7;
+    font-size: 19px;
 }
 
 /* NAVIGATION */
 nav {
-    background: linear-gradient(180deg, #2b1810 0%, #1a0f0a 100%);
+    background: linear-gradient(180deg, #2c1810 0%, #1a0f08 100%);
     padding: 0 40px;
-    border-bottom: 4px solid #8b4513;
-    font-family: 'Parisienne', cursive;
+    border-bottom: 4px solid #8b3a3a;
+    font-family: 'IM Fell French Canon', serif;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -40,21 +40,21 @@ nav li {
 
 nav > ul > li > a {
     display: block;
-    color: #f4e4bc;
+    color: #faf6f0;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 20px;
     padding: 18px 25px;
     transition: all 0.3s;
-    border-right: 1px solid rgba(244, 228, 188, 0.2);
+    border-right: 1px solid rgba(250, 246, 240, 0.2);
 }
 
 nav > ul > li:first-child > a {
-    border-left: 1px solid rgba(244, 228, 188, 0.2);
+    border-left: 1px solid rgba(250, 246, 240, 0.2);
 }
 
 nav > ul > li > a:hover {
-    background: rgba(139, 69, 19, 0.5);
-    color: #c9a227;
+    background: rgba(139, 58, 58, 0.5);
+    color: #d4af37;
 }
 
 nav > ul > li > a::after {
@@ -64,7 +64,7 @@ nav > ul > li > a::after {
     left: 0;
     width: 0;
     height: 3px;
-    background: #c9a227;
+    background: #d4af37;
     transition: width 0.3s;
 }
 
@@ -79,8 +79,8 @@ nav ul ul {
     top: 100%;
     left: 0;
     min-width: 220px;
-    background: #2b1810;
-    border: 2px solid #8b4513;
+    background: #2c1810;
+    border: 2px solid #8b3a3a;
     border-top: none;
     box-shadow: 6px 6px 0 rgba(0,0,0,0.4);
 }
@@ -102,7 +102,7 @@ nav ul li:hover > ul {
 }
 
 nav ul ul li {
-    border-bottom: 1px solid rgba(139, 69, 19, 0.5);
+    border-bottom: 1px solid rgba(139, 58, 58, 0.5);
 }
 
 nav ul ul li:last-child {
@@ -111,29 +111,17 @@ nav ul ul li:last-child {
 
 nav ul ul a {
     display: block;
-    color: #f4e4bc;
+    color: #faf6f0;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 17px;
     padding: 14px 20px;
     transition: all 0.3s;
 }
 
 nav ul ul a:hover {
-    background: rgba(139, 69, 19, 0.6);
-    color: #c9a227;
+    background: rgba(139, 58, 58, 0.6);
+    color: #d4af37;
     padding-left: 30px;
-}
-
-/* Arrow indicator */
-nav > ul > li > a.has-dropdown::before {
-    content: '▼';
-    font-size: 10px;
-    margin-left: 8px;
-    transition: transform 0.3s;
-}
-
-nav > ul > li:hover > a.has-dropdown::before {
-    transform: rotate(180deg);
 }
 
 /* Decorative corners */
@@ -142,9 +130,9 @@ nav::before, nav::after {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: #c9a227;
-    font-size: 20px;
-    opacity: 0.6;
+    color: #d4af37;
+    font-size: 18px;
+    opacity: 0.5;
 }
 
 nav::before {
@@ -160,7 +148,7 @@ nav::after {
     display: none;
     background: none;
     border: none;
-    color: #f4e4bc;
+    color: #faf6f0;
     font-size: 28px;
     cursor: pointer;
     padding: 15px;
@@ -168,19 +156,19 @@ nav::after {
 
 /* BUTTONS */
 button {
-    font-family: 'Dancing Script', cursive;
-    background: #8b4513;
-    color: #f4e4bc;
-    border: 2px solid #5c2e0a;
+    font-family: 'IM Fell French Canon', serif;
+    background: #8b3a3a;
+    color: #faf6f0;
+    border: 2px solid #5c2828;
     padding: 12px 35px;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
     transition: all 0.3s;
     border-radius: 3px;
 }
 
 button:hover {
-    background: #5c2e0a;
+    background: #5c2828;
     transform: scale(1.05);
 }
 
@@ -195,23 +183,24 @@ button:hover {
     text-align: center;
     margin-bottom: 50px;
     padding: 40px;
-    background: #faf3e3;
-    border: 3px double #8b4513;
-    box-shadow: 8px 8px 0 rgba(139, 69, 19, 0.2);
+    background: #fffdf8;
+    border: 3px double #8b3a3a;
+    box-shadow: 8px 8px 0 rgba(139, 58, 58, 0.15);
 }
 
 .hero h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 56px;
-    color: #2b1810;
+    font-family: 'IM Fell French Canon', serif;
+    font-size: 52px;
+    color: #2c1810;
     margin-bottom: 15px;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .hero p {
-    font-family: 'Parisienne', cursive;
-    font-size: 28px;
-    color: #5c2e0a;
+    font-family: 'IM Fell French Canon', serif;
+    font-size: 26px;
+    color: #5c2828;
+    font-style: italic;
 }
 
 .hero-nav {
@@ -219,43 +208,55 @@ button:hover {
 }
 
 .hero-nav a {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'IM Fell French Canon', serif;
     padding: 12px 35px;
-    background: #8b4513;
-    color: #f4e4bc;
+    background: #8b3a3a;
+    color: #faf6f0;
     text-decoration: none;
-    font-size: 22px;
-    border: 2px solid #5c2e0a;
+    font-size: 20px;
+    border: 2px solid #5c2828;
     display: inline-block;
     transition: all 0.3s;
     border-radius: 3px;
 }
 
 .hero-nav a:hover {
-    background: #5c2e0a;
+    background: #5c2828;
 }
 
 .section {
     margin: 45px 0;
     padding: 30px;
-    background: #faf3e3;
-    border-left: 4px solid #8b4513;
-    box-shadow: 5px 5px 0 rgba(139, 69, 19, 0.15);
+    background: #fffdf8;
+    border-left: 4px solid #8b3a3a;
+    box-shadow: 5px 5px 0 rgba(139, 58, 58, 0.12);
 }
 
 .section h2 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 36px;
-    color: #2b1810;
+    font-family: 'IM Fell French Canon', serif;
+    font-size: 34px;
+    color: #2c1810;
     margin-bottom: 18px;
+    font-weight: 600;
     text-decoration: underline;
-    text-decoration-color: #c9a227;
+    text-decoration-color: #d4af37;
     text-underline-offset: 8px;
 }
 
 .section p {
-    font-size: 20px;
+    font-size: 19px;
     color: #3d2417;
+    line-height: 1.8;
+}
+
+.section a {
+    color: #8b3a3a;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.section a:hover {
+    color: #d4af37;
 }
 
 .team-grid {
@@ -266,10 +267,10 @@ button:hover {
 }
 
 .member {
-    background: #faf3e3;
+    background: #fffdf8;
     padding: 25px;
-    border: 2px solid #8b4513;
-    font-size: 20px;
+    border: 2px solid #8b3a3a;
+    font-size: 18px;
     position: relative;
 }
 
@@ -278,20 +279,21 @@ button:hover {
     position: absolute;
     top: -15px;
     left: 20px;
-    background: #f4e4bc;
+    background: #faf6f0;
     padding: 0 10px;
-    color: #8b4513;
+    color: #8b3a3a;
     font-size: 20px;
 }
 
 .member strong {
-    color: #5c2e0a;
-    font-size: 24px;
-    font-family: 'Dancing Script', cursive;
+    color: #5c2828;
+    font-size: 22px;
+    font-family: 'IM Fell French Canon', serif;
 }
 
 .member span {
-    color: #8b4513;
+    color: #8b3a3a;
+    font-style: italic;
 }
 
 /* ADMIN PAGE */
@@ -305,21 +307,22 @@ button:hover {
     text-align: center;
     margin-bottom: 40px;
     padding: 30px;
-    background: #faf3e3;
-    border: 3px double #8b4513;
+    background: #fffdf8;
+    border: 3px double #8b3a3a;
 }
 
 .admin-header h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 42px;
-    color: #2b1810;
+    font-family: 'IM Fell French Canon', serif;
+    font-size: 40px;
+    color: #2c1810;
 }
 
 .admin-header p {
-    font-family: 'Parisienne', cursive;
-    color: #5c2e0a;
+    font-family: 'IM Fell French Canon', serif;
+    color: #5c2828;
     margin-top: 12px;
-    font-size: 24px;
+    font-size: 22px;
+    font-style: italic;
 }
 
 .image-grid {
@@ -330,22 +333,22 @@ button:hover {
 }
 
 .image-box {
-    background: #faf3e3;
-    border: 2px solid #8b4513;
+    background: #fffdf8;
+    border: 2px solid #8b3a3a;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 4px 4px 0 rgba(139, 69, 19, 0.2);
+    box-shadow: 4px 4px 0 rgba(139, 58, 58, 0.15);
 }
 
 .image-box:hover {
     transform: translateY(-5px) rotate(-1deg);
-    box-shadow: 8px 8px 0 rgba(139, 69, 19, 0.3);
+    box-shadow: 8px 8px 0 rgba(139, 58, 58, 0.2);
 }
 
 .image-box.selected {
-    border-color: #c9a227;
+    border-color: #d4af37;
     border-width: 4px;
-    box-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
 }
 
 .image-box img {
@@ -353,24 +356,24 @@ button:hover {
     height: 140px;
     object-fit: cover;
     display: block;
-    filter: sepia(0.2);
+    filter: sepia(0.15);
 }
 
 .image-box p {
     padding: 12px;
     text-align: center;
-    font-family: 'Dancing Script', cursive;
-    font-size: 20px;
-    color: #2b1810;
+    font-family: 'IM Fell French Canon', serif;
+    font-size: 19px;
+    color: #2c1810;
     margin: 0;
-    border-top: 1px solid #8b4513;
+    border-top: 1px solid #8b3a3a;
 }
 
 .save-btn {
     display: block;
     margin: 0 auto;
     padding: 15px 50px;
-    font-size: 24px;
+    font-size: 22px;
 }
 
 /* SFONDO PAGE */
@@ -380,37 +383,38 @@ button:hover {
     background-position: center;
     background-attachment: fixed;
     position: relative;
+    cursor: pointer;
 }
 
 .home-link {
     position: fixed;
     top: 25px;
     left: 25px;
-    background: #faf3e3;
+    background: rgba(255, 253, 248, 0.95);
     padding: 10px 25px;
     text-decoration: none;
-    color: #2b1810;
-    font-family: 'Dancing Script', cursive;
-    font-size: 22px;
-    border: 2px solid #8b4513;
-    box-shadow: 4px 4px 0 rgba(139, 69, 19, 0.3);
+    color: #2c1810;
+    font-family: 'IM Fell French Canon', serif;
+    font-size: 20px;
+    border: 2px solid #8b3a3a;
+    box-shadow: 4px 4px 0 rgba(139, 58, 58, 0.25);
     transition: all 0.3s;
 }
 
 .home-link:hover {
     transform: translateY(-2px);
-    box-shadow: 6px 6px 0 rgba(139, 69, 19, 0.4);
+    box-shadow: 6px 6px 0 rgba(139, 58, 58, 0.35);
 }
 
 /* FOOTER */
 footer {
     text-align: center;
     padding: 35px;
-    color: #5c2e0a;
-    font-family: 'Parisienne', cursive;
-    font-size: 20px;
+    color: #5c2828;
+    font-family: 'IM Fell French Canon', serif;
+    font-size: 18px;
     margin-top: 50px;
-    border-top: 2px solid #8b4513;
+    border-top: 2px solid #8b3a3a;
 }
 
 @media (max-width: 768px) {
@@ -419,7 +423,7 @@ footer {
     }
     
     .hero h1 {
-        font-size: 42px;
+        font-size: 40px;
     }
     
     nav {
@@ -444,19 +448,23 @@ footer {
     
     nav > ul > li > a {
         border-right: none;
-        border-bottom: 1px solid rgba(244, 228, 188, 0.2);
+        border-bottom: 1px solid rgba(250, 246, 240, 0.2);
     }
     
     nav ul ul {
         position: static;
         box-shadow: none;
         border: none;
-        border-top: 1px solid rgba(139, 69, 19, 0.3);
+        border-top: 1px solid rgba(139, 58, 58, 0.3);
     }
     
     nav ul ul a {
         padding-left: 40px;
         font-size: 16px;
+    }
+    
+    nav::before, nav::after {
+        display: none;
     }
 }
 
