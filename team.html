@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team – Napoleone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+        <ul id="navMenu">
+            <li><a href="index.html">Accueil</a></li>
+            <li>
+                <a href="#" class="has-dropdown">Storia ▾</a>
+                <ul>
+                    <li><a href="biografia.html">Biografia</a></li>
+                    <li><a href="conquiste.html">Conquiste</a></li>
+                    <li><a href="eredita.html">Eredità</a></li>
+                </ul>
+            </li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="sfondo.html">Galleria</a></li>
+        </ul>
+    </nav>
+
+    <div class="home-container">
+        <div class="hero">
+            <h1>Il Nostro Team</h1>
+            <p>I collaboratori del progetto</p>
+        </div>
+
+        <div class="section">
+            <h2>Chi Siamo</h2>
+            <p>Siamo un gruppo di studenti appassionati di storia che ha deciso di realizzare un progetto didattico su una delle figure più influenti della storia europea. Ogni membro del team ha contribuito con le proprie competenze specifiche.</p>
+        </div>
+
+        <div class="team-grid">
+            <div class="member">
+                <strong>Mario Condorelli</strong><br>
+                <span>Responsabile Contenuti</span><br><br>
+                Esperto di storia napoleonica, ha curato la ricerca storica e la stesura dei testi biografici.
+            </div>
+            <div class="member">
+                <strong>Laura Romano</strong><br>
+                <span>Coordinatrice Editoriale</span><br><br>
+                Ha supervisionato la struttura del progetto e l'organizzazione dei contenuti.
+            </div>
+            <div class="member">
+                <strong>Giuseppe Ferrari</strong><br>
+                <span>Ricercatore Storico</span><br><br>
+                Ha approfondito le campagne militari e le battaglie principali del periodo napoleonico.
+            </div>
+            <div class="member">
+                <strong>Elena Sartori</strong><br>
+                <span>Designer Grafica</span><br><br>
+                Ha curato l'aspetto visivo del progetto, dalla scelta dei colori alle illustrazioni.
+            </div>
+            <div class="member">
+                <strong>Marco Bianchi</strong><br>
+                <span>Sviluppatore Web</span><br><br>
+                Responsabile dell'implementazione tecnica e dell'esperienza utente del sito.
+            </div>
+            <div class="member">
+                <strong>Francesca Verdi</strong><br>
+                <span>Content Creator</span><br><br>
+                Ha contribuito ai contenuti multimediali e alla gestione dei materiali storici.
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 Progetto Didattico – Napoleone Bonaparte</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
