@@ -187,6 +187,16 @@
         function toggleMenu() {
             document.getElementById('navMenu').classList.toggle('active');
         }
+
+        window.addEventListener('scroll', function() {
+            const heroBackground = document.querySelector('.hero-background');
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * 0.5;
+            
+            if (heroBackground) {
+                heroBackground.style.transform = `translate3d(0, ${rate}px, 0)`;
+            }
+        });
     </script>
 </body>
 </html>

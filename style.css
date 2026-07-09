@@ -307,6 +307,8 @@ nav ul ul a:hover {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    will-change: transform;
+    transition: transform 0.1s ease-out;
 }
 
 .hero-overlay {
