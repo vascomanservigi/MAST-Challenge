@@ -260,17 +260,28 @@
         }
 
         function select(i) {
-            localStorage.setItem('bg', urls[i]);
+            const background = urls[i];
             
-            document.querySelectorAll('.image-box').forEach((el, idx) => {
-                el.classList.toggle('selected', idx === i);
+            // Save to database via API
+            fetch('/api/background', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ background })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.querySelectorAll('.image-box').forEach((el, idx) => {
+                        el.classList.toggle('selected', idx === i);
+                    });
+                    
+                    const notification = document.createElement('div');
+                    notification.textContent = '✓ Sfondo applicato!';
+                    notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#1a5fb4;color:#ffffff;padding:15px 25px;border-radius:8px;font-size:16px;font-weight:600;z-index:9999;';
+                    document.body.appendChild(notification);
+                    setTimeout(() => notification.remove(), 2000);
+                }
             });
-
-            const notification = document.createElement('div');
-            notification.textContent = '✓ Sfondo applicato!';
-            notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#1a5fb4;color:#ffffff;padding:15px 25px;border-radius:8px;font-size:16px;font-weight:600;z-index:9999;animation:fadeIn 0.3s;';
-            document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 2000);
         }
 
         function toggleMenu() {
@@ -283,15 +294,17 @@
                 showAdminContent();
             }
             
-            const saved = localStorage.getItem('bg');
-            if (saved) {
-                const idx = urls.indexOf(saved);
-                if (idx >= 0) {
-                    setTimeout(() => {
-                        document.querySelectorAll('.image-box')[idx].classList.add('selected');
-                    }, 100);
-                }
-            }
+            // Load saved background from database
+            fetch('/api/background')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.background) {
+                        const idx = urls.indexOf(data.background);
+                        if (idx >= 0) {
+                            document.querySelectorAll('.image-box')[idx].classList.add('selected');
+                        }
+                    }
+                });
         });
     </script>
 

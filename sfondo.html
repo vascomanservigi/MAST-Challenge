@@ -109,41 +109,41 @@
     </div>
     
     <script>
-        // CONFIGURAZIONE ENDPOINT API
-        // Endpoint del server su Render
-        const API_ENDPOINT = 'https://mast-challenge.onrender.com/api';
-        
         var lastBg = null;
 
+        // Load background from database
         function loadBackground() {
-            var bg = localStorage.getItem('bg');
-            
-            if (bg !== lastBg) {
-                lastBg = bg;
-                var el = document.getElementById('bg');
-                
-                if (bg && bg !== '') {
-                    el.style.backgroundImage = 'url(' + bg + ')';
-                    el.style.backgroundColor = '';
-                } else {
-                    el.style.backgroundImage = '';
-                    el.style.background = 'linear-gradient(135deg, #2b1810, #8b4513)';
-                }
-            }
+            fetch('/api/background')
+                .then(response => response.json())
+                .then(data => {
+                    const bg = data.background;
+                    
+                    if (bg !== lastBg) {
+                        lastBg = bg;
+                        var el = document.getElementById('bg');
+                        
+                        if (bg && bg !== '') {
+                            el.style.backgroundImage = 'url(' + bg + ')';
+                            el.style.backgroundColor = '';
+                        } else {
+                            el.style.backgroundImage = '';
+                            el.style.background = 'linear-gradient(135deg, #2b1810, #8b4513)';
+                        }
+                    }
+                })
+                .catch(err => console.error('Background load error:', err));
         }
 
+        // Load robot data from database
         function loadAPI() {
-            fetch(API_ENDPOINT)
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
+            fetch('/api')
+                .then(response => response.json())
                 .then(data => {
                     renderAPI(data);
                 })
                 .catch(error => {
                     document.getElementById('apiContent').innerHTML = 
-                        '<div class="error">Robot offline<br><small>' + API_ENDPOINT + '</small></div>';
+                        '<div class="error">Robot offline</div>';
                 });
         }
 
@@ -213,10 +213,6 @@
         
         // API: ogni 100ms (10 volte al secondo per tempo reale)
         setInterval(loadAPI, 100);
-
-        // Ascolta eventi storage e focus
-        window.addEventListener('storage', loadBackground);
-        window.addEventListener('focus', loadBackground);
     </script>
 </body>
 </html>
