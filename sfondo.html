@@ -85,6 +85,41 @@
             text-align: center;
         }
         
+        .messages-log {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .messages-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #c9a227;
+            margin-bottom: 12px;
+        }
+        
+        .message-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            border-left: 2px solid #c9a227;
+        }
+        
+        .message-time {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 4px;
+        }
+        
+        .message-content {
+            font-size: 13px;
+            color: #ffffff;
+        }
+        
         .loading {
             color: rgba(255, 255, 255, 0.5);
             text-align: center;
@@ -106,12 +141,17 @@
         <div id="apiContent">
             <div class="loading">In attesa dati dal robot...</div>
         </div>
+        <div class="messages-log" id="messagesLog">
+            <div class="messages-title">Messaggi Arrivati</div>
+            <div id="messagesList"></div>
+        </div>
     </div>
     
     <script>
         var lastBg = null;
+        var lastDataStr = '';
+        var messages = [];
 
-        // Load background from database
         function loadBackground() {
             fetch('/api/background')
                 .then(response => response.json())
@@ -134,17 +174,49 @@
                 .catch(err => console.error('Background load error:', err));
         }
 
-        // Load robot data from database
         function loadAPI() {
             fetch('/api')
                 .then(response => response.json())
                 .then(data => {
+                    var newStr = JSON.stringify(data);
+                    
+                    if (newStr !== lastDataStr && lastDataStr !== '') {
+                        addMessage(data);
+                    }
+                    
+                    lastDataStr = newStr;
                     renderAPI(data);
                 })
                 .catch(error => {
                     document.getElementById('apiContent').innerHTML = 
                         '<div class="error">Robot offline</div>';
                 });
+        }
+
+        function addMessage(data) {
+            var now = new Date();
+            var timestamp = now.toLocaleTimeString('it-IT') + '.' + String(now.getMilliseconds()).padStart(3, '0');
+            
+            var content = data.pensiero || data.thought || JSON.stringify(data);
+            
+            messages.unshift({ time: timestamp, content: content });
+            
+            if (messages.length > 10) {
+                messages.pop();
+            }
+            
+            renderMessages();
+        }
+
+        function renderMessages() {
+            var html = '';
+            for (var i = 0; i < messages.length; i++) {
+                html += '<div class="message-item">' +
+                    '<div class="message-time">Messaggio arrivato - ' + messages[i].time + '</div>' +
+                    '<div class="message-content">' + messages[i].content + '</div>' +
+                '</div>';
+            }
+            document.getElementById('messagesList').innerHTML = html;
         }
 
         function renderAPI(data) {
