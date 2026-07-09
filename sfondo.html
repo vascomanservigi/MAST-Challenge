@@ -49,6 +49,8 @@
             color: #ffffff;
             font-weight: 600;
             text-align: right;
+            max-width: 200px;
+            word-wrap: break-word;
         }
         
         .api-thought {
@@ -88,6 +90,13 @@
             text-align: center;
             padding: 20px;
         }
+        
+        .error {
+            color: #ff6b6b;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+        }
     </style>
 </head>
 <body class="sfondo-page" id="bg" onclick="handleClick(event)">
@@ -97,11 +106,15 @@
     <div class="api-box" id="apiBox" onclick="event.stopPropagation()">
         <h2>Mente di Napoleone</h2>
         <div id="apiContent">
-            <div class="loading">Caricamento...</div>
+            <div class="loading">In attesa dati dal robot...</div>
         </div>
     </div>
     
     <script>
+        // CONFIGURAZIONE ENDPOINT API
+        // Modifica questo URL con l'endpoint del tuo software esterno
+        const API_ENDPOINT = localStorage.getItem('api_endpoint') || 'http://localhost:3000/api';
+        
         var lastBg = null;
 
         function loadBackground() {
@@ -122,45 +135,69 @@
         }
 
         function loadAPI() {
-            fetch('api.json')
-                .then(response => response.json())
+            fetch(API_ENDPOINT)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
                 .then(data => {
-                    var content = `
-                        <div class="api-item">
-                            <span class="api-label">Atto</span>
-                            <span class="api-value">${data.atto} – ${data.titolo}</span>
-                        </div>
-                        <div class="api-item">
-                            <span class="api-label">Anno</span>
-                            <span class="api-value">${data.anno}</span>
-                        </div>
-                        <div class="api-item">
-                            <span class="api-label">Movimento</span>
-                            <span class="api-value">${data.movimento}</span>
-                        </div>
-                        <div class="api-item">
-                            <span class="api-label">Touch</span>
-                            <span class="api-value">${data.sensore_touch ? '✓ Attivo' : '✗ Inattivo'}</span>
-                        </div>
-                        <div class="api-item">
-                            <span class="api-label">Luce</span>
-                            <span class="api-value">${data.sensore_luce} lux</span>
-                        </div>
-                        <div class="api-item">
-                            <span class="api-label">Visione AI</span>
-                            <span class="api-value">${data.visione_ai.persone} persone (${Math.round(data.visione_ai.confidenza * 100)}%)</span>
-                        </div>
-                        <div class="api-thought">
-                            <div class="api-thought-label">Pensiero</div>
-                            <div class="api-thought-text">"${data.pensiero}"</div>
-                        </div>
-                        <div class="api-status">Ultimo aggiornamento: ${new Date().toLocaleTimeString('it-IT')}</div>
-                    `;
-                    document.getElementById('apiContent').innerHTML = content;
+                    renderAPI(data);
                 })
                 .catch(error => {
-                    document.getElementById('apiContent').innerHTML = '<div class="loading">Errore caricamento API</div>';
+                    document.getElementById('apiContent').innerHTML = 
+                        '<div class="error">Robot offline<br><small>' + API_ENDPOINT + '</small></div>';
                 });
+        }
+
+        function renderAPI(data) {
+            try {
+                var items = '';
+                
+                // Renderizza tutte le proprietà del JSON
+                for (var key in data) {
+                    if (key === 'pensiero' || key === 'thought') continue;
+                    
+                    var value = data[key];
+                    if (typeof value === 'object') {
+                        value = JSON.stringify(value);
+                    }
+                    
+                    items += `
+                        <div class="api-item">
+                            <span class="api-label">${formatLabel(key)}</span>
+                            <span class="api-value">${value}</span>
+                        </div>
+                    `;
+                }
+                
+                // Se c'è un pensiero, mostralo in evidenza
+                var thought = data.pensiero || data.thought || data.thinking;
+                var thoughtHTML = '';
+                
+                if (thought) {
+                    thoughtHTML = `
+                        <div class="api-thought">
+                            <div class="api-thought-label">Pensiero</div>
+                            <div class="api-thought-text">"${thought}"</div>
+                        </div>
+                    `;
+                }
+                
+                var status = `<div class="api-status">Aggiornato: ${new Date().toLocaleTimeString('it-IT')}</div>`;
+                
+                document.getElementById('apiContent').innerHTML = items + thoughtHTML + status;
+            } catch (e) {
+                document.getElementById('apiContent').innerHTML = '<div class="error">Errore parsing JSON</div>';
+            }
+        }
+
+        function formatLabel(key) {
+            return key
+                .replace(/_/g, ' ')
+                .replace(/([A-Z])/g, ' $1')
+                .split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(' ');
         }
 
         function handleClick(event) {
@@ -172,9 +209,12 @@
         loadBackground();
         loadAPI();
 
-        // Aggiorna ogni 200ms (tempo reale)
+        // AGGIORNAMENTO IN TEMPO REALE
+        // Background: ogni 200ms
         setInterval(loadBackground, 200);
-        setInterval(loadAPI, 500);
+        
+        // API: ogni 100ms (10 volte al secondo per tempo reale)
+        setInterval(loadAPI, 100);
 
         // Ascolta eventi storage e focus
         window.addEventListener('storage', loadBackground);
