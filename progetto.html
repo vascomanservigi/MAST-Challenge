@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Sfida – PETOI Napoleone</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url('sfondo_sfida.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+        .home-container {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
     <nav>
