@@ -53,7 +53,12 @@ app.post('/api', (req, res) => {
     }
   }
   
+  if (!data || Object.keys(data).length === 0) {
+    data = { pensiero: "Messaggio vuoto" };
+  }
+  
   robotData.push(data);
+  console.log('Messaggio ricevuto:', data);
   res.json({ success: true, data: data });
 });
 
