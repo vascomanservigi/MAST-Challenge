@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.text());
+app.use(express.raw({ type: '*/*' }));
 
 let robotData = [];
 let backgroundUrl = '';
@@ -34,8 +36,25 @@ app.get('/api', (req, res) => {
 });
 
 app.post('/api', (req, res) => {
-  robotData.push(req.body);
-  res.json({ success: true, data: req.body });
+  var data = req.body;
+  
+  if (typeof data === 'string') {
+    try {
+      data = JSON.parse(data);
+    } catch (e) {
+      data = { pensiero: data };
+    }
+  } else if (Buffer.isBuffer(data)) {
+    var str = data.toString();
+    try {
+      data = JSON.parse(str);
+    } catch (e) {
+      data = { pensiero: str };
+    }
+  }
+  
+  robotData.push(data);
+  res.json({ success: true, data: data });
 });
 
 // Serve static files
