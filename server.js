@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-let robotData = null;
+let robotData = [];
 let backgroundUrl = '';
 
 app.get('/api/background', (req, res) => {
@@ -21,12 +21,10 @@ app.post('/api/background', (req, res) => {
 });
 
 app.get('/api', (req, res) => {
-  if (robotData) {
-    res.json(robotData);
+  if (robotData.length > 0) {
+    res.json(robotData[robotData.length - 1]);
   } else {
     res.json({
-      atto: "I",
-      titolo: "L'Incoronazione",
       pensiero: "In attesa di dati dal robot...",
       status: "offline"
     });
@@ -34,8 +32,8 @@ app.get('/api', (req, res) => {
 });
 
 app.post('/api', (req, res) => {
-  robotData = req.body;
-  res.json({ success: true, data: robotData });
+  robotData.push(req.body);
+  res.json({ success: true, data: req.body });
 });
 
 // Serve static files
