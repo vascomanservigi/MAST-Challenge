@@ -66,7 +66,7 @@ app.post('/api', (req, res) => {
 app.use(express.static(path.join(__dirname)));
 
 // Handle HTML routes (without .html extension)
-app.get(['/sfondo', '/admin', '/team', '/progetto', '/personaggio', '/demo', '/api-page'], (req, res) => {
+app.get(['/sfondo', '/admin', '/team', '/progetto', '/personaggio', '/api-page'], (req, res) => {
   const page = req.path.replace('/', '') + '.html';
   res.sendFile(path.join(__dirname, page));
 });
