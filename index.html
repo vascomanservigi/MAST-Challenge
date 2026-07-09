@@ -25,9 +25,21 @@
     </nav>
 
     <div class="home-container">
-        <div class="hero">
-            <h1>Napoleone</h1>
-            <div class="subtitle">Gruppo Sant'Elena</div>
+        <div class="scroll-animation-container" id="scrollContainer">
+            <div class="scroll-animation-wrapper">
+                <div id="scrollImages"></div>
+                <div class="scroll-overlay">
+                    <h1>Napoleone</h1>
+                    <div class="subtitle">Gruppo Sant'Elena</div>
+                    <div class="scroll-indicator">
+                        <div class="scroll-arrow"></div>
+                        <p>Scorri per scoprire</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero" style="display: none;">
             <div class="description">
                 Un robot che incarna lo spirito strategico di Napoleone Bonaparte, 
                 combinando Intelligenza Artificiale, IoT e design innovativo.
@@ -248,6 +260,52 @@
         function toggleMenu() {
             document.getElementById('navMenu').classList.toggle('active');
         }
+
+        // Scroll Animation
+        const totalImages = 141;
+        const container = document.getElementById('scrollContainer');
+        const imagesContainer = document.getElementById('scrollImages');
+        const overlay = document.querySelector('.scroll-overlay');
+        let images = [];
+        let currentImage = 0;
+
+        // Create image elements
+        for (let i = 1; i <= totalImages; i++) {
+            const img = document.createElement('img');
+            const num = i.toString().padStart(3, '0');
+            img.src = `f_${num}.jpg`;
+            img.alt = `Frame ${i}`;
+            if (i === 1) img.classList.add('active');
+            imagesContainer.appendChild(img);
+            images.push(img);
+        }
+
+        // Handle scroll
+        function handleScroll() {
+            if (!container) return;
+            
+            const rect = container.getBoundingClientRect();
+            const scrollProgress = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));
+            
+            // Calculate which image to show
+            const imageIndex = Math.floor(scrollProgress * (totalImages - 1));
+            
+            // Update images
+            if (imageIndex !== currentImage && imageIndex >= 0 && imageIndex < totalImages) {
+                images[currentImage].classList.remove('active');
+                currentImage = imageIndex;
+                images[currentImage].classList.add('active');
+            }
+
+            // Fade out overlay text on scroll
+            const opacity = 1 - (scrollProgress * 2);
+            if (overlay) {
+                overlay.style.opacity = Math.max(0, opacity);
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Initial call
     </script>
 </body>
 </html>
