@@ -411,7 +411,7 @@ nav ul ul a:hover {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(48px, 6vw, 72px);
     font-weight: 700;
-    color: #1a5fb4;
+    color: #000000;
     line-height: 1;
     margin-bottom: 12px;
 }
