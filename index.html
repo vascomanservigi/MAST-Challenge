@@ -25,21 +25,20 @@
     </nav>
 
     <div class="home-container">
-        <div class="scroll-animation-container" id="scrollContainer">
-            <div class="scroll-animation-wrapper">
-                <div id="scrollImages"></div>
-                <div class="scroll-overlay">
-                    <h1>Napoleone</h1>
-                    <div class="subtitle">Gruppo Sant'Elena</div>
-                    <div class="scroll-indicator">
-                        <div class="scroll-arrow"></div>
-                        <p>Scorri per scoprire</p>
-                    </div>
-                </div>
+        <div class="hero">
+            <h1>Napoleone</h1>
+            <div class="subtitle">Gruppo Sant'Elena</div>
+            <div class="description">
+                Un robot che incarna lo spirito strategico di Napoleone Bonaparte, 
+                combinando Intelligenza Artificiale, IoT e design innovativo.
+            </div>
+            <div class="hero-nav">
+                <a href="progetto.html">Scopri il Progetto</a>
+                <a href="demo.html" class="secondary">Vedi Demo</a>
             </div>
         </div>
 
-        <div class="stats" style="margin-top: 0; padding-top: 60px;">
+        <div class="stats">
             <div class="stat">
                 <div class="stat-number">3</div>
                 <div class="stat-label">Indirizzi</div>
@@ -247,113 +246,6 @@
         function toggleMenu() {
             document.getElementById('navMenu').classList.toggle('active');
         }
-
-        // Optimized Scroll Animation with Smooth Transitions
-        const totalImages = 141;
-        const container = document.getElementById('scrollContainer');
-        const imagesContainer = document.getElementById('scrollImages');
-        const overlay = document.querySelector('.scroll-overlay');
-        
-        let loadedImages = {};
-        let currentImage = 0;
-        let isScrolling = false;
-        let nextImageReady = false;
-
-        // Create only 2 img elements for smooth transitions
-        const img1 = document.createElement('img');
-        const img2 = document.createElement('img');
-        img1.style.objectFit = 'cover';
-        img2.style.objectFit = 'cover';
-        imagesContainer.appendChild(img1);
-        imagesContainer.appendChild(img2);
-
-        let activeImg = img1;
-        let inactiveImg = img2;
-
-        // Preload first batch immediately
-        function loadImage(index) {
-            return new Promise((resolve) => {
-                const num = index.toString().padStart(3, '0');
-                const img = new Image();
-                img.src = `f_${num}.jpg`;
-                img.onload = () => {
-                    loadedImages[index] = img.src;
-                    resolve(img.src);
-                };
-                img.onerror = resolve;
-            });
-        }
-
-        // Load first image immediately
-        loadImage(1).then(src => {
-            img1.src = src;
-            img1.classList.add('active');
-            loadedImages[1] = src;
-        });
-
-        // Progressive preload
-        async function preloadAllImages() {
-            for (let i = 1; i <= totalImages; i++) {
-                if (!loadedImages[i]) {
-                    await loadImage(i);
-                }
-            }
-        }
-
-        // Smooth scroll handler with RAF
-        function handleScroll() {
-            if (!container) return;
-            
-            const rect = container.getBoundingClientRect();
-            const containerHeight = rect.height - window.innerHeight;
-            const scrollProgress = Math.max(0, Math.min(1, -rect.top / containerHeight));
-            
-            // Calculate target frame
-            const targetFrame = Math.floor(scrollProgress * (totalImages - 1));
-            
-            // Update frame if changed
-            if (targetFrame !== currentImage && targetFrame >= 0 && targetFrame < totalImages) {
-                const imageIndex = targetFrame + 1;
-                
-                // Only switch if image is loaded or use fallback
-                const num = imageIndex.toString().padStart(3, '0');
-                const newSrc = loadedImages[imageIndex] || `f_${num}.jpg`;
-                
-                inactiveImg.src = newSrc;
-                inactiveImg.onload = () => {
-                    inactiveImg.classList.add('active');
-                    activeImg.classList.remove('active');
-                    [activeImg, inactiveImg] = [inactiveImg, activeImg];
-                };
-                
-                currentImage = targetFrame;
-            }
-
-            // Fade overlay smoothly
-            const opacity = Math.max(0, 1 - (scrollProgress * 2.5));
-            if (overlay) {
-                overlay.style.opacity = opacity;
-                overlay.style.transform = `translateY(${scrollProgress * 30}px)`;
-            }
-        }
-
-        // Throttled scroll listener
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                requestAnimationFrame(() => {
-                    handleScroll();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }, { passive: true });
-
-        // Start preloading
-        preloadAllImages();
-        
-        // Initial call
-        requestAnimationFrame(handleScroll);
     </script>
 </body>
 </html>
