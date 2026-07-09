@@ -80,5 +80,5 @@ app.get(['/sfondo', '/admin', '/team', '/progetto', '/personaggio', '/api-page']
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`Database URL: ${process.env.DATABASE_URL ? 'configured' : 'not set'}`);
+  console.log('Ready to receive robot data!');
 });
