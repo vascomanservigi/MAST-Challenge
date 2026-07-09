@@ -5,29 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Sfida – PETOI Napoleone</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            background-image: url('sfondo_sfida.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: -1;
-        }
-        .home-container {
-            position: relative;
-            z-index: 1;
-        }
-    </style>
 </head>
 <body>
     <nav>
@@ -42,12 +19,16 @@
     </nav>
 
     <div class="home-container">
-        <div class="hero" style="min-height: 60vh;">
-            <h1>La Sfida</h1>
-            <div class="subtitle">Trasformare PETOI in un personaggio storico</div>
-            <div class="description">
-                La MAST Summer School 2026 ci ha sfidato a unire tecnologia e creatività 
-                per dare vita a un robot che racconta una storia.
+        <div class="hero" style="min-height: 60vh; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('sfondo_sfida.png'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.65) 50%, rgba(0, 0, 0, 0.7) 100%);"></div>
+            <div style="position: relative; z-index: 2;">
+                <h1>La Sfida</h1>
+                <div class="subtitle">Trasformare PETOI in un personaggio storico</div>
+                <div class="description">
+                    La MAST Summer School 2026 ci ha sfidato a unire tecnologia e creatività 
+                    per dare vita a un robot che racconta una storia.
+                </div>
             </div>
         </div>
 
