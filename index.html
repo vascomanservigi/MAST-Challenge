@@ -261,51 +261,103 @@
             document.getElementById('navMenu').classList.toggle('active');
         }
 
-        // Scroll Animation
+        // Optimized Scroll Animation
         const totalImages = 141;
         const container = document.getElementById('scrollContainer');
         const imagesContainer = document.getElementById('scrollImages');
         const overlay = document.querySelector('.scroll-overlay');
-        let images = [];
+        const heroSection = document.getElementById('heroSection');
+        
+        let loadedImages = {};
         let currentImage = 0;
+        let isScrolling = false;
+        let scrollTimeout;
 
-        // Create image elements
-        for (let i = 1; i <= totalImages; i++) {
-            const img = document.createElement('img');
-            const num = i.toString().padStart(3, '0');
-            img.src = `f_${num}.jpg`;
-            img.alt = `Frame ${i}`;
-            if (i === 1) img.classList.add('active');
-            imagesContainer.appendChild(img);
-            images.push(img);
+        // Preload images progressively
+        async function preloadImages() {
+            const batchSize = 10;
+            
+            for (let batch = 0; batch < Math.ceil(totalImages / batchSize); batch++) {
+                const promises = [];
+                
+                for (let i = batch * batchSize + 1; i <= Math.min((batch + 1) * batchSize, totalImages); i++) {
+                    const num = i.toString().padStart(3, '0');
+                    const img = new Image();
+                    img.src = `f_${num}.jpg`;
+                    
+                    promises.push(new Promise((resolve) => {
+                        img.onload = () => {
+                            loadedImages[i] = img;
+                            resolve();
+                        };
+                        img.onerror = resolve;
+                    }));
+                }
+                
+                await Promise.all(promises);
+            }
         }
 
-        // Handle scroll
+        // Create only 2 img elements for smooth transitions
+        const img1 = document.createElement('img');
+        const img2 = document.createElement('img');
+        img1.src = 'f_001.jpg';
+        img1.classList.add('active');
+        imagesContainer.appendChild(img1);
+        imagesContainer.appendChild(img2);
+
+        let activeImg = img1;
+        let inactiveImg = img2;
+
+        // Smooth scroll handler with RAF
         function handleScroll() {
             if (!container) return;
             
             const rect = container.getBoundingClientRect();
-            const scrollProgress = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));
+            const containerHeight = rect.height - window.innerHeight;
+            const scrollProgress = Math.max(0, Math.min(1, -rect.top / containerHeight));
             
-            // Calculate which image to show
-            const imageIndex = Math.floor(scrollProgress * (totalImages - 1));
+            // Calculate target frame
+            const targetFrame = Math.floor(scrollProgress * (totalImages - 1));
             
-            // Update images
-            if (imageIndex !== currentImage && imageIndex >= 0 && imageIndex < totalImages) {
-                images[currentImage].classList.remove('active');
-                currentImage = imageIndex;
-                images[currentImage].classList.add('active');
+            // Update frame if changed
+            if (targetFrame !== currentImage && targetFrame >= 0 && targetFrame < totalImages) {
+                const num = (targetFrame + 1).toString().padStart(3, '0');
+                const newSrc = `f_${num}.jpg`;
+                
+                // Swap images
+                inactiveImg.src = newSrc;
+                inactiveImg.classList.add('active');
+                activeImg.classList.remove('active');
+                
+                [activeImg, inactiveImg] = [inactiveImg, activeImg];
+                currentImage = targetFrame;
             }
 
-            // Fade out overlay text on scroll
-            const opacity = 1 - (scrollProgress * 2);
+            // Fade overlay
+            const opacity = Math.max(0, 1 - (scrollProgress * 3));
             if (overlay) {
-                overlay.style.opacity = Math.max(0, opacity);
+                overlay.style.opacity = opacity;
+                overlay.style.transform = `translateY(${scrollProgress * 50}px)`;
             }
         }
 
-        window.addEventListener('scroll', handleScroll);
-        handleScroll(); // Initial call
+        // Throttled scroll listener
+        window.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                isScrolling = true;
+                requestAnimationFrame(() => {
+                    handleScroll();
+                    isScrolling = false;
+                });
+            }
+        }, { passive: true });
+
+        // Start preloading
+        preloadImages();
+        
+        // Initial call
+        handleScroll();
     </script>
 </body>
 </html>
