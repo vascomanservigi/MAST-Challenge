@@ -367,8 +367,8 @@ nav ul ul a:hover {
 .hero-nav a {
     display: inline-block;
     padding: clamp(14px, 1.5vw, 18px) clamp(32px, 3vw, 48px);
-    background: #000000;
-    color: #ffffff;
+    background: #ffffff;
+    color: #000000;
     text-decoration: none;
     font-size: clamp(14px, 1vw, 16px);
     font-weight: 600;
