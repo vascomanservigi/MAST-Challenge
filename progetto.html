@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Sfida – Team 1</title>
+    <title>La Sfida – PETOI Napoleone</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
-        <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
         <ul id="navMenu">
             <li><a href="index.html">Accueil</a></li>
             <li>
-                <a href="#" class="has-dropdown">Progetto ▾</a>
+                <a href="#">Progetto ▾</a>
                 <ul>
                     <li><a href="progetto.html">La Sfida</a></li>
                     <li><a href="personaggio.html">Napoleone</a></li>
@@ -25,33 +25,109 @@
     </nav>
 
     <div class="home-container">
-        <div class="hero">
+        <div class="hero" style="min-height: 60vh;">
             <h1>La Sfida</h1>
-            <p>Trasformare PETOI in un personaggio storico</p>
+            <div class="subtitle">Trasformare PETOI in un personaggio storico</div>
+            <div class="description">
+                La MAST Summer School 2026 ci ha sfidato a unire tecnologia e creatività 
+                per dare vita a un robot che racconta una storia.
+            </div>
         </div>
 
         <div class="section">
-            <h2>L'Obiettivo</h2>
-            <p>La challenge della MAST Summer School 2026 ci ha chiesto di trasformare PETOI, il cane robotico, in un personaggio storico o della letteratura. Il robot deve interpretare le caratteristiche chiave del personaggio scelto.</p>
+            <div class="split reverse">
+                <div class="split-content">
+                    <h2>L'Obiettivo</h2>
+                    <p>
+                        La challenge richiede di trasformare PETOI, il cane robotico, 
+                        in un personaggio storico o letterario che ne interpreti le caratteristiche chiave.
+                    </p>
+                    <p>
+                        Il robot deve integrare <strong>IoT</strong>, <strong>Intelligenza Artificiale</strong> 
+                        e <strong>Cyberworld</strong> per creare un'esperienza interattiva e coinvolgente, 
+                        documentata e pubblicata in tempo reale.
+                    </p>
+                </div>
+                <div class="split-image">
+                    <img src="https://images.unsplash.com/photo-1518770660439-46310219fdda?w=800" alt="Challenge">
+                </div>
+            </div>
+        </div>
+
+        <div class="section section-alt">
+            <h2 style="text-align: center;">Requisiti del Progetto</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Sensori PETOI</h3>
+                    <p>1 sensore analogico + 1 sensore digitale per interazione ambientale</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>AI Integration</h3>
+                    <p>Riconoscimento di almeno un elemento tramite computer vision</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Dati Online</h3>
+                    <p>Invio e pubblicazione in tempo reale delle informazioni</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Sito Web</h3>
+                    <p>Documentazione completa del progetto e dei risultati</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎬</div>
+                    <h3>Setup Scena</h3>
+                    <p>Background, musica e decorazioni per la demo</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Demo Live</h3>
+                    <p>Presentazione di 8 minuti con interazione pubblica</p>
+                </div>
+            </div>
         </div>
 
         <div class="section">
-            <h2>Elementi Richiesti</h2>
-            <p><strong>Integrazione IoT – AI – CW:</strong> Unire mondi tecnologici diversi</p>
-            <p><strong>Sensori:</strong> 1 sensore analogico + 1 sensore digitale del PETOI</p>
-            <p><strong>AI:</strong> Riconoscimento di almeno un elemento</p>
-            <p><strong>Dati online:</strong> Invio e pubblicazione in tempo reale</p>
-            <p><strong>Documentazione:</strong> Sito web del progetto</p>
-            <p><strong>Setup scena:</strong> Background, musica, decorazioni</p>
+            <div class="split">
+                <div class="split-content">
+                    <h2>La Nostra Soluzione</h2>
+                    <p>
+                        Abbiamo scelto <strong>Napoleone Bonaparte</strong> come personaggio: 
+                        un leader strategico che incarna decisione, ambizione e genialità militare.
+                    </p>
+                    <p>
+                        Il nostro PETOI diventa <strong>"L'Imperatore"</strong> che riconosce il campo di battaglia, 
+                        prende decisioni strategiche e pubblica i dati in tempo reale su questo sito.
+                    </p>
+                </div>
+                <div class="split-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/David_-_Le_Sacre_de_Napoleon.jpg/600px-David_-_Le_Sacre_de_Napoleon.jpg" alt="Incoronazione Napoleone">
+                </div>
+            </div>
         </div>
 
-        <div class="section">
-            <h2>La Nostra Soluzione</h2>
-            <p>Abbiamo scelto <strong>Napoleone Bonaparte</strong> come personaggio. Il nostro PETOI diventa "L'Imperatore" che:</p>
-            <p>• Riconosce il campo di battaglia tramite AI</p>
-            <p>• Risponde ai comandi tramite sensori</p>
-            <p>• Esegue manovre strategiche tipiche dell'era napoleonica</p>
-            <p>• Pubblica i dati delle "battaglie" in tempo reale su questo sito</p>
+        <div class="section section-dark">
+            <h2 style="text-align: center;">Cosa Fa il Nostro PETOI</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Riconosce il Campo</h3>
+                    <p>AI identifica elementi strategici del campo di battaglia</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Decide in Tempo Reale</h3>
+                    <p>Algoritmi decisionali per manovre strategiche</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎖️</div>
+                    <h3>Esegue Manovre</h3>
+                    <p>Movimenti ispirati alle tattiche napoleoniche</p>
+                </div>
+            </div>
         </div>
 
         <footer>
