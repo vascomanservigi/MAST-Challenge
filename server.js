@@ -103,6 +103,12 @@ app.post('/api', async (req, res) => {
 // Serve static files
 app.use(express.static(path.join(__dirname)));
 
+// Handle HTML routes (without .html extension)
+app.get(['/sfondo', '/admin', '/team', '/progetto', '/personaggio', '/demo', '/api-page'], (req, res) => {
+  const page = req.path.replace('/', '') + '.html';
+  res.sendFile(path.join(__dirname, page));
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
