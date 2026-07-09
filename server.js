@@ -21,12 +21,14 @@ app.post('/api/background', (req, res) => {
 });
 
 app.get('/api', (req, res) => {
+  console.log('GET /api - robotData length:', robotData.length);
   if (robotData.length > 0) {
     res.json(robotData[robotData.length - 1]);
   } else {
     res.json({
       pensiero: "In attesa di dati dal robot...",
-      status: "offline"
+      status: "offline",
+      timestamp: new Date().toISOString()
     });
   }
 });
