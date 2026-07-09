@@ -5,8 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sfondo – Napoleone</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .api-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+            padding: 24px;
+            border-radius: 12px;
+            max-width: 350px;
+            font-family: 'SF Pro Display', -apple-system, sans-serif;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .api-box h2 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #c9a227;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .api-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        
+        .api-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+        }
+        
+        .api-value {
+            color: #ffffff;
+            font-weight: 600;
+            text-align: right;
+        }
+        
+        .api-thought {
+            background: rgba(201, 162, 39, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 16px;
+            border-left: 3px solid #c9a227;
+        }
+        
+        .api-thought-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #c9a227;
+            margin-bottom: 6px;
+        }
+        
+        .api-thought-text {
+            font-style: italic;
+            color: #ffffff;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+        
+        .api-status {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+        }
+        
+        .loading {
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
 </head>
-<body class="sfondo-page" id="bg" onclick="window.location.href='index.html'">
+<body class="sfondo-page" id="bg" onclick="handleClick(event)">
+    
+    <a href="index.html" class="home-link" onclick="event.stopPropagation()">← Home</a>
+    
+    <div class="api-box" id="apiBox" onclick="event.stopPropagation()">
+        <h2>Mente di Napoleone</h2>
+        <div id="apiContent">
+            <div class="loading">Caricamento...</div>
+        </div>
+    </div>
     
     <script>
         var lastBg = null;
@@ -14,7 +107,6 @@
         function loadBackground() {
             var bg = localStorage.getItem('bg');
             
-            // Solo se è cambiato
             if (bg !== lastBg) {
                 lastBg = bg;
                 var el = document.getElementById('bg');
@@ -29,16 +121,63 @@
             }
         }
 
+        function loadAPI() {
+            fetch('api.json')
+                .then(response => response.json())
+                .then(data => {
+                    var content = `
+                        <div class="api-item">
+                            <span class="api-label">Atto</span>
+                            <span class="api-value">${data.atto} – ${data.titolo}</span>
+                        </div>
+                        <div class="api-item">
+                            <span class="api-label">Anno</span>
+                            <span class="api-value">${data.anno}</span>
+                        </div>
+                        <div class="api-item">
+                            <span class="api-label">Movimento</span>
+                            <span class="api-value">${data.movimento}</span>
+                        </div>
+                        <div class="api-item">
+                            <span class="api-label">Touch</span>
+                            <span class="api-value">${data.sensore_touch ? '✓ Attivo' : '✗ Inattivo'}</span>
+                        </div>
+                        <div class="api-item">
+                            <span class="api-label">Luce</span>
+                            <span class="api-value">${data.sensore_luce} lux</span>
+                        </div>
+                        <div class="api-item">
+                            <span class="api-label">Visione AI</span>
+                            <span class="api-value">${data.visione_ai.persone} persone (${Math.round(data.visione_ai.confidenza * 100)}%)</span>
+                        </div>
+                        <div class="api-thought">
+                            <div class="api-thought-label">Pensiero</div>
+                            <div class="api-thought-text">"${data.pensiero}"</div>
+                        </div>
+                        <div class="api-status">Ultimo aggiornamento: ${new Date().toLocaleTimeString('it-IT')}</div>
+                    `;
+                    document.getElementById('apiContent').innerHTML = content;
+                })
+                .catch(error => {
+                    document.getElementById('apiContent').innerHTML = '<div class="loading">Errore caricamento API</div>';
+                });
+        }
+
+        function handleClick(event) {
+            if (event.target.closest('.api-box')) return;
+            window.location.href = 'index.html';
+        }
+
         // Carica immediatamente
         loadBackground();
+        loadAPI();
 
         // Aggiorna ogni 200ms (tempo reale)
         setInterval(loadBackground, 200);
+        setInterval(loadAPI, 500);
 
-        // Ascolta anche l'evento storage
+        // Ascolta eventi storage e focus
         window.addEventListener('storage', loadBackground);
-
-        // Ascolta anche focus (quando torni sulla tab)
         window.addEventListener('focus', loadBackground);
     </script>
 </body>
