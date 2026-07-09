@@ -197,7 +197,7 @@
             var now = new Date();
             var timestamp = now.toLocaleTimeString('it-IT') + '.' + String(now.getMilliseconds()).padStart(3, '0');
             
-            var content = data.pensiero || data.thought || JSON.stringify(data);
+            var content = data.pensiero || data.thought || data.Data || JSON.stringify(data);
             
             messages.unshift({ time: timestamp, content: content });
             
@@ -225,7 +225,7 @@
                 
                 // Renderizza tutte le proprietà del JSON
                 for (var key in data) {
-                    if (key === 'pensiero' || key === 'thought') continue;
+                    if (key === 'pensiero' || key === 'thought' || key === 'Data') continue;
                     
                     var value = data[key];
                     if (typeof value === 'object') {
@@ -241,7 +241,7 @@
                 }
                 
                 // Se c'è un pensiero, mostralo in evidenza
-                var thought = data.pensiero || data.thought || data.thinking;
+                var thought = data.pensiero || data.thought || data.thinking || data.Data;
                 var thoughtHTML = '';
                 
                 if (thought) {

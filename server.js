@@ -57,6 +57,11 @@ app.post('/api', (req, res) => {
     data = { pensiero: "Messaggio vuoto" };
   }
   
+  // Se c'è il campo "Data", converte in "pensiero"
+  if (data.Data) {
+    data.pensiero = data.Data;
+  }
+  
   robotData.push(data);
   console.log('Messaggio ricevuto:', data);
   res.json({ success: true, data: data });
