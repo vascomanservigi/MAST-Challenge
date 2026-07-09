@@ -39,20 +39,7 @@
             </div>
         </div>
 
-        <div class="hero" style="display: none;">
-            <div class="description">
-                Un robot che incarna lo spirito strategico di Napoleone Bonaparte, 
-                combinando Intelligenza Artificiale, IoT e design innovativo.
-                Dal nome dell'isola che vide i suoi ultimi giorni, il nostro progetto 
-                celebra l'eredità dell'Imperatore attraverso la tecnologia.
-            </div>
-            <div class="hero-nav">
-                <a href="progetto.html">Scopri il Progetto</a>
-                <a href="demo.html" class="secondary">Vedi Demo</a>
-            </div>
-        </div>
-
-        <div class="stats">
+        <div class="stats" style="margin-top: 0; padding-top: 60px;">
             <div class="stat">
                 <div class="stat-number">3</div>
                 <div class="stat-label">Indirizzi</div>
@@ -261,53 +248,57 @@
             document.getElementById('navMenu').classList.toggle('active');
         }
 
-        // Optimized Scroll Animation
+        // Optimized Scroll Animation with Smooth Transitions
         const totalImages = 141;
         const container = document.getElementById('scrollContainer');
         const imagesContainer = document.getElementById('scrollImages');
         const overlay = document.querySelector('.scroll-overlay');
-        const heroSection = document.getElementById('heroSection');
         
         let loadedImages = {};
         let currentImage = 0;
         let isScrolling = false;
-        let scrollTimeout;
-
-        // Preload images progressively
-        async function preloadImages() {
-            const batchSize = 10;
-            
-            for (let batch = 0; batch < Math.ceil(totalImages / batchSize); batch++) {
-                const promises = [];
-                
-                for (let i = batch * batchSize + 1; i <= Math.min((batch + 1) * batchSize, totalImages); i++) {
-                    const num = i.toString().padStart(3, '0');
-                    const img = new Image();
-                    img.src = `f_${num}.jpg`;
-                    
-                    promises.push(new Promise((resolve) => {
-                        img.onload = () => {
-                            loadedImages[i] = img;
-                            resolve();
-                        };
-                        img.onerror = resolve;
-                    }));
-                }
-                
-                await Promise.all(promises);
-            }
-        }
+        let nextImageReady = false;
 
         // Create only 2 img elements for smooth transitions
         const img1 = document.createElement('img');
         const img2 = document.createElement('img');
-        img1.src = 'f_001.jpg';
-        img1.classList.add('active');
+        img1.style.objectFit = 'cover';
+        img2.style.objectFit = 'cover';
         imagesContainer.appendChild(img1);
         imagesContainer.appendChild(img2);
 
         let activeImg = img1;
         let inactiveImg = img2;
+
+        // Preload first batch immediately
+        function loadImage(index) {
+            return new Promise((resolve) => {
+                const num = index.toString().padStart(3, '0');
+                const img = new Image();
+                img.src = `f_${num}.jpg`;
+                img.onload = () => {
+                    loadedImages[index] = img.src;
+                    resolve(img.src);
+                };
+                img.onerror = resolve;
+            });
+        }
+
+        // Load first image immediately
+        loadImage(1).then(src => {
+            img1.src = src;
+            img1.classList.add('active');
+            loadedImages[1] = src;
+        });
+
+        // Progressive preload
+        async function preloadAllImages() {
+            for (let i = 1; i <= totalImages; i++) {
+                if (!loadedImages[i]) {
+                    await loadImage(i);
+                }
+            }
+        }
 
         // Smooth scroll handler with RAF
         function handleScroll() {
@@ -322,42 +313,47 @@
             
             // Update frame if changed
             if (targetFrame !== currentImage && targetFrame >= 0 && targetFrame < totalImages) {
-                const num = (targetFrame + 1).toString().padStart(3, '0');
-                const newSrc = `f_${num}.jpg`;
+                const imageIndex = targetFrame + 1;
                 
-                // Swap images
+                // Only switch if image is loaded or use fallback
+                const num = imageIndex.toString().padStart(3, '0');
+                const newSrc = loadedImages[imageIndex] || `f_${num}.jpg`;
+                
                 inactiveImg.src = newSrc;
-                inactiveImg.classList.add('active');
-                activeImg.classList.remove('active');
+                inactiveImg.onload = () => {
+                    inactiveImg.classList.add('active');
+                    activeImg.classList.remove('active');
+                    [activeImg, inactiveImg] = [inactiveImg, activeImg];
+                };
                 
-                [activeImg, inactiveImg] = [inactiveImg, activeImg];
                 currentImage = targetFrame;
             }
 
-            // Fade overlay
-            const opacity = Math.max(0, 1 - (scrollProgress * 3));
+            // Fade overlay smoothly
+            const opacity = Math.max(0, 1 - (scrollProgress * 2.5));
             if (overlay) {
                 overlay.style.opacity = opacity;
-                overlay.style.transform = `translateY(${scrollProgress * 50}px)`;
+                overlay.style.transform = `translateY(${scrollProgress * 30}px)`;
             }
         }
 
         // Throttled scroll listener
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            if (!isScrolling) {
-                isScrolling = true;
+            if (!ticking) {
                 requestAnimationFrame(() => {
                     handleScroll();
-                    isScrolling = false;
+                    ticking = false;
                 });
+                ticking = true;
             }
         }, { passive: true });
 
         // Start preloading
-        preloadImages();
+        preloadAllImages();
         
         // Initial call
-        handleScroll();
+        requestAnimationFrame(handleScroll);
     </script>
 </body>
 </html>
