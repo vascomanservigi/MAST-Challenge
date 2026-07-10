@@ -151,6 +151,7 @@
         var lastBg = null;
         var lastDataStr = '';
         var messages = [];
+        var lastCount = 0;
 
         function loadBackground() {
             fetch('/api/background')
@@ -180,14 +181,23 @@
                 .then(data => {
                     console.log('API Response:', data);
                     
-                    var newStr = JSON.stringify(data);
-                    
-                    if (newStr !== lastDataStr && lastDataStr !== '') {
-                        addMessage(data);
+                    if (!Array.isArray(data)) {
+                        data = [data];
                     }
                     
-                    lastDataStr = newStr;
-                    renderAPI(data);
+                    if (data.length > lastCount) {
+                        var newItems = data.slice(lastCount);
+                        newItems.forEach(function(item) {
+                            addMessage(item);
+                        });
+                    }
+                    
+                    lastCount = data.length;
+                    lastDataStr = JSON.stringify(data);
+                    
+                    if (data.length > 0) {
+                        renderAPI(data[data.length - 1]);
+                    }
                 })
                 .catch(error => {
                     document.getElementById('apiContent').innerHTML = 
