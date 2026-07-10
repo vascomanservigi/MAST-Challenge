@@ -5,81 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sfondo – Napoleone</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .api-box {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(20px);
-            color: #ffffff;
-            padding: 48px 64px;
-            border-radius: 24px;
-            max-width: 600px;
-            font-family: 'SF Pro Display', -apple-system, sans-serif;
-            z-index: 1000;
-            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            text-align: center;
-        }
-        
-        .api-box h2 {
-            font-size: 13px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            color: #888;
-            margin-bottom: 24px;
-        }
-        
-        .api-thought-text {
-            font-size: 28px;
-            font-weight: 300;
-            line-height: 1.5;
-            color: #ffffff;
-            letter-spacing: -0.02em;
-        }
-        
-        .loading {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 18px;
-            font-weight: 300;
-        }
-        
-        .error {
-            color: #ff6b6b;
-            font-size: 16px;
-        }
-        
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #4ade80;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 8px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-    </style>
 </head>
-<body class="sfondo-page" id="bg" onclick="handleClick(event)">
-    
-    <div class="api-box" id="apiBox" onclick="event.stopPropagation()">
-        <h2><span class="status-dot"></span>Mente di Napoleone</h2>
-        <div id="apiContent">
-            <div class="loading">In attesa dati dal robot...</div>
-        </div>
-    </div>
+<body class="sfondo-page" id="bg">
     
     <script>
         var lastBg = null;
-        var lastCount = 0;
 
         function loadBackground() {
             fetch('/api/background')
@@ -106,44 +36,8 @@
                 .catch(err => console.error('Background load error:', err));
         }
 
-        function loadAPI() {
-            fetch('/api')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('API Response:', data);
-                    
-                    if (!Array.isArray(data)) {
-                        data = [data];
-                    }
-                    
-                    lastCount = data.length;
-                    
-                    if (data.length > 0) {
-                        var latest = data[data.length - 1];
-                        var thought = latest.pensiero || latest.reason || latest.Data || latest.thought || "Nessun pensiero";
-                        document.getElementById('apiContent').innerHTML = '<div class="api-thought-text">"' + thought + '"</div>';
-                    }
-                })
-                .catch(error => {
-                    document.getElementById('apiContent').innerHTML = '<div class="error">Robot offline</div>';
-                });
-        }
-
-        function handleClick(event) {
-            if (event.target.closest('.api-box')) return;
-            window.location.href = 'index.html';
-        }
-
-        // Carica immediatamente
         loadBackground();
-        loadAPI();
-
-        // AGGIORNAMENTO IN TEMPO REALE
-        // Background: ogni 200ms
         setInterval(loadBackground, 200);
-        
-        // API: ogni 100ms (10 volte al secondo per tempo reale)
-        setInterval(loadAPI, 100);
     </script>
 </body>
 </html>
