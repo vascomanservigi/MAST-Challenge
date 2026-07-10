@@ -19,6 +19,16 @@ fs.writeFileSync(LOG_FILE, '');
 logToFile('=== SERVER STARTED ===');
 
 app.use(cors());
+
+// Custom middleware to capture raw body BEFORE other parsers
+app.use(function(req, res, next) {
+  req.rawBody = '';
+  req.on('data', function(chunk) {
+    req.rawBody += chunk.toString();
+  });
+  req.on('end', next);
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.text());
@@ -63,53 +73,37 @@ app.post('/api', (req, res) => {
   logToFile('Content-Type: ' + req.get('Content-Type'));
   logToFile('req.body type: ' + typeof req.body);
   logToFile('req.body raw: ' + JSON.stringify(req.body));
+  logToFile('req.rawBody: ' + req.rawBody);
   
-  var data = req.body;
+  var data = null;
   
-  // Caso 1: Buffer raw (quando arriva senza Content-Type specifico)
-  if (Buffer.isBuffer(req.body)) {
-    logToFile('Data is buffer');
-    var str = req.body.toString('utf8').trim();
-    logToFile('Buffer as string: ' + str);
+  // Priority 1: Try rawBody (captures everything)
+  if (req.rawBody && req.rawBody.trim()) {
+    logToFile('Trying to parse rawBody...');
     try {
-      data = JSON.parse(str);
-      logToFile('Parsed buffer as JSON');
+      data = JSON.parse(req.rawBody.trim());
+      logToFile('Parsed rawBody as JSON: ' + JSON.stringify(data));
     } catch (e) {
-      logToFile('Buffer parse failed, using as string');
-      data = { pensiero: str };
+      logToFile('rawBody is not JSON, using as string');
+      data = { pensiero: req.rawBody.trim() };
     }
   }
-  // Caso 2: Stringa (text/plain o raw string)
-  else if (typeof req.body === 'string') {
-    logToFile('Data is string: ' + req.body);
+  
+  // Priority 2: Try req.body if still empty
+  if (!data && req.body && typeof req.body === 'object' && Object.keys(req.body).length > 0) {
+    logToFile('Using req.body object');
+    data = req.body;
+  }
+  
+  // Priority 3: String body
+  if (!data && typeof req.body === 'string' && req.body.trim()) {
+    logToFile('Trying to parse string body...');
     try {
       data = JSON.parse(req.body.trim());
-      logToFile('Parsed string as JSON');
+      logToFile('Parsed string body as JSON');
     } catch (e) {
-      logToFile('String parse failed, using as pensiero');
-      data = { pensiero: req.body };
-    }
-  }
-  // Caso 3: Oggetto JSON già parsato
-  else if (typeof req.body === 'object' && req.body !== null) {
-    logToFile('Data is object with keys: ' + Object.keys(req.body).join(', '));
-    
-    // Se l'oggetto è vuoto, potrebbe essere che il form-urlencoded ha fallito
-    if (Object.keys(req.body).length === 0) {
-      logToFile('Object is empty - trying to read raw body');
-      // Express popola req.rawBody se usiamo express.raw()
-      if (req.rawBody) {
-        logToFile('Found rawBody: ' + req.rawBody);
-        try {
-          data = JSON.parse(req.rawBody);
-          logToFile('Parsed rawBody as JSON');
-        } catch (e) {
-          logToFile('rawBody parse failed');
-          data = { pensiero: req.rawBody };
-        }
-      } else {
-        logToFile('No rawBody found');
-      }
+      logToFile('String body is not JSON');
+      data = { pensiero: req.body.trim() };
     }
   }
   
