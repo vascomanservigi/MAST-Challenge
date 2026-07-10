@@ -36,6 +36,11 @@ app.get('/api', (req, res) => {
 });
 
 app.post('/api', (req, res) => {
+  console.log('=== POST /api DEBUG ===');
+  console.log('req.body:', req.body);
+  console.log('req.body type:', typeof req.body);
+  console.log('Content-Type:', req.get('Content-Type'));
+  
   var data = req.body;
   
   if (typeof data === 'string') {
