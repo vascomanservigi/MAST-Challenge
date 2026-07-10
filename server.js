@@ -1,9 +1,22 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const LOG_FILE = path.join(__dirname, 'debug.log');
+
+function logToFile(message) {
+  const timestamp = new Date().toISOString();
+  const logLine = `[${timestamp}] ${message}\n`;
+  fs.appendFileSync(LOG_FILE, logLine);
+  console.log(message);
+}
+
+// Clear log file on startup
+fs.writeFileSync(LOG_FILE, '');
+logToFile('=== SERVER STARTED ===');
 
 app.use(cors());
 app.use(express.json());
@@ -15,6 +28,15 @@ let backgroundUrl = '';
 
 app.get('/api/background', (req, res) => {
   res.json({ background: backgroundUrl });
+});
+
+app.get('/api/debug', (req, res) => {
+  try {
+    const log = fs.readFileSync(LOG_FILE, 'utf8');
+    res.type('text/plain').send(log);
+  } catch (e) {
+    res.status(404).send('Log file not found');
+  }
 });
 
 app.post('/api/background', (req, res) => {
@@ -36,39 +58,50 @@ app.get('/api', (req, res) => {
 });
 
 app.post('/api', (req, res) => {
-  console.log('=== POST /api DEBUG ===');
-  console.log('req.body:', req.body);
-  console.log('req.body type:', typeof req.body);
-  console.log('Content-Type:', req.get('Content-Type'));
+  logToFile('=== POST /api ===');
+  logToFile('Content-Type: ' + req.get('Content-Type'));
+  logToFile('req.body type: ' + typeof req.body);
+  logToFile('req.body raw: ' + JSON.stringify(req.body));
+  logToFile('req.body keys: ' + Object.keys(req.body || {}).join(', '));
   
   var data = req.body;
   
   if (typeof data === 'string') {
+    logToFile('Data is string, parsing...');
     try {
       data = JSON.parse(data);
+      logToFile('Parsed JSON successfully: ' + JSON.stringify(data));
     } catch (e) {
+      logToFile('Parse failed, using as pensiero');
       data = { pensiero: data };
     }
   } else if (Buffer.isBuffer(data)) {
+    logToFile('Data is buffer');
     var str = data.toString();
     try {
       data = JSON.parse(str);
+      logToFile('Parsed buffer JSON: ' + JSON.stringify(data));
     } catch (e) {
+      logToFile('Buffer parse failed');
       data = { pensiero: str };
     }
   }
   
-  if (!data || Object.keys(data).length === 0) {
-    data = { pensiero: "Messaggio vuoto" };
+  if (!data) {
+    logToFile('ERROR: data is null/undefined');
+    data = { pensiero: "Messaggio vuoto - data is null" };
+  } else if (Object.keys(data).length === 0) {
+    logToFile('ERROR: data has no keys');
+    data = { pensiero: "Messaggio vuoto - no keys" };
   }
   
-  // Se c'è il campo "Data", converte in "pensiero"
   if (data.Data) {
+    logToFile('Converting Data to pensiero: ' + data.Data);
     data.pensiero = data.Data;
   }
   
+  logToFile('FINAL DATA: ' + JSON.stringify(data));
   robotData.push(data);
-  console.log('Messaggio ricevuto:', data);
   res.json({ success: true, data: data });
 });
 
