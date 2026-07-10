@@ -19,20 +19,9 @@ fs.writeFileSync(LOG_FILE, '');
 logToFile('=== SERVER STARTED ===');
 
 app.use(cors());
-
-// Custom middleware to capture raw body BEFORE other parsers
-app.use(function(req, res, next) {
-  req.rawBody = '';
-  req.on('data', function(chunk) {
-    req.rawBody += chunk.toString();
-  });
-  req.on('end', next);
-});
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.text());
-app.use(express.raw({ type: '*/*', limit: '10mb' }));
 
 let robotData = [];
 let backgroundUrl = '';
@@ -68,7 +57,16 @@ app.get('/api', (req, res) => {
   }
 });
 
-app.post('/api', (req, res) => {
+// Middleware to capture raw body for /api endpoint only
+function captureRawBody(req, res, next) {
+  req.rawBody = '';
+  req.on('data', function(chunk) {
+    req.rawBody += chunk.toString();
+  });
+  req.on('end', next);
+}
+
+app.post('/api', captureRawBody, (req, res) => {
   logToFile('=== POST /api ===');
   logToFile('Content-Type: ' + req.get('Content-Type'));
   logToFile('req.body type: ' + typeof req.body);
