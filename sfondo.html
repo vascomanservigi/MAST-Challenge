@@ -165,11 +165,10 @@
                         
                         if (bg && bg !== '') {
                             el.style.backgroundImage = 'url(' + bg + ')';
-                            el.style.backgroundSize = 'cover';
                             el.style.backgroundPosition = 'center';
                             el.style.backgroundRepeat = 'no-repeat';
                             el.style.backgroundAttachment = 'fixed';
-                            el.style.backgroundColor = '';
+                            el.style.backgroundColor = '#000';
                         } else {
                             el.style.backgroundImage = '';
                             el.style.background = 'linear-gradient(135deg, #2b1810, #8b4513)';
