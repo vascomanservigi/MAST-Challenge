@@ -165,6 +165,10 @@
                         
                         if (bg && bg !== '') {
                             el.style.backgroundImage = 'url(' + bg + ')';
+                            el.style.backgroundSize = 'cover';
+                            el.style.backgroundPosition = 'center';
+                            el.style.backgroundRepeat = 'no-repeat';
+                            el.style.backgroundAttachment = 'fixed';
                             el.style.backgroundColor = '';
                         } else {
                             el.style.backgroundImage = '';
