@@ -22,6 +22,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.text());
+app.use(express.raw({ type: '*/*', limit: '10mb' }));
 
 let robotData = [];
 let backgroundUrl = '';
@@ -62,42 +63,69 @@ app.post('/api', (req, res) => {
   logToFile('Content-Type: ' + req.get('Content-Type'));
   logToFile('req.body type: ' + typeof req.body);
   logToFile('req.body raw: ' + JSON.stringify(req.body));
-  logToFile('req.body keys: ' + Object.keys(req.body || {}).join(', '));
   
   var data = req.body;
   
-  if (typeof data === 'string') {
-    logToFile('Data is string, parsing...');
-    try {
-      data = JSON.parse(data);
-      logToFile('Parsed JSON successfully: ' + JSON.stringify(data));
-    } catch (e) {
-      logToFile('Parse failed, using as pensiero');
-      data = { pensiero: data };
-    }
-  } else if (Buffer.isBuffer(data)) {
+  // Caso 1: Buffer raw (quando arriva senza Content-Type specifico)
+  if (Buffer.isBuffer(req.body)) {
     logToFile('Data is buffer');
-    var str = data.toString();
+    var str = req.body.toString('utf8').trim();
+    logToFile('Buffer as string: ' + str);
     try {
       data = JSON.parse(str);
-      logToFile('Parsed buffer JSON: ' + JSON.stringify(data));
+      logToFile('Parsed buffer as JSON');
     } catch (e) {
-      logToFile('Buffer parse failed');
+      logToFile('Buffer parse failed, using as string');
       data = { pensiero: str };
     }
   }
+  // Caso 2: Stringa (text/plain o raw string)
+  else if (typeof req.body === 'string') {
+    logToFile('Data is string: ' + req.body);
+    try {
+      data = JSON.parse(req.body.trim());
+      logToFile('Parsed string as JSON');
+    } catch (e) {
+      logToFile('String parse failed, using as pensiero');
+      data = { pensiero: req.body };
+    }
+  }
+  // Caso 3: Oggetto JSON già parsato
+  else if (typeof req.body === 'object' && req.body !== null) {
+    logToFile('Data is object with keys: ' + Object.keys(req.body).join(', '));
+    
+    // Se l'oggetto è vuoto, potrebbe essere che il form-urlencoded ha fallito
+    if (Object.keys(req.body).length === 0) {
+      logToFile('Object is empty - trying to read raw body');
+      // Express popola req.rawBody se usiamo express.raw()
+      if (req.rawBody) {
+        logToFile('Found rawBody: ' + req.rawBody);
+        try {
+          data = JSON.parse(req.rawBody);
+          logToFile('Parsed rawBody as JSON');
+        } catch (e) {
+          logToFile('rawBody parse failed');
+          data = { pensiero: req.rawBody };
+        }
+      } else {
+        logToFile('No rawBody found');
+      }
+    }
+  }
   
-  if (!data) {
-    logToFile('ERROR: data is null/undefined');
-    data = { pensiero: "Messaggio vuoto - data is null" };
-  } else if (Object.keys(data).length === 0) {
-    logToFile('ERROR: data has no keys');
-    data = { pensiero: "Messaggio vuoto - no keys" };
+  if (!data || (typeof data === 'object' && Object.keys(data).length === 0)) {
+    logToFile('ERROR: data is empty after all parsing attempts');
+    data = { pensiero: "Messaggio vuoto" };
   }
   
   if (data.Data) {
     logToFile('Converting Data to pensiero: ' + data.Data);
     data.pensiero = data.Data;
+  }
+  
+  if (data.reason) {
+    logToFile('Converting reason to pensiero: ' + data.reason);
+    data.pensiero = data.reason;
   }
   
   logToFile('FINAL DATA: ' + JSON.stringify(data));
