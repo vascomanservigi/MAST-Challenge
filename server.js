@@ -9,7 +9,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.text());
-app.use(express.raw({ type: '*/*' }));
 
 let robotData = [];
 let backgroundUrl = '';
